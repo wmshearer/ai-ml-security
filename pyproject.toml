@@ -1,0 +1,31 @@
+[project]
+name = "ai-redteam-harness"
+version = "0.1.0"
+description = "AI red team harness: a deliberately vulnerable local LLM agent target, built to be attacked by garak/PyRIT-class tooling and scored against the OWASP LLM Top 10 (2026) and MITRE ATLAS."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.7",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+# Phase 2 integration layer. Pinned to the exact versions verified against
+# primary source in research/phase-2-harness-integration.md (garak 0.16.0,
+# PyRIT 1.0.1) — NOT installed in this environment as of Phase 2 authoring;
+# src/harness/pyrit_target.py and configs/garak_rest.json are written
+# against these versions' current API but unexecuted pending install.
+harness = [
+    "garak==0.16.0",
+    "pyrit==1.0.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

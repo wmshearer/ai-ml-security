@@ -1,0 +1,40 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+
+# Secrets / env
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# Models (large binaries — pulled via Ollama, not vendored)
+*.gguf
+*.bin
+models/
+
+# Evidence / run artifacts
+# attack_results.json is a tracked result artifact (see README) — keep it.
+# Regenerable/runtime state (logs, sqlite db) is not tracked.
+evidence/*.log
+evidence/*.db
+!evidence/.gitkeep
+
+# OS / editor cruft
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# pytest
+.pytest_cache/
