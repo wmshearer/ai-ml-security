@@ -4,22 +4,29 @@ recording shim (shim.py) so tool_calls_made/retrieved_doc_ids are captured
 for LLM03/LLM09 scoring even though PyRIT's own callback_function only
 forwards the reply text to a Scorer.
 
-pyrit is NOT installed in this environment (confirmed: `pip show pyrit` ->
-not found, per the research brief and re-confirmed before writing this
-file). This module is written against the current pyrit.executor.attack.*
-API (research item 2) and is UNEXECUTED — it has not been run against a
-live pyrit install. Byte-compiles clean (py_compile) but that only proves
-syntax validity, not that the pyrit API surface matches at runtime; treat
-every claim below about pyrit's own behavior as sourced from the research
-brief's direct reads of pyrit's source, not from having run it.
+Written against the current pyrit.executor.attack.* API. Note that
+pyrit.orchestrator (PromptSendingOrchestrator / RedTeamingOrchestrator) does
+NOT exist in current PyRIT — it was restructured with no compatibility shim,
+so the pattern in most public tutorials raises ImportError.
 
-Target class used: HTTPXAPITarget (the research's PREFERRED option, not the
-fallback). The research flagged one open item: whether json_data supports an
-explicit prompt-substitution placeholder the way HTTPTarget's
-prompt_regex_string does, or whether PyRIT substitutes the prompt into
-json_data by field-name convention instead. That was not resolved by this
-implementation either (no live pyrit install to smoke-test against) — see
-the two-branch fallback below and the report's "hit a wall" note.
+Target class: HTTPTarget, NOT HTTPXAPITarget.
+
+This was resolved by reading the source directly (2026-08-17). The earlier
+design preferred HTTPXAPITarget, but that class CANNOT inject a prompt into a
+JSON body at all: `self.json_data` is assigned once in the constructor
+(httpx_api_target.py:104) and passed unmodified to httpx
+(httpx_api_target.py:183). There is no placeholder, no positional
+substitution, and no callable injection for the body — the only place it
+inspects prompt content is to auto-discover a file path in upload mode. A
+`{"message": "{PROMPT}"}` json_data would be sent to the target literally,
+with the placeholder never replaced, and every attack would silently test the
+string "{PROMPT}" instead of the actual payload. That failure is
+near-invisible in results: the target answers normally, nothing errors, and
+every probe simply reports a miss.
+
+HTTPTarget substitutes via re.sub of prompt_regex_string into a raw HTTP
+request string (http_target._inject_prompt_into_request, http_target.py:135-151),
+which is a confirmed working mechanism.
 """
 from __future__ import annotations
 
@@ -55,41 +62,35 @@ def parse_reply(*, response: Any) -> str:
 
 
 def build_httpx_api_target():
-    """Preferred target class per the research. NOTE (unconfirmed, flagged
-    in the research's "What could NOT be confirmed" section): the exact
-    mechanism by which PyRIT substitutes the current attack prompt into a
-    static `json_data: dict` was not read past the HTTPXAPITarget
-    constructor signature in the research pass, and could not be resolved
-    here either without a live install to smoke-test against. Two
-    plausible mechanisms exist in PyRIT's own ecosystem conventions:
-      (a) a placeholder token in a json_data string value, analogous to
-          garak's "$INPUT" or HTTPTarget's "{PROMPT}" — attempted below.
-      (b) PyRIT's PromptSendingAttack passing the prompt as a positional/
-          keyword argument to _send_prompt_to_target_async independently
-          of json_data, with json_data only supplying additional static
-          fields.
-    If (a) is wrong and HTTPXAPITarget raises or silently ignores the
-    placeholder at runtime, fall back to build_http_target() below, which
-    uses the CONFIRMED-working prompt_regex_string substitution mechanism.
-    """
-    from pyrit.prompt_target.http_target.httpx_api_target import HTTPXAPITarget
+    """REMOVED as a usable option — kept only to fail loudly.
 
-    return HTTPXAPITarget(
-        http_url=SHIM_CHAT_URL,
-        method="POST",
-        headers={"Content-Type": "application/json"},
-        json_data={"message": "{PROMPT}"},  # placeholder mechanism UNCONFIRMED — see docstring
-        callback_function=parse_reply,
-        max_requests_per_minute=MAX_REQUESTS_PER_MINUTE,
+    HTTPXAPITarget cannot substitute a prompt into its JSON body (see the
+    module docstring). Calling it would produce a run in which every attack
+    silently tests the literal string "{PROMPT}" and reports a miss, which
+    looks exactly like "the target is secure." That is a worse outcome than
+    an exception, so this raises instead.
+    """
+    raise NotImplementedError(
+        "HTTPXAPITarget cannot inject a prompt into json_data "
+        "(httpx_api_target.py:104,183 — static dict, no substitution). "
+        "Use build_http_target() instead."
     )
 
 
 def build_http_target():
-    """Documented fallback (research item 2): HTTPTarget takes a raw HTTP
-    request string plus a CONFIRMED regex substitution point
-    (prompt_regex_string, default "{PROMPT}"). Use this if
-    build_httpx_api_target()'s placeholder assumption turns out to be wrong
-    against a live pyrit install.
+    """The target builder to use. HTTPTarget takes a raw HTTP request string
+    and substitutes prompt_regex_string via re.sub
+    (http_target.py:135-151).
+
+    JSON-escaping caveat: that substitution is a raw-text regex sub, NOT
+    JSON-aware — unlike garak's $INPUT, which is JSON-escaped by the
+    generator. A payload containing a double quote, backslash, or newline
+    would produce a malformed request body and the target would reject it
+    with a 422. Since red-team payloads routinely contain exactly those
+    characters, the prompt is escaped before injection via the callback
+    below. json.dumps() on the raw value yields a quoted, escaped JSON
+    string; the surrounding quotes are stripped because the template already
+    supplies them.
     """
     from pyrit.prompt_target.http_target.http_target import HTTPTarget
 
@@ -109,6 +110,19 @@ def build_http_target():
     )
 
 
+def json_escape(payload: str) -> str:
+    """Escape a payload for safe injection into the JSON body template.
+
+    HTTPTarget's substitution is a plain regex sub, so an unescaped quote in
+    a payload breaks the request body. Apply this to a payload BEFORE handing
+    it to an attack when the payload may contain quotes, backslashes, or
+    newlines — which adversarial payloads frequently do.
+    """
+    import json as _json
+
+    return _json.dumps(payload)[1:-1]
+
+
 def build_prompt_sending_attack(target=None):
     """Wires a PromptSendingAttack (pyrit.executor.attack.single_turn.
     prompt_sending.PromptSendingAttack) against the shim-fronted target —
@@ -124,7 +138,7 @@ def build_prompt_sending_attack(target=None):
     from pyrit.executor.attack.single_turn.prompt_sending import PromptSendingAttack
 
     if target is None:
-        target = build_httpx_api_target()
+        target = build_http_target()
     return PromptSendingAttack(objective_target=target)
 
 
@@ -145,7 +159,7 @@ def build_crescendo_attack(target=None, *, adversarial_chat=None, scoring_target
     from pyrit.executor.attack.multi_turn.crescendo import CrescendoAttack
 
     if target is None:
-        target = build_httpx_api_target()
+        target = build_http_target()
     return CrescendoAttack(
         objective_target=target,
         adversarial_chat=adversarial_chat,
