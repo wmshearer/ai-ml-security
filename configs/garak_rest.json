@@ -8,7 +8,7 @@
       "req_template_json_object": { "message": "$INPUT" },
       "response_json": true,
       "response_json_field": "reply",
-      "request_timeout": 120
+      "request_timeout": 300
     }
   }
 }
