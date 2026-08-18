@@ -1,6 +1,13 @@
-# Breaking an AI Agent — A Live Walkthrough
+# Breaking an AI Agent — A Walkthrough
 
-**Runtime:** about 25 seconds of commands. Budget 6–8 minutes with narration.
+**Runtime:** about 25 seconds of commands. Go as slowly as you like — nothing here times out
+while you read.
+
+**Screenshots:** save to `docs/screenshots/`. That folder's `README.md` has the shot list and
+what to box in each one. Steps that are worth capturing are marked **📸** below.
+
+The narration blocks are marked "Say this." Right now they are there to explain the reasoning
+to *you* while you work through it — if you record a video later, they are already the script.
 
 Every command and every output in this document was actually executed and captured. Nothing
 here is reconstructed from notes. Model wording will vary slightly between runs — the
@@ -162,6 +169,24 @@ must stop it first (find its PID in that output and `kill` it specifically — n
 
 *Expect:* `99 passed in 0.13s`
 
+**8. Set up screenshots.** Flameshot is already installed (v14). This launches it with the
+save folder pre-set, so you are not navigating a file dialog every time:
+
+```bash
+flameshot gui -p ~/director/projects/ai-redteam-harness/docs/screenshots/
+```
+
+Drag to select a region, then the toolbar appears: `R` rectangle, `A` arrow, `T` text,
+`M` marker. `Ctrl` `+`/`-` for thickness, right-click for colour, `Ctrl+S` to save.
+
+Worth binding to the PrtSc key first — XFCE Settings → Keyboard → Application Shortcuts → add
+that command bound to `Print`. You will take eight of these and typing the command each time
+gets old fast.
+
+**Two things to do before your first capture:** widen the terminal so the JSON output does not
+wrap, and increase the font size (`Ctrl` `+`). Text that is comfortable at arm's length is
+unreadable in an image someone views on a laptop.
+
 ---
 
 ## Step 1 — What we are looking at
@@ -185,6 +210,8 @@ check. That's deliberate. It's the vulnerability we're going to find and then fi
 ---
 
 ## Step 2 — Start the target and the recorder
+
+> 📸 **Capture:** `02-services-started.png`
 
 > **Say this:**
 >
@@ -236,6 +263,8 @@ to see the system broken before we fix it.
 
 ## Step 3 — Prove it works normally
 
+> 📸 **Capture:** `03-normal-question.png`
+
 > **Say this:**
 >
 > "First, a normal question. This is the assistant doing its job."
@@ -266,6 +295,8 @@ the baseline for comparison.
 ---
 
 ## Step 4 — The attack
+
+> 📸 **Capture:** `04-the-attack.png` ★
 
 > **Say this:**
 >
@@ -314,6 +345,8 @@ curl -s -X POST http://127.0.0.1:8001/chat \
 ---
 
 ## Step 5 — The finding that matters
+
+> 📸 **Capture:** `05-garak-blind-spot.png` ★
 
 > **Say this:**
 >
@@ -364,6 +397,8 @@ tool_calls_made present: False
 
 ## Step 6 — The fix
 
+> 📸 **Capture:** `06-authz-code.png`
+
 > **Say this:**
 >
 > "So how do you fix this? The tempting answer is to add another AI — a model that watches
@@ -406,6 +441,8 @@ target.
 
 ## Step 7 — Same attack, guarded
 
+> 📸 **Capture:** `07-guardrail-denies.png` ★
+
 > **Say this:**
 >
 > "Same command. Byte for byte. Watch the tool call."
@@ -431,6 +468,8 @@ target.
 ---
 
 ## Step 8 — Show the ledger
+
+> 📸 **Capture:** `08-the-ledger.png` ★
 
 **Run:**
 
