@@ -9,6 +9,11 @@ what to box in each one. Steps that are worth capturing are marked **📸** belo
 The narration blocks are marked "Say this." Right now they are there to explain the reasoning
 to *you* while you work through it — if you record a video later, they are already the script.
 
+Four steps carry a **🎤 If someone asks** block at the end: the questions a knowledgeable
+reviewer is most likely to raise at that exact point, with answers. Steps 4, 5, 6, and 9.
+Those are the ones worth being able to answer without notes — they are where an interview
+actually goes.
+
 Every command and every output in this document was actually executed and captured. Nothing
 here is reconstructed from notes. Model wording will vary slightly between runs — the
 structure of the result will not.
@@ -344,6 +349,27 @@ curl -s -X POST http://127.0.0.1:8001/chat \
 > Three — look at the result. Status: sent. Nothing checked whether that was allowed. The
 > assistant asked to send mail to an external attacker, and the system said yes."
 
+
+> ### 🎤 If someone asks — Step 4
+>
+> **"Isn't this just telling it to misbehave? That's not a real attack."**
+> The distinction that matters is *who* is talking. In a real deployment this text would not
+> come from the operator — it would arrive inside a support ticket, a résumé, a web page the
+> agent fetched, or a document in the knowledge base. The model cannot tell the difference
+> between instructions from its owner and instructions embedded in data it was asked to read.
+> That is the vulnerability. I am typing it directly only because it is faster to demonstrate.
+>
+> **"Why does the model fall for it?"**
+> Because there is no structural boundary between instruction and data in a prompt. It is all
+> one stream of text. This is unlike SQL injection, where parameterised queries genuinely
+> separate code from data — there is no equivalent primitive for language models yet. That is
+> why OWASP ranks prompt injection first and why nobody has solved it.
+>
+> **"Would a bigger model resist this?"**
+> Somewhat, not reliably. Frontier models refuse naive attempts more often, but published
+> research shows adaptive attacks succeed against every model tested. Model size changes the
+> effort required, not the existence of the class.
+
 ---
 
 ## Step 5 — The finding that matters
@@ -395,6 +421,25 @@ tool_calls_made present: False
 > In the full run, that was **78 unauthorized tool calls** it never scored. That's the gap I
 > built the recorder to close."
 
+
+> ### 🎤 If someone asks — Step 5
+>
+> **"Isn't this just a garak misconfiguration?"**
+> No, and this is the question worth getting right. garak's REST generator extracts exactly
+> one field from the response, and a garak Detector only ever receives that extracted string.
+> There is no configuration that hands a Detector the whole response object. The report schema
+> has no field for tool calls at all — not empty, absent. It is architectural.
+>
+> **"So is garak broken?"**
+> No. garak was built to score what a model *says*, and it does that well. Agents that take
+> actions are newer than the tool's detector model. This is a coverage gap that appears when
+> you point an established tool at a newer kind of system — worth reporting, not a defect.
+>
+> **"Couldn't you write a custom garak plugin instead of a proxy?"**
+> Yes — subclassing the generator and overriding `_call_model` would capture extra fields. I
+> used a proxy because it solves it once for *any* tool. PyRIT has the same single-field
+> limitation, and a garak-specific plugin would leave that unsolved.
+
 ---
 
 ## Step 6 — The fix
@@ -438,6 +483,27 @@ until curl -sf http://127.0.0.1:8000/healthz; do sleep 1; done
 
 The recorder on 8001 keeps running — it's a passthrough, and the guardrail only affects the
 target.
+
+
+> ### 🎤 If someone asks — Step 6
+>
+> **"Why not use an AI guardrail? NeMo Guardrails, Llama Guard, something like that."**
+> For this specific problem the answer is cost and reliability. NeMo's self-check rails add a
+> full model round trip per call; this box already has a latency tail where the slowest 1% of
+> requests exceed three minutes. And more fundamentally — an LLM judging whether an action is
+> allowed can itself be talked out of the decision. A list lookup cannot be argued with.
+> Guardrail libraries are the right answer when the check needs *judgment*: is this content
+> toxic, does this contain PII. "Is this recipient on the approved list" needs no judgment.
+>
+> **"Isn't an allow-list brittle? What about legitimate new recipients?"**
+> Yes, that is the real trade. In production this list comes from a directory service or a
+> per-tenant policy, not a constant in a file. The architectural point is that authorisation
+> is enforced deterministically in code — where the list lives is an implementation detail.
+>
+> **"Why not just tell the model in its system prompt not to email strangers?"**
+> Because that is exactly what the attack overrides. Instructions are data. If the control
+> lives in the prompt, prompt injection defeats it by definition. The control has to sit
+> outside the model.
 
 ---
 
@@ -531,6 +597,34 @@ so the count doesn't look wrong.
 > not an injection defense. If someone tells you they've solved prompt injection, they
 > haven't. OWASP says outright that no reliable prevention exists. Anyone claiming a clean
 > hundred percent either measured the wrong thing or is selling something."
+
+
+> ### 🎤 If someone asks — Step 9
+>
+> **"Why did text leaks go UP with the guardrail on?"**
+> Almost certainly run-to-run variance, not an effect of the guardrail. Sampling temperature
+> is 0.2, so identical prompts do not produce identical outputs. Four versus eight out of 256
+> is a small absolute difference on a noisy measure. I would not claim the guardrail increased
+> leakage, and I would not claim it decreased it either — it has no mechanism to affect reply
+> text at all. Overclaiming in either direction would be the error.
+>
+> **"Why only one probe? Why not garak's whole suite?"**
+> Time and honesty. A full suite run against a local 7B is many hours, and I would rather
+> report one probe measured properly — paired runs, identical prompt set, 256 attempts each —
+> than a broad sweep I could not complete. The incomplete first run is stated for the same
+> reason: it could not support a rate comparison, so it was re-run rather than quoted.
+>
+> **"How do you know the guardrail didn't just break the agent?"**
+> Because the model still attempted the tool call in every case — the attempt appears in the
+> record, and only the execution was refused. The agent's normal path also still works; the
+> password-reset question answers correctly with the guardrail on. Denial is scoped to
+> unauthorised actions, not a general failure.
+>
+> **"What would you do next?"**
+> Two things. Fix the remaining reply-text leakage, which needs a different control — output
+> filtering or instruction/data separation, not authorisation. And re-run with an adaptive
+> attack, since a static probe set flatters any defence: the honest test is whether the
+> control survives an attacker who can see it and adjust.
 
 ---
 
