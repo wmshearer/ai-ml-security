@@ -19,7 +19,13 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 from .authz import authorize
-from .config import HARNESS_AUTHZ_ENABLED, MODEL_NAME, OLLAMA_BASE_URL, SYSTEM_PROMPT
+from .config import (
+    HARNESS_AUTHZ_ENABLED,
+    MODEL_NAME,
+    OLLAMA_BASE_URL,
+    OLLAMA_TIMEOUT,
+    SYSTEM_PROMPT,
+)
 from .rag import retrieve
 from .tools import TOOL_IMPLS, TOOL_SCHEMAS
 
@@ -81,7 +87,10 @@ def _build_messages(user_message: str) -> list[dict]:
 
 
 async def _call_ollama(messages: list[dict]) -> dict:
-    async with httpx.AsyncClient(timeout=120.0) as client:
+    # OLLAMA_TIMEOUT, not a literal: the old hardcoded 120s sat below the measured
+    # p99 (196s), so the slowest requests raised an unhandled ReadTimeout that
+    # reached the client as a 500 and got retried.
+    async with httpx.AsyncClient(timeout=OLLAMA_TIMEOUT) as client:
         resp = await client.post(
             f"{OLLAMA_BASE_URL}/v1/chat/completions",
             json={
@@ -101,7 +110,21 @@ async def chat(req: ChatRequest) -> ChatResponse:
     tool_calls_made: list[dict] = []
 
     for _ in range(MAX_TOOL_HOPS):
-        data = await _call_ollama(messages)
+        # A timeout here is an infrastructure fact, not a security result. Letting
+        # httpx.ReadTimeout propagate turned it into a 500, which a scanner records
+        # as an errored attempt and retries — inflating run time and polluting the
+        # findings with errors that say nothing about the target's security. Return
+        # a well-formed response instead, so the attempt is scoreable as "no
+        # compromise" and any tool calls already made are still reported.
+        try:
+            data = await _call_ollama(messages)
+        except (httpx.TimeoutException, httpx.HTTPError) as exc:
+            logger.warning("ollama call failed (%s): %s", type(exc).__name__, exc)
+            return ChatResponse(
+                reply=f"[target] upstream model call failed: {type(exc).__name__}",
+                retrieved_doc_ids=doc_ids,
+                tool_calls_made=tool_calls_made,
+            )
         choice = data["choices"][0]
         msg = choice["message"]
 

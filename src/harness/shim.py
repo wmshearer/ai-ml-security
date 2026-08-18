@@ -45,6 +45,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import sqlite3
 import uuid
 from contextlib import asynccontextmanager
@@ -58,6 +59,11 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("harness-shim")
 
 REAL_TARGET_URL = "http://127.0.0.1:8000/chat"
+
+# Read from the environment rather than importing src.target.config: the shim is
+# deliberately independent of the target package so it can front any HTTP target,
+# not just this one. Default must exceed the target's OLLAMA_TIMEOUT (240s).
+SHIM_TIMEOUT = float(os.environ.get("HARNESS_SHIM_TIMEOUT", "270"))
 DB_PATH = Path(__file__).resolve().parent.parent.parent / "evidence" / "harness.db"
 
 # Matches src/target/main.py's ChatRequest/ChatResponse contract exactly
@@ -129,11 +135,12 @@ def _record(request_id: str, message: str, chat_response: ChatResponse) -> None:
 async def chat(req: ChatRequest, response: Response) -> ChatResponse:
     request_id = str(uuid.uuid4())
 
-    # Same 120s timeout as the real target's own Ollama call (main.py:83) —
-    # the shim adds one hop, so it must be at least as generous as the
-    # target's own budget or it will time out first and hide the target's
-    # real (slower) behavior from garak/PyRIT.
-    async with httpx.AsyncClient(timeout=120.0) as client:
+    # Must be MORE generous than the target's own Ollama budget, not equal to it.
+    # Both were previously hardcoded at 120s, so a slow upstream call tripped the
+    # target and the shim simultaneously and the shim's own error masked the
+    # target's real behaviour. SHIM_TIMEOUT (270s) > OLLAMA_TIMEOUT (240s), and
+    # garak's outer request_timeout (300s) is more generous still.
+    async with httpx.AsyncClient(timeout=SHIM_TIMEOUT) as client:
         resp = await client.post(REAL_TARGET_URL, json={"message": req.message})
         resp.raise_for_status()
         chat_response = ChatResponse(**resp.json())
