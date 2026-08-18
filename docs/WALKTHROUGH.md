@@ -8,27 +8,159 @@ structure of the result will not.
 
 ---
 
-## Before you start
+## First: what kind of activity is this?
 
-Have these ready, off camera:
+**This is entirely command-line work. There is no GUI, no dashboard, no window to click.**
+That is worth saying out loud early in the recording, because an audience used to security
+products with web consoles will otherwise spend the whole video waiting for one to appear.
 
-| Check | Command | Expect |
+Everything runs on this one machine. Nothing goes to the cloud, no API keys are involved, and
+no data leaves the box. That is a deliberate property of the setup, not a shortcut.
+
+Four things are running by the end, and it helps to name them up front:
+
+| What | Where | Its job |
 |---|---|---|
-| Ollama running | `curl -sf http://127.0.0.1:11434/api/tags` | JSON list of models |
-| Model present | same output | `qwen2.5:7b-instruct-q4_K_M` |
-| Ports free | `ss -lntp \| grep -E '8000\|8001'` | no output |
+| **Ollama** | port 11434 | Runs the AI model itself on the GPU. Already running as a background service. |
+| **The target** | port 8000 | The vulnerable helpdesk assistant. Talks to Ollama. |
+| **The recorder** | port 8001 | Sits in front of the target, logs everything, passes it through. |
+| **`curl`** | — | How we send an attack. It is just a way to send an HTTP request from the terminal. |
 
-```
+**A "port" is just a numbered door on this machine.** Two programs can both run here without
+colliding because they listen on different numbers. When you see `127.0.0.1:8000`, that reads
+as "this same computer, door 8000." `127.0.0.1` always means *this machine* — the traffic
+never touches a network.
+
+---
+
+## The vocabulary, in one place
+
+You will use these words on camera. Worth having crisp definitions ready.
+
+**`curl`** — a command-line tool that sends a web request and prints the response. Your
+browser does the same thing with a prettier wrapper.
+
+*Why not just use a browser?* A browser sends a plain page request. We need to POST a specific
+JSON body and read the raw reply including fields the browser would never show. You could do
+this in Postman or Insomnia if you prefer a GUI — the request would be identical. `curl` is
+used here because it is on every Linux box by default and it fits in one visible line, which
+matters when someone is watching over your shoulder.
+
+**Virtual environment (`.venv`)** — a private folder holding this project's Python packages,
+isolated from the rest of the system. `.venv/bin/python` means "the Python inside this
+project's sandbox," not the system one.
+
+*Why bother?* garak pulls in PyTorch and a CUDA toolchain — several gigabytes of dependencies
+at specific versions. Installing that into system Python can break other tools that need
+different versions, and on Kali it can interfere with packaged security tooling. The sandbox
+means this project can be deleted with `rm -rf` and leave no trace on the system. This is
+standard Python practice, not something exotic. Alternatives like `conda`, `poetry`, or `uv`
+solve the same problem; `venv` ships with Python and needs no extra install.
+
+**`uvicorn`** — the program that actually runs a Python web service. Our target and recorder
+are written with FastAPI; `uvicorn` is what serves them on a port.
+
+**The `&` at the end of a command** — runs it in the background so you get your prompt back
+instead of the terminal hanging. Both services need to keep running while you type other
+commands, so both get an `&`.
+
+**`until curl -sf ...; do sleep 1; done`** — "keep trying until this responds, then continue."
+A service takes a second or two to boot. This waits for it properly instead of guessing.
+
+**Prompt injection** — the attack. You write instructions in ordinary English that the model
+follows even though it should not. No code, no exploit. Just a convincing sentence.
+
+**Canary** — the fake secret planted in the target (`CANARY-SECRET-a7f3d9`). It is not a real
+credential. It exists so that if it ever appears in output, we know something leaked.
+
+**Agent** — an AI that can take actions (send email, read files, query a database), not just
+produce text. A chatbot that gives a bad answer has a content problem. An agent that takes a
+bad action has a security problem. That distinction is the entire reason this project exists.
+
+**Model** — the AI itself. Here it is Qwen2.5, a 7-billion-parameter open-weights model
+running locally through [Ollama](https://ollama.com/).
+
+*Why a local model instead of GPT-4 or Claude?* Three reasons, all worth saying on camera.
+It is free and unmetered, so a 256-attack run costs nothing. It is reproducible — the model
+does not change under you mid-experiment the way a hosted API can. And attacking someone
+else's production model without written authorization would be a real problem; attacking a
+model on your own GPU is unambiguously yours to attack.
+
+---
+
+## Setup — from nothing to ready
+
+Do this off camera. It is one-time, and watching packages install is not compelling video.
+
+**1. Go to the project.**
+
+```bash
 cd ~/director/projects/ai-redteam-harness
 ```
 
-If you are starting from a fresh clone instead:
+**2. Create the virtual environment** — the isolated package sandbox described above. Only
+needed once, ever.
 
-```
+```bash
 python3 -m venv .venv
+```
+
+*Expect:* no output. It succeeds silently and creates a `.venv/` folder. Confirm with
+`ls -d .venv`.
+
+**3. Install the project and its dependencies.**
+
+```bash
 .venv/bin/pip install -e .
+```
+
+*Expect:* a wall of download and install lines, ending in `Successfully installed ...`. The
+`-e` means "editable" — code changes take effect without reinstalling. This pulls FastAPI,
+uvicorn, pydantic, and httpx.
+
+**4. Install garak**, NVIDIA's LLM vulnerability scanner.
+
+```bash
 .venv/bin/pip install garak==0.16.0
 ```
+
+*Expect:* a much larger install — garak pulls PyTorch and a CUDA toolchain, so this takes
+several minutes and a few GB. The version is pinned deliberately so results stay reproducible.
+
+*Verify:*
+
+```bash
+.venv/bin/python -m garak --version
+```
+
+*Expect:* `garak LLM vulnerability scanner v0.16.0`
+
+**5. Confirm Ollama is running and has the model.**
+
+```bash
+curl -sf http://127.0.0.1:11434/api/tags
+```
+
+*Expect:* JSON listing installed models, including `qwen2.5:7b-instruct-q4_K_M`. If you get
+nothing and the exit code is 7, Ollama is not running — start it with `ollama serve`.
+
+**6. Confirm the two ports are free.**
+
+```bash
+ss -lntp | grep -E '8000|8001'
+```
+
+*Expect:* **no output.** Output here means something is already using those doors, and you
+must stop it first (find its PID in that output and `kill` it specifically — never
+`pkill -f uvicorn`, which can kill your own shell).
+
+**7. Confirm the test suite passes**, so you know the code is sound before demoing it.
+
+```bash
+.venv/bin/python -m pytest tests/ -q
+```
+
+*Expect:* `99 passed in 0.13s`
 
 ---
 
@@ -60,19 +192,45 @@ check. That's deliberate. It's the vulnerability we're going to find and then fi
 > wrote that logs the *full* response of every request — including which tools actually got
 > called. Keep that recorder in mind. It's the whole point of this demo."
 
-**Run:**
+**Run — start the vulnerable assistant:**
 
-```
+```bash
 .venv/bin/uvicorn src.target.main:app --host 127.0.0.1 --port 8000 &
-until curl -sf http://127.0.0.1:8000/healthz; do sleep 1; done
+```
 
+Reading that left to right: use the Python in our sandbox, run `uvicorn`, load the `app`
+object from the file `src/target/main.py`, listen only on this machine, on door 8000, and run
+it in the background so the terminal comes back.
+
+*Expect:* a few startup lines ending in `Uvicorn running on http://127.0.0.1:8000`, plus a
+job number like `[1]` — that number matters later, it is how you stop it.
+
+**Wait for it to be ready:**
+
+```bash
+until curl -sf http://127.0.0.1:8000/healthz; do sleep 1; done
+```
+
+*Expect:* `{"status":"ok"}` after about a second. This keeps retrying until the service
+answers, rather than you guessing whether it has booted.
+
+**Run — start the recorder in front of it:**
+
+```bash
 .venv/bin/uvicorn src.harness.shim:app --host 127.0.0.1 --port 8001 &
 until curl -sf http://127.0.0.1:8001/healthz; do sleep 1; done
 ```
 
-**Expect:** `{"status":"ok"}` from each. Ready in about a second.
+*Expect:* the same, on door 8001, with job number `[2]`.
 
-Note the guardrail is **off** — that's the default, and it's how we want to start.
+> **Say this:**
+>
+> "From here on I send everything to 8001, the recorder — never to 8000 directly. The
+> recorder passes it straight through to the assistant and hands back the identical answer,
+> so nothing behaves differently. The only thing it adds is a log of what actually happened."
+
+Note the guardrail is **off**. That is the default, and it is how we want to start — we need
+to see the system broken before we fix it.
 
 ---
 
@@ -84,11 +242,15 @@ Note the guardrail is **off** — that's the default, and it's how we want to st
 
 **Run:**
 
-```
+```bash
 curl -s -X POST http://127.0.0.1:8001/chat \
   -H "Content-Type: application/json" \
   -d '{"message": "How do I reset my password?"}'
 ```
+
+The flags, once: `-s` hides the progress meter so output stays clean on screen. `-X POST`
+sends data rather than just fetching a page. `-H` sets a header telling the service the body
+is JSON. `-d` is the data itself — the message we are sending the assistant.
 
 **Expect** (~3 seconds):
 
@@ -110,7 +272,18 @@ the baseline for comparison.
 > "Now I'm going to ask it to do something it should absolutely refuse. I'm not using any
 > exploit here. No buffer overflow, no injected code. I'm just *telling it what to do*, in
 > plain English, and giving it a plausible reason. That's what makes prompt injection
-> different from every other class of vulnerability — the attack is a sentence."
+> different from every other class of vulnerability — the attack is a sentence.
+>
+> And notice the shape of it. I open by overriding its previous instructions. I give it an
+> authority story — a mandatory security audit. I name the exact tool I want it to use. And I
+> tell it not to ask for confirmation. Every one of those is doing work. Drop any one and it
+> is more likely to refuse."
+
+*Why type the payload by hand instead of running the scanner here?* The scanner is the
+rigorous version and it produced the numbers in Step 9 — but every one of its prompt-injection
+probes is 256 prompts and takes 11 to 28 minutes. That is not watchable. This single payload
+exercises the identical path: same endpoint, same tool call, same authorization check. It is
+the mechanism in miniature.
 
 **Run:**
 
@@ -202,6 +375,19 @@ tool_calls_made present: False
 >
 > So the fix is boring. A list of allowed email domains and allowed folders. No AI. It cannot
 > be talked out of its decision, because it isn't making a decision — it's checking a list."
+
+**Reference to have on screen or in the description:**
+[OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/) — the category here
+is **LLM03: Excessive Agency** in the 2026 edition. Its own guidance is to enforce
+authorization in application logic rather than relying on the model to decide. Worth citing
+by name; it signals you are working from a published standard rather than intuition.
+
+*Why not use a guardrail library like NeMo Guardrails or Guardrails AI?* Both are legitimate
+and both are free. The reason not to here is cost per request: their LLM-judged rails add an
+extra round trip through the model for every call, and this box already has a latency tail —
+the slowest 1% of requests take over three minutes. A list lookup takes microseconds and
+cannot be argued with. If the check needed judgment rather than a lookup, the trade would go
+the other way.
 
 **Show:** `src/target/authz.py`.
 
@@ -325,11 +511,44 @@ so the count doesn't look wrong.
 
 ---
 
+## References to cite
+
+Have these ready — in the video description, on a slide, or just spoken. Citing published
+standards is what separates a security finding from an opinion.
+
+| Source | What it covers | Link |
+|---|---|---|
+| OWASP Top 10 for LLM Applications | The category names used here (LLM01 Prompt Injection, LLM03 Excessive Agency). 2026 edition. | https://genai.owasp.org/llm-top-10/ |
+| MITRE ATLAS | Adversary technique IDs for AI systems, the ATT&CK equivalent. `AML.T0051` prompt injection, `AML.T0053` AI agent tool invocation. | https://atlas.mitre.org/ |
+| NVIDIA garak | The scanner used. Apache-2.0, free. | https://github.com/NVIDIA/garak |
+| "Defending Against Indirect Prompt Injection Attacks With Spotlighting" | Microsoft Research. Cuts attack success from >50% to <2% — then adaptive attacks pushed it back above 95%. The paper to cite when explaining why nobody has solved this. | https://arxiv.org/abs/2403.14720 |
+| Ollama | Runs the model locally. | https://ollama.com/ |
+
+All five verified reachable at time of writing.
+
+**One caveat worth knowing before you cite it on camera:** as of writing, the page at
+`genai.owasp.org/llm-top-10/` still renders the **2025** list. The 2026 edition was published
+2026-08-04 and lives in the project's own repository at
+`github.com/GenAI-Security-Project/GenAI-LLM-Top10` under `2026/final/`. The numbering
+changed between editions — Excessive Agency moved from #6 to #3, and System Prompt Leakage
+was renamed Hidden Context Exposure. If you say "LLM03 Excessive Agency" and someone opens
+the main page, they will see something different. Say "2026 edition" explicitly and you are
+covered.
+
+---
+
 ## Cleanup
 
-```
+```bash
 kill %1 %2
 ```
+
+`%1` and `%2` are the job numbers printed when you started each service with `&`. Killing by
+job number stops exactly the two things you started.
+
+**Never run `pkill -f uvicorn`** to clean up. It matches on the command text and will kill
+anything that looks similar — including, in some setups, your own shell. That is not
+hypothetical; it happened twice while building this.
 
 Verify: `ss -lntp | grep -E '8000|8001'` returns nothing.
 
