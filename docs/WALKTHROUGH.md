@@ -169,19 +169,21 @@ must stop it first (find its PID in that output and `kill` it specifically — n
 
 *Expect:* `99 passed in 0.13s`
 
-**8. Set up screenshots.** Flameshot is already installed (v14). This launches it with the
-save folder pre-set, so you are not navigating a file dialog every time:
+**8. Set up screenshots.** Use **ksnip** (installed at v1.11.0):
 
 ```bash
-flameshot gui -p ~/director/projects/ai-redteam-harness/docs/screenshots/
+ksnip
 ```
 
-Drag to select a region, then the toolbar appears: `R` rectangle, `A` arrow, `T` text,
-`M` marker. `Ctrl` `+`/`-` for thickness, right-click for colour, `Ctrl+S` to save.
+Capture a region, and the image opens in ksnip's editor where you draw on it — rectangle,
+arrow, text, blur — then save. Set the default save folder once under Options → Preferences →
+Saver, pointing at `docs/screenshots/`, and you will not see a file dialog again.
 
-Worth binding to the PrtSc key first — XFCE Settings → Keyboard → Application Shortcuts → add
-that command bound to `Print`. You will take eight of these and typing the command each time
-gets old fast.
+*Why not flameshot, which is also installed?* It does not work on this machine. Flameshot v14
+routes captures through the XDG desktop portal, and XFCE ships no portal backend implementing
+the screenshot interface — the request goes out and is never answered, so it times out after
+30 seconds and aborts. The process starts and appears to do nothing. `xfce4-screenshooter` and
+`scrot` both capture fine but have no annotation tools, which is the part that matters here.
 
 **Two things to do before your first capture:** widen the terminal so the JSON output does not
 wrap, and increase the font size (`Ctrl` `+`). Text that is comfortable at arm's length is

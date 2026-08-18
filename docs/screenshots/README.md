@@ -30,13 +30,18 @@ If you keep only two: **05** and **08**. Five is the discovery, eight is the pro
 ## Taking them
 
 ```bash
-flameshot gui -p ~/director/projects/ai-redteam-harness/docs/screenshots/
+ksnip
 ```
 
-`-p` sets the save folder so you are not navigating a file dialog eight times.
+Capture a region, annotate in the editor that opens, save. Set the default folder once under
+Options → Preferences → Saver so you stop seeing a file dialog.
 
-Toolbar: `R` rectangle, `A` arrow, `T` text, `M` marker. `Ctrl +/-` changes thickness,
-right-click picks colour. `Ctrl+S` saves.
+Tools: rectangle, ellipse, arrow, line, text, marker, blur. Blur is worth knowing about — use
+it on anything in the terminal prompt you would rather not publish.
+
+**Do not use flameshot on this machine**, even though it is installed. v14 depends on the XDG
+desktop portal, which XFCE does not implement for screenshots; it times out after 30 seconds
+and silently aborts. Verified, not assumed.
 
 ## Before you capture
 
