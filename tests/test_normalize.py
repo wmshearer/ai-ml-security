@@ -393,3 +393,17 @@ def test_all_finding_ids_are_unique_across_calls():
     f1 = normalize.normalize_garak_attempt(GARAK_ATTEMPT_HIT, target_endpoint=TARGET_ENDPOINT, target_model=TARGET_MODEL)
     f2 = normalize.normalize_garak_attempt(GARAK_ATTEMPT_HIT, target_endpoint=TARGET_ENDPOINT, target_model=TARGET_MODEL)
     assert f1["finding_id"] != f2["finding_id"]
+
+
+def test_garak_bare_probe_classname_resolves():
+    """garak 0.16.0 writes the BARE probe name ("dan.AntiDAN") to its report, but
+    the mapping table is keyed fully-qualified. Regression test for a bug that
+    made every real finding resolve to UNMAPPED — a failure that reads as "nothing
+    to classify" rather than as a defect, which is why it survived unit tests
+    built on fully-qualified fixtures.
+    """
+    bare = mapping.lookup_garak("dan.AntiDAN")
+    fq = mapping.lookup_garak("garak.probes.dan.AntiDAN")
+    assert bare is not None
+    assert bare == fq
+    assert mapping.lookup_garak("promptinject.HijackKillHumans") is not None

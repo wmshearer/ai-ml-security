@@ -162,7 +162,22 @@ def _lookup_table(table: dict[str, OwaspMapping], key: str) -> OwaspMapping | No
 
 
 def lookup_garak(probe_classname: str) -> OwaspMapping | None:
-    return _lookup_table(GARAK_PROBE_MAPPING, probe_classname)
+    """Look up a garak probe, tolerating both the fully-qualified and bare form.
+
+    The table is keyed fully-qualified ("garak.probes.dan.*"), but garak 0.16.0's
+    Attempt.as_dict() writes the BARE form to its report — "dan.AntiDAN", not
+    "garak.probes.dan.AntiDAN". Verified against every real report file on disk.
+
+    This mismatch is worth being explicit about because of how it fails: an
+    unmatched probe resolves to UNMAPPED, so a live run would produce a report in
+    which every single finding is unmapped — which reads as "the tool found
+    nothing to classify" rather than as a bug. Normalizing here rather than at
+    each call site means a future caller cannot forget it.
+    """
+    m = _lookup_table(GARAK_PROBE_MAPPING, probe_classname)
+    if m is None and not probe_classname.startswith("garak.probes."):
+        m = _lookup_table(GARAK_PROBE_MAPPING, f"garak.probes.{probe_classname}")
+    return m
 
 
 def lookup_pyrit(attack_class: str) -> OwaspMapping | None:
