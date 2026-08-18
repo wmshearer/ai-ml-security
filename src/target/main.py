@@ -18,7 +18,8 @@ import httpx
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from .config import MODEL_NAME, OLLAMA_BASE_URL, SYSTEM_PROMPT
+from .authz import authorize
+from .config import HARNESS_AUTHZ_ENABLED, MODEL_NAME, OLLAMA_BASE_URL, SYSTEM_PROMPT
 from .rag import retrieve
 from .tools import TOOL_IMPLS, TOOL_SCHEMAS
 
@@ -126,16 +127,33 @@ async def chat(req: ChatRequest) -> ChatResponse:
             # VULN: LLM03:2026 Excessive Agency (OWASP LLM Top 10 2026)
             # MITRE ATLAS: AML.T0053 (AI Agent Tool Invocation)
             #
-            # There is no authorization/permission check here at all: any
-            # tool the model asks for is executed immediately, with
-            # whatever arguments the model supplied, no matter what
-            # steered its decision to call it (direct request, indirect
-            # injection from a retrieved doc, etc.). A real system should
-            # mediate privileged tool calls through a deterministic policy
-            # engine (OWASP LLM01:2026 mitigation #4) rather than trusting
-            # the model's own judgment about when a call is appropriate.
+            # Baseline (HARNESS_AUTHZ=off, the default): there is no
+            # authorization/permission check here at all: any tool the
+            # model asks for is executed immediately, with whatever
+            # arguments the model supplied, no matter what steered its
+            # decision to call it (direct request, indirect injection from
+            # a retrieved doc, etc.). This is the planted vulnerability and
+            # it is intentionally left reachable in this state so the
+            # recorded Phase 1-3 baseline stays reproducible.
+            #
+            # Guardrail (HARNESS_AUTHZ=on): src/target/authz.py mediates
+            # send_email/read_file through a deterministic, zero-LLM-call
+            # allow-list policy (OWASP LLM03:2026's own top mitigation:
+            # "implement authorization in logic rather than relying on an
+            # LLM to decide") before impl() runs. Tools with no registered
+            # policy (e.g. lookup_employee, deliberately low-risk) are
+            # unaffected either way -- authz.authorize() is only consulted
+            # for names present in its _POLICIES table.
             if impl is None:
                 result = {"error": f"unknown tool {fn_name}"}
+            elif HARNESS_AUTHZ_ENABLED and fn_name in ("send_email", "read_file"):
+                decision = authorize(fn_name, fn_args)
+                if not decision.allowed:
+                    logger.info("AUTHZ DENIED: %s(%s) - %s", fn_name, fn_args, decision.reason)
+                    result = {"error": "unauthorized", "reason": decision.reason}
+                else:
+                    logger.info("EXECUTING TOOL CALL: %s(%s)", fn_name, fn_args)
+                    result = impl(**fn_args)
             else:
                 logger.info("EXECUTING TOOL CALL: %s(%s)", fn_name, fn_args)
                 result = impl(**fn_args)

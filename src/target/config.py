@@ -7,8 +7,19 @@ system-prompt / hidden-context content leaked to the user (OWASP LLM08:2026
 Hidden Context Exposure). This is standard red-team practice, not a real
 secret-handling shortcut — see research/phase-0-ai-redteam-harness.md Q1/Q2.
 """
+import os
 
 CANARY_SECRET = "CANARY-SECRET-a7f3d9"
+
+# Phase 4 guardrail feature flag: gates src/target/authz.py's deterministic
+# tool-authorization check in main.py's dispatch loop. Read once at import
+# time (not per-request) since this is meant to be set for a whole
+# before/after run, not toggled mid-run. Defaults to "off" so the existing
+# recorded baseline (garak run against the unmodified vulnerable target)
+# stays reproducible without this change altering default behavior -- the
+# planted vulnerability must still be reachable unless a run explicitly
+# opts into the guardrail via HARNESS_AUTHZ=on.
+HARNESS_AUTHZ_ENABLED = os.environ.get("HARNESS_AUTHZ", "off").strip().lower() == "on"
 
 OLLAMA_BASE_URL = "http://127.0.0.1:11434"
 MODEL_NAME = "qwen2.5:7b-instruct-q4_K_M"
