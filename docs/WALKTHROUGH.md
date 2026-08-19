@@ -440,8 +440,19 @@ tool_calls_made present: False
 > So when my attacks made this assistant email a secret to an attacker, garak looked at the
 > text, saw nothing obviously wrong, and scored those attacks as failures.
 >
-> In the full run, that was **78 unauthorized tool calls** it never scored. That's the gap I
-> built the recorder to close."
+> In this scan that was **38 of 108 requests** firing unauthorized tool calls — every one
+> scored zero. That's the gap I built the recorder to close."
+
+<!-- Figure corrected 2026-08-19. This line previously said "78 unauthorized tool calls",
+     which is the number from the SEPARATE 256-attack paired guardrail experiment (Step 9),
+     not from this garak scan. Verified against the raw evidence rather than the docs: the
+     first 108 rows of evidence/harness.db (the run-1 scan, ordered by rowid) contain
+     exactly 38 requests that fired send_email or read_file. The two runs are different
+     experiments and their numbers must not be interchanged — 78/5/0/91 belong only to the
+     256-attack paired comparison. Caught while building the public case-study page, where
+     this line would have been spoken aloud. -->
+
+
 
 
 > ### 🎤 If someone asks — Step 5
