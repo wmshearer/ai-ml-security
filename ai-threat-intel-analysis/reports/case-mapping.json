@@ -1,0 +1,182 @@
+{
+  "cases": [
+    {
+      "actor": "Forest Blizzard",
+      "sponsor": "Russia",
+      "period": "2024-H1",
+      "integration": "aid",
+      "source": "OPENAI_2024",
+      "atlas": [
+        "AML.T0000"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "Emerald Sleet",
+      "sponsor": "North Korea",
+      "period": "2024-H1",
+      "integration": "aid",
+      "source": "OPENAI_2024",
+      "atlas": [
+        "AML.T0000",
+        "AML.T0052"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "Crimson Sandstorm",
+      "sponsor": "Iran",
+      "period": "2024-H1",
+      "integration": "aid",
+      "source": "OPENAI_2024",
+      "atlas": [
+        "AML.T0052"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "Charcoal Typhoon",
+      "sponsor": "China",
+      "period": "2024-H1",
+      "integration": "aid",
+      "source": "OPENAI_2024",
+      "atlas": [
+        "AML.T0052"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "Salmon Typhoon",
+      "sponsor": "China",
+      "period": "2024-H1",
+      "integration": "aid",
+      "source": "OPENAI_2024",
+      "atlas": [
+        "AML.T0000"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "APT42",
+      "sponsor": "Iran",
+      "period": "2025-H1",
+      "integration": "aid",
+      "source": "GTIG_JAN25",
+      "atlas": [
+        "AML.T0000",
+        "AML.T0052"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "APT41",
+      "sponsor": "China",
+      "period": "2025-H1",
+      "integration": "aid",
+      "source": "GTIG_JAN25",
+      "atlas": [
+        "AML.T0056"
+      ],
+      "owasp": [
+        "LLM07"
+      ]
+    },
+    {
+      "actor": "DPRK IT-worker groups",
+      "sponsor": "North Korea",
+      "period": "2025-H1",
+      "integration": "aid",
+      "source": "GTIG_JAN25",
+      "atlas": [
+        "AML.T0052"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "DRAGONBRIDGE",
+      "sponsor": "China",
+      "period": "2025-H1",
+      "integration": "aid",
+      "source": "GTIG_JAN25",
+      "atlas": [],
+      "owasp": [
+        "LLM09"
+      ]
+    },
+    {
+      "actor": "IT-worker scheme operators",
+      "sponsor": "unattributed",
+      "period": "2025-H1",
+      "integration": "aid",
+      "source": "OPENAI_JUN25",
+      "atlas": [],
+      "owasp": []
+    },
+    {
+      "actor": "ScopeCreep operators",
+      "sponsor": "China",
+      "period": "2025-H1",
+      "integration": "aid",
+      "source": "OPENAI_JUN25",
+      "atlas": [],
+      "owasp": []
+    },
+    {
+      "actor": "PROMPTFLUX (developers)",
+      "sponsor": "unattributed",
+      "period": "2025-H2",
+      "integration": "runtime",
+      "source": "GTIG_NOV25",
+      "atlas": [
+        "AML.T0061"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "PROMPTSTEAL (APT28)",
+      "sponsor": "Russia",
+      "period": "2025-H2",
+      "integration": "runtime",
+      "source": "GTIG_NOV25",
+      "atlas": [
+        "AML.T0102"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "PROMPTLOCK",
+      "sponsor": "unattributed",
+      "period": "2025-H2",
+      "integration": "runtime",
+      "source": "GTIG_NOV25",
+      "atlas": [
+        "AML.T0102"
+      ],
+      "owasp": []
+    },
+    {
+      "actor": "Russian-speaking malware group",
+      "sponsor": "criminal",
+      "period": "2025-H2",
+      "integration": "aid",
+      "source": "OPENAI_OCT25",
+      "atlas": [],
+      "owasp": []
+    },
+    {
+      "actor": "GTG-1002",
+      "sponsor": "China",
+      "period": "2025-H2",
+      "integration": "agentic",
+      "source": "ANTHROPIC_25",
+      "atlas": [
+        "AML.T0000",
+        "AML.T0054"
+      ],
+      "owasp": [
+        "LLM01",
+        "LLM06"
+      ]
+    }
+  ]
+}
