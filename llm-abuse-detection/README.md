@@ -32,7 +32,7 @@ false-positive rate are the honest measures here.
 The detector reports each rule's own precision, so a noisy rule is visible rather than hidden
 inside the total. On this set:
 
-- persona-injection: 799 malicious hits, 1 benign, 99.9% precision.
+- persona-injection: 791 malicious hits, 0 benign, 100% precision.
 - privilege-escalation: 576 malicious hits, 0 benign, 100% precision.
 - hypothetical-framing: 152 malicious hits, 3 benign, 98.1% precision.
 - instruction-override, delimiter-attack, encoding-obfuscation: smaller, 100% precision.
