@@ -1,0 +1,101 @@
+{
+  "name": "ATLAS coverage map: three LLM-misuse data sources",
+  "versions": {
+    "attack": "17",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "domain": "mitre-atlas",
+  "description": "Coverage of 7 of 101 ATLAS v2026.07 top-level techniques (6.9%) by three sibling projects: ai-threat-intel-analysis, jailbreak-corpus-analysis, llm-abuse-detection. A gap means not present in this data, not impossible.",
+  "filters": {
+    "platforms": [
+      "AI"
+    ]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "showID": true,
+    "showName": true
+  },
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "AML.T0000",
+      "score": 1,
+      "color": "",
+      "comment": "covered by: aiti",
+      "enabled": true
+    },
+    {
+      "techniqueID": "AML.T0051",
+      "score": 1,
+      "color": "",
+      "comment": "covered by: detector",
+      "enabled": true
+    },
+    {
+      "techniqueID": "AML.T0052",
+      "score": 1,
+      "color": "",
+      "comment": "covered by: aiti",
+      "enabled": true
+    },
+    {
+      "techniqueID": "AML.T0054",
+      "score": 1,
+      "color": "",
+      "comment": "covered by: aiti, detector, jailbreak-corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "AML.T0056",
+      "score": 1,
+      "color": "",
+      "comment": "covered by: aiti",
+      "enabled": true
+    },
+    {
+      "techniqueID": "AML.T0061",
+      "score": 1,
+      "color": "",
+      "comment": "covered by: aiti",
+      "enabled": true
+    },
+    {
+      "techniqueID": "AML.T0102",
+      "score": 1,
+      "color": "",
+      "comment": "covered by: aiti",
+      "enabled": true
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffffff",
+      "#66b32e"
+    ],
+    "minValue": 0,
+    "maxValue": 1
+  },
+  "legendItems": [
+    {
+      "label": "covered by at least one source",
+      "color": "#66b32e"
+    }
+  ],
+  "metadata": [
+    {
+      "name": "generated_by",
+      "value": "scripts/build_navigator_layer.py"
+    },
+    {
+      "name": "atlas_version",
+      "value": "ATLAS v2026.07"
+    }
+  ],
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#dddddd",
+  "selectTechniquesAcrossTactics": true,
+  "selectSubtechniquesWithParent": false
+}
