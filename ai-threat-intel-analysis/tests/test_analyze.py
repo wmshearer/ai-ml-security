@@ -86,3 +86,29 @@ def test_attribution_is_not_invented():
     allowed = {"China", "Russia", "Iran", "North Korea", "unattributed", "criminal"}
     for c in CASES:
         assert c.sponsor in allowed
+
+
+# Specific sponsor values pinned to what the cited source actually states, so a wrong
+# but valid-looking label (the ScopeCreep-as-China error) cannot slip through the
+# set-membership check above.
+def test_specific_sponsors_match_their_sources():
+    expected = {
+        "Forest Blizzard": "Russia",         # OpenAI/MSFT Feb 2024
+        "Crimson Sandstorm": "Iran",         # Feb 2024
+        "Charcoal Typhoon": "China",         # Feb 2024
+        "APT42": "Iran",                     # Google Jan 2025
+        "APT41": "China",                    # Google Jan 2025
+        "ScopeCreep operators": "criminal",  # OpenAI June 2025: Russian-speaking, no state
+        "PROMPTSTEAL (APT28)": "Russia",     # Google Nov 2025
+        "GTG-1002": "China",                 # Anthropic Nov 2025
+    }
+    by_actor = {c.actor: c.sponsor for c in CASES}
+    for actor, sponsor in expected.items():
+        assert by_actor[actor] == sponsor, f"{actor} should be {sponsor}, got {by_actor.get(actor)}"
+
+
+def test_promptflux_and_promptlock_stay_unattributed():
+    """The sources explicitly do not attribute these. They must stay unattributed."""
+    by_actor = {c.actor: c.sponsor for c in CASES}
+    assert by_actor["PROMPTFLUX (developers)"] == "unattributed"
+    assert by_actor["PROMPTLOCK"] == "unattributed"

@@ -94,8 +94,8 @@ CASES: tuple[Case, ...] = (
     Case("IT-worker scheme operators", "unattributed", "2025-H1",
          ("auto-generated resumes and job applications", "recruiting laptop-farm operators"),
          "aid", "OPENAI_JUN25"),
-    Case("ScopeCreep operators", "China", "2025-H1",
-         ("cyber-operations tooling support",),
+    Case("ScopeCreep operators", "criminal", "2025-H1",
+         ("cyber-operations tooling support (Russian-speaking actor; no state attributed)",),
          "aid", "OPENAI_JUN25"),
 
     # ---- 2025 H2: the shift. AI called at runtime inside malware. ----
