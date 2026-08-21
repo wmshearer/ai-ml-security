@@ -1,0 +1,56 @@
+Vendored source: llama.cpp gguf-py package (pure-Python GGUF reader)
+
+Repository:   https://github.com/ggml-org/llama.cpp
+Branch:       master (at time of vendoring)
+Commit SHA:   9a286ac98d2cab74231bd3f1fc3f2b8bdf05422e
+Commit date:  2026-08-21T18:49:27Z
+Commit title: docs: improve Windows build instructions (#27381)
+Vendored on:  2026-08-21 (date this snapshot was pulled into this project)
+License:      MIT (see repository LICENSE)
+
+Files vendored, and their source URLs at this exact commit:
+
+  gguf_reader.py
+    https://raw.githubusercontent.com/ggml-org/llama.cpp/9a286ac98d2cab74231bd3f1fc3f2b8bdf05422e/gguf-py/gguf/gguf_reader.py
+    sha256: d0ea743200e19d7ef0a4c969edcc4a6dba8e3656a790b217e3bdc7b31170718e
+
+  constants.py
+    https://raw.githubusercontent.com/ggml-org/llama.cpp/9a286ac98d2cab74231bd3f1fc3f2b8bdf05422e/gguf-py/gguf/constants.py
+    sha256: 674f8bffd9540733e6c016aae7c2ac181368b20e68597337cfb496af5b62e8c1
+
+  quants.py
+    https://raw.githubusercontent.com/ggml-org/llama.cpp/9a286ac98d2cab74231bd3f1fc3f2b8bdf05422e/gguf-py/gguf/quants.py
+    sha256: 2c927a1b3d9f0920dcf4007fb686e1b0999333e9f65ce43dcc689900c0beae8b
+
+  lazy.py  (not in the original task list, but required transitively:
+            quants.py does `from .lazy import LazyNumpyTensor`; there is
+            no way to import gguf_reader.py -> quants.py without it)
+    https://raw.githubusercontent.com/ggml-org/llama.cpp/9a286ac98d2cab74231bd3f1fc3f2b8bdf05422e/gguf-py/gguf/lazy.py
+    sha256: ec35541320443e1bdc293e39c699fa5d1adb7fb594f3f87af093b4c756a4ebe2
+
+__init__.py in vendor/gguf/ is NOT vendored from upstream. It is a minimal
+stub written for this project, because upstream's real __init__.py does
+`from .gguf_writer import *`, `from .metadata import *`, `from .vocab import *`,
+etc. across the whole package, which we did not vendor and do not need.
+Import the reader directly as `from gguf.gguf_reader import GGUFReader`.
+
+Reason for pinning to a commit instead of `pip install gguf`: the upstream
+gguf-py package changes weekly (see hardening commits below), and this
+project's tests and FINDINGS.md cite specific line numbers in gguf_reader.py.
+`pip install gguf` would silently drift the line numbers out from under the
+citations on the next `pip install --upgrade`.
+
+Hardening history confirmed present in this vendored snapshot (all three
+were re-checked by grep against the vendored file, see project FINDINGS.md
+for exact line numbers at this commit):
+
+  - 418dea39ce (2026-02-24, PR #19856): alignment must be a non-zero power
+    of two, else ValueError.
+  - 5788b510a1 (2026-08-04, PR #25401, fixes #25378): tensor n_dims must not
+    exceed GGML_MAX_DIMS (4), else ValueError.
+  - 0329fcdac8 (2026-08-19, PR #27188): size guards on kv_count, tensor_count,
+    string length, and array length, all bounded by 1024*1024*1024 (GGUF_MAX_
+    STRING_LENGTH / GGUF_MAX_ARRAY_ELEMENTS), else ValueError.
+
+Do not modify these vendored files. If the fuzzer finds a bug, report it in
+FINDINGS.md; do not patch the vendored source to work around it.
