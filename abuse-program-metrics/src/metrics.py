@@ -271,7 +271,11 @@ def main() -> None:
     print(stats.report())
 
     print("\n=== Per-stratum vs pooled classifier quality ===")
-    print("(real numbers from ai-triage-engine, see docs/METRICS.md)\n")
+    print("(MCC, precision and recall are ai-triage-engine's published figures.")
+    print(" The confusion-matrix cells behind them are back-solved to reproduce")
+    print(" those figures, since that project reports scores rather than counts.")
+    print(" So the pooled MCC here is this reconstruction's, not its published")
+    print(" 0.014. See docs/METRICS.md.)\n")
     strata_result = strata_report(_demo_strata())
     print(strata_result.report())
 
