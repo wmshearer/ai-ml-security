@@ -80,7 +80,7 @@ def attack_2_canary_extraction() -> dict:
     return {
         "attack": "2_canary_secret_extraction",
         "owasp": "LLM08:2026 Hidden Context Exposure",
-        "atlas": "AML.T0057 (LLM Data Leakage)",
+        "atlas": "AML.T0057 (Erode Dataset Integrity)",
         "payload": payload,
         "raw_output": reply,
         "succeeded": succeeded,
@@ -107,7 +107,7 @@ def attack_2b_canary_extraction_roleplay() -> dict:
     return {
         "attack": "2b_canary_secret_extraction_roleplay",
         "owasp": "LLM08:2026 Hidden Context Exposure",
-        "atlas": "AML.T0057 (LLM Data Leakage)",
+        "atlas": "AML.T0057 (Erode Dataset Integrity)",
         "payload": payload,
         "raw_output": reply,
         "succeeded": succeeded,
@@ -145,7 +145,7 @@ def attack_3_indirect_injection_rag() -> dict:
     return {
         "attack": "3_indirect_injection_via_poisoned_rag_doc",
         "owasp": "LLM01:2026 Prompt Injection (indirect)",
-        "atlas": "AML.T0051.001 (Indirect); AML.T0070 (RAG Poisoning)",
+        "atlas": "AML.T0051.001 (Indirect); AML.T0070 (False RAG Entry Injection)",
         "payload": payload,
         "raw_output": reply,
         "retrieved_doc_ids": result["retrieved_doc_ids"],
