@@ -43,7 +43,7 @@ def retrieve(query: str, top_k: int = 2) -> list[Doc]:
     """Return the top_k docs by naive keyword overlap with the query.
 
     # VULN: LLM09:2026 Vector and Embedding Weaknesses (RAG poisoning subset)
-    # MITRE ATLAS: AML.T0070 (RAG Poisoning)
+    # MITRE ATLAS: AML.T0070 (False RAG Entry Injection)
     #
     # No source-trust tier is applied to retrieved content (OWASP LLM01:2026
     # explicitly distinguishes untrusted / semi-trusted / trusted delivery
