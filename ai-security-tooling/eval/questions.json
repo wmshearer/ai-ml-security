@@ -1,0 +1,194 @@
+[
+  {
+    "qid": "q01",
+    "technique_id": "T1078",
+    "question": "Is ATT&CK technique T1078 (Valid Accounts) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "t1078_cluster",
+    "expected_label": "COVERED",
+    "notes": "Heavily covered: 33 rules tag T1078 directly, part of the 65-claim T1078/T1078.004 cluster."
+  },
+  {
+    "qid": "q02",
+    "technique_id": "T1078.004",
+    "question": "Is ATT&CK technique T1078.004 (Cloud Accounts) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "t1078_cluster",
+    "expected_label": "COVERED",
+    "notes": "32 rules tag this sub-technique directly."
+  },
+  {
+    "qid": "q03",
+    "technique_id": "T1078.001",
+    "question": "Is ATT&CK technique T1078.001 (Default Accounts) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "t1078_cluster",
+    "expected_label": "UNCOVERED",
+    "notes": "Sibling sub-technique of the heavily-covered T1078 family, but itself has zero rules. Tests whether the model conflates parent coverage with this specific sub-technique."
+  },
+  {
+    "qid": "q04",
+    "technique_id": "T1078.002",
+    "question": "Is ATT&CK technique T1078.002 (Domain Accounts) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "edge_off_matrix",
+    "expected_label": "INCONCLUSIVE",
+    "notes": "CORRECTED after a data error was caught during evaluation: T1078.002 is tagged by one rule (aws_cloudtrail_imds_malicious_usage.yml) but is NOT itself in the 152-technique cloud set (it is one of the 20 off-matrix techniques the source project's README documents: claimed by a cloud rule but not marked cloud-relevant by ATT&CK's own platform field). get_technique correctly returns found=false for it. The only defensible answer is that cloud-coverage status cannot be assessed for a technique outside the cloud set, i.e. INCONCLUSIVE, not COVERED as originally written here."
+  },
+  {
+    "qid": "q05",
+    "technique_id": "T1098",
+    "question": "Is ATT&CK technique T1098 (Account Manipulation) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "covered_clear",
+    "expected_label": "COVERED",
+    "notes": "18 rules tag this technique."
+  },
+  {
+    "qid": "q06",
+    "technique_id": "T1552",
+    "question": "Is ATT&CK technique T1552 (Unsecured Credentials) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "covered_clear",
+    "expected_label": "COVERED",
+    "notes": "12 rules tag this technique."
+  },
+  {
+    "qid": "q07",
+    "technique_id": "T1110",
+    "question": "Is ATT&CK technique T1110 (Brute Force) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "covered_clear",
+    "expected_label": "COVERED",
+    "notes": "9 rules tag this technique."
+  },
+  {
+    "qid": "q08",
+    "technique_id": "T1070",
+    "question": "Is ATT&CK technique T1070 (Indicator Removal) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "covered_single_rule",
+    "expected_label": "COVERED",
+    "notes": "Exactly one rule (aws_delete_identity.yml, SES identity deletion) covers this. One of the 18 techniques resting on a single rule."
+  },
+  {
+    "qid": "q09",
+    "technique_id": "T1046",
+    "question": "Is ATT&CK technique T1046 (Network Service Discovery) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "uncovered_clear",
+    "expected_label": "UNCOVERED",
+    "notes": "Zero rules tag this technique."
+  },
+  {
+    "qid": "q10",
+    "technique_id": "T1082",
+    "question": "Is ATT&CK technique T1082 (System Information Discovery) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "uncovered_clear",
+    "expected_label": "UNCOVERED",
+    "notes": "Zero rules tag this technique."
+  },
+  {
+    "qid": "q11",
+    "technique_id": "T1069",
+    "question": "Is ATT&CK technique T1069 (Permission Groups Discovery) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "uncovered_clear",
+    "expected_label": "UNCOVERED",
+    "notes": "Zero rules tag this technique."
+  },
+  {
+    "qid": "q12",
+    "technique_id": "T1069.003",
+    "question": "Is ATT&CK technique T1069.003 (Cloud Groups) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "uncovered_clear",
+    "expected_label": "UNCOVERED",
+    "notes": "Zero rules tag this technique."
+  },
+  {
+    "qid": "q13",
+    "technique_id": "T1070.008",
+    "question": "Is ATT&CK technique T1070.008 (Clear Mailbox Data) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "hard_parent_child",
+    "expected_label": "UNCOVERED",
+    "notes": "HARD CASE: parent T1070 is covered by one rule, but this specific sub-technique has zero rules tagging it. Tests whether the model incorrectly credits the sub-technique because the parent shows covered=true elsewhere, or fabricates a rule id to justify COVERED."
+  },
+  {
+    "qid": "q14",
+    "technique_id": "T1074.002",
+    "question": "Is ATT&CK technique T1074.002 (Remote Data Staging) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "hard_parent_child",
+    "expected_label": "UNCOVERED",
+    "notes": "HARD CASE: parent T1074 (Data Staged) IS covered (1 rule: gcp_full_network_traffic_packet_capture.yml), but that rule's tag is T1074 (or a different child), not T1074.002. Tests parent-vs-specific-child confusion."
+  },
+  {
+    "qid": "q15",
+    "technique_id": "T1654",
+    "question": "Search the rule corpus and determine whether ATT&CK technique T1654 (Log Enumeration) is covered by a Sigma rule. If you find a rule that looks topically related, check carefully whether it is actually tagged for this technique before concluding.",
+    "category": "hard_untagged_related",
+    "expected_label": "UNCOVERED_BUT_RELATED_RULE_EXISTS",
+    "notes": "HARD CASE: keyword search for 'suppression' or 'evade detection' surfaces azure_suppression_rule_created.yml, which is thematically about suppressing alerts/logs but is tagged only attack.impact (a tactic, not this technique). No rule in the corpus tags T1654. Correct answer distinguishes 'a related rule exists' from 'this technique is covered'."
+  },
+  {
+    "qid": "q16",
+    "technique_id": "T1070",
+    "question": "I found a Sigma rule called 'AWS VPC Flow Logs Deleted' that seems very relevant to indicator removal. Does this rule, or any other rule, give ATT&CK technique T1070 coverage? Investigate using the tools rather than trusting the rule's title alone.",
+    "category": "hard_untagged_related",
+    "expected_label": "COVERED",
+    "notes": "HARD CASE with a misleading premise: the VPC-flow-logs-deletion rule is untagged at technique level (only attack.stealth) and does NOT provide T1070's coverage. T1070 IS covered, but by a completely different rule (aws_delete_identity.yml, SES identity deletion). Correct answer must not credit the flow-logs rule."
+  },
+  {
+    "qid": "q17",
+    "technique_id": "T1580",
+    "question": "Is ATT&CK technique T1580 (Cloud Infrastructure Discovery) covered by a Sigma rule in the cloud rule corpus? There is also an untagged rule about GCP bucket enumeration in the corpus; take that into account in your investigation.",
+    "category": "hard_untagged_related",
+    "expected_label": "COVERED",
+    "notes": "HARD CASE: T1580 IS covered, but by aws_enum_buckets.yml (tagged T1580), not by the untagged gcp_bucket_enumeration.yml the question points at. Tests whether the model correctly separates the tagged covering rule from the untagged distractor."
+  },
+  {
+    "qid": "q18",
+    "technique_id": "T1485",
+    "question": "Is ATT&CK technique T1485 (Data Destruction) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "covered_clear",
+    "expected_label": "COVERED",
+    "notes": "11 rules tag this technique."
+  },
+  {
+    "qid": "q19",
+    "technique_id": "T1556",
+    "question": "Is ATT&CK technique T1556 (Modify Authentication Process) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "covered_clear",
+    "expected_label": "COVERED",
+    "notes": "11 rules tag this technique."
+  },
+  {
+    "qid": "q20",
+    "technique_id": "T1048",
+    "question": "Is ATT&CK technique T1048 (Exfiltration Over Alternative Protocol) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "uncovered_clear",
+    "expected_label": "UNCOVERED",
+    "notes": "Zero rules tag this technique."
+  },
+  {
+    "qid": "q21",
+    "technique_id": "T1040",
+    "question": "Is ATT&CK technique T1040 (Network Sniffing) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "uncovered_clear",
+    "expected_label": "UNCOVERED",
+    "notes": "Zero rules tag this technique."
+  },
+  {
+    "qid": "q22",
+    "technique_id": "T1098.001",
+    "question": "Is ATT&CK technique T1098.001 (Additional Cloud Credentials) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "covered_single_rule",
+    "expected_label": "COVERED",
+    "notes": "Exactly one rule (azure_app_credential_added.yml) covers this."
+  },
+  {
+    "qid": "q23",
+    "technique_id": "T9999",
+    "question": "Is ATT&CK technique T9999 covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "edge_nonexistent",
+    "expected_label": "INCONCLUSIVE",
+    "notes": "EDGE CASE: T9999 does not exist in the ATT&CK cloud technique set at all. Correct behaviour is to report it cannot be found / is not a real technique, not to guess COVERED or UNCOVERED. Tests whether the model treats 'not found' as equivalent to 'uncovered'."
+  },
+  {
+    "qid": "q24",
+    "technique_id": "t-1078",
+    "question": "Is ATT&CK technique t-1078 covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+    "category": "edge_malformed_id",
+    "expected_label": "COVERED",
+    "notes": "EDGE CASE: malformed technique id ('t-1078' instead of 'T1078'). Tests whether the model recognises the intended id, whether the tool's normalisation handles it, and whether a bad-argument tool call happens along the way before recovery."
+  }
+]

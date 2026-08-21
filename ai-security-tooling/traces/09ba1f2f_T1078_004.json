@@ -1,0 +1,236 @@
+{
+  "run_id": "09ba1f2f",
+  "question": "Is ATT&CK technique T1078.004 (Cloud Accounts) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+  "technique_id": "T1078.004",
+  "started_at": "2026-08-21T20:31:14Z",
+  "model": "qwen2.5:7b-instruct-q4_K_M",
+  "final_answer": "COVERED - The ATT&CK technique T1078.004 (Cloud Accounts) is covered by multiple Sigma rules in the cloud rule corpus. Specifically, rules such as `aws_cloudtrail_console_login_success_without_mfa.yml`, `azure_ad_sign_ins_from_noncompliant_devices.yml`, and `gcp_gworkspace_suspicious_login.yml` are tagged directly for this sub-technique.",
+  "final_label": "COVERED",
+  "hit_iteration_cap": false,
+  "total_wall_s": 3.29,
+  "tool_call_count": 2,
+  "invalid_tool_calls": 0,
+  "bad_argument_calls": 0,
+  "steps": [
+    {
+      "step": 2,
+      "kind": "tool_call",
+      "duration_s": 0.61,
+      "iteration": 1,
+      "tool": "get_technique",
+      "arguments": {
+        "technique_id": "T1078.004"
+      },
+      "result": {
+        "found": true,
+        "technique_id": "T1078.004",
+        "name": "Cloud Accounts",
+        "tactics": [
+          "stealth",
+          "persistence",
+          "privilege-escalation",
+          "initial-access"
+        ],
+        "platforms": [
+          "IaaS",
+          "Identity Provider",
+          "Office Suite",
+          "SaaS"
+        ],
+        "is_subtechnique": true
+      }
+    },
+    {
+      "step": 4,
+      "kind": "tool_call",
+      "duration_s": 0.69,
+      "iteration": 2,
+      "tool": "list_rules_for_technique",
+      "arguments": {
+        "technique_id": "T1078.004"
+      },
+      "result": {
+        "technique_id": "T1078.004",
+        "found_technique": true,
+        "covered": true,
+        "rule_count": 32,
+        "rules": [
+          {
+            "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_console_login_success_without_mfa.yml",
+            "title": "AWS Successful Console Login Without MFA",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/aws/cloudtrail/aws_delete_saml_provider.yml",
+            "title": "AWS SAML Provider Deletion Activity",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_loginprofile_creation.yml",
+            "title": "AWS IAM S3Browser LoginProfile Creation",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_templated_s3_bucket_policy_creation.yml",
+            "title": "AWS IAM S3Browser Templated S3 Bucket Policy Creation",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_user_or_accesskey_creation.yml",
+            "title": "AWS IAM S3Browser User or AccessKey Creation",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/aws/cloudtrail/aws_root_account_usage.yml",
+            "title": "AWS Root Credentials",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/activity_logs/azure_subscription_permissions_elevation_via_activitylogs.yml",
+            "title": "Azure Subscription Permission Elevation Via ActivityLogs",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_ad_bitlocker_key_retrieval.yml",
+            "title": "Bitlocker Key Retrieval",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_ad_users_added_to_device_admin_roles.yml",
+            "title": "Users Added to Global or Device Admin Roles",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_app_appid_uri_changes.yml",
+            "title": "Application AppID Uri Configuration Changes",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_app_uri_modifications.yml",
+            "title": "Application URI Configuration Changes",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_guest_invite_failure.yml",
+            "title": "Guest User Invited By Non Approved Inviters",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_guest_to_member.yml",
+            "title": "User State Changed From Guest To Member",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_pim_activation_approve_deny.yml",
+            "title": "PIM Approvals And Deny Elevation",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_pim_change_settings.yml",
+            "title": "Changes To PIM Settings",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_priviledged_role_assignment_add.yml",
+            "title": "User Added To Privilege Role",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_privileged_account_creation.yml",
+            "title": "Privileged Account Creation",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_tap_added.yml",
+            "title": "Temporary Access Pass Added To An Account",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/audit_logs/azure_user_password_change.yml",
+            "title": "Password Reset By User Account",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_ad_device_registration_or_join_without_mfa.yml",
+            "title": "Device Registration or Join Without MFA",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_ad_only_single_factor_auth_required.yml",
+            "title": "Azure AD Only Single Factor Authentication Required",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_ad_sign_ins_from_noncompliant_devices.yml",
+            "title": "Sign-ins from Non-Compliant Devices",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_ad_sign_ins_from_unknown_devices.yml",
+            "title": "Sign-ins by Unknown Devices",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_ad_suspicious_signin_bypassing_mfa.yml",
+            "title": "Potential MFA Bypass Using Legacy Client Authentication",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_blocked_account_attempt.yml",
+            "title": "Account Disabled or Blocked for Sign in Attempts",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_conditional_access_failure.yml",
+            "title": "Sign-in Failure Due to Conditional Access Requirements Not Met",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_legacy_authentication_protocols.yml",
+            "title": "Use of Legacy Authentication Protocols",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_login_to_disabled_account.yml",
+            "title": "Login to Disabled Account",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_denies.yml",
+            "title": "Multifactor Authentication Denied",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_interrupted.yml",
+            "title": "Multifactor Authentication Interrupted",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/azure/signin_logs/azure_user_login_blocked_by_conditional_access.yml",
+            "title": "User Access Blocked by Azure Conditional Access",
+            "tag_exact": "T1078.004"
+          },
+          {
+            "rule_id": "rules/cloud/gcp/gworkspace/login/gcp_gworkspace_suspicious_login.yml",
+            "title": "Suspicious Login Activity Classified By Google",
+            "tag_exact": "T1078.004"
+          }
+        ]
+      }
+    },
+    {
+      "step": 5,
+      "kind": "assistant_text",
+      "duration_s": 1.99,
+      "iteration": 3,
+      "text": "COVERED - The ATT&CK technique T1078.004 (Cloud Accounts) is covered by multiple Sigma rules in the cloud rule corpus. Specifically, rules such as `aws_cloudtrail_console_login_success_without_mfa.yml`, `azure_ad_sign_ins_from_noncompliant_devices.yml`, and `gcp_gworkspace_suspicious_login.yml` are tagged directly for this sub-technique."
+    },
+    {
+      "step": 5,
+      "kind": "final",
+      "duration_s": 0.0,
+      "iteration": 3,
+      "label": "COVERED"
+    }
+  ]
+}
