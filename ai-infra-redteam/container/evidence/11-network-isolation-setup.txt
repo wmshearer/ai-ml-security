@@ -1,0 +1,4 @@
+$ docker network create redteam-net-a
+13e5c8b2d395c72392f29147cd482cdadd23f72ca871b4d6283f599183178558
+$ docker network create redteam-net-b
+f66f42b53b0d1cbf314ee624faf39ebf2fdd2d9c59ba6d36fbbd6aa2de66b664

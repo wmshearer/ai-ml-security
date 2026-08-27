@@ -1,0 +1,2 @@
+$ docker exec ray-designstudy ray get-auth-token
+Error: No authentication token found. Use ray `get-auth-token --generate` to create one.

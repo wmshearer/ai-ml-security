@@ -1,0 +1,46 @@
+$ stat -fc %T /sys/fs/cgroup/
+cgroup2fs
+
+$ mount | grep cgroup
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot,memory_hugetlb_accounting)
+
+$ cat /proc/filesystems | grep cgroup
+nodev	cgroup
+nodev	cgroup2
+
+$ ls /sys/fs/cgroup/ | head -30
+cgroup.controllers
+cgroup.max.depth
+cgroup.max.descendants
+cgroup.pressure
+cgroup.procs
+cgroup.stat
+cgroup.subtree_control
+cgroup.threads
+cpu.pressure
+cpuset.cpus.effective
+cpuset.cpus.isolated
+cpuset.mems.effective
+cpu.stat
+cpu.stat.local
+dev-hugepages.mount
+dev-mqueue.mount
+init.scope
+io.cost.model
+io.cost.qos
+io.pressure
+io.stat
+memory.numa_stat
+memory.pressure
+memory.reclaim
+memory.stat
+memory.zswap.writeback
+misc.capacity
+misc.current
+misc.peak
+proc-sys-fs-binfmt_misc.mount
+
+$ find /sys/fs/cgroup -maxdepth 2 -iname '*release_agent*'
+(exit code: 0)
+
+$ find / -xdev -maxdepth 4 -iname 'cgroup' -type d 2>/dev/null

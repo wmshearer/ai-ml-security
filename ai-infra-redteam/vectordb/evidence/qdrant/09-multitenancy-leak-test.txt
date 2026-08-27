@@ -1,0 +1,9 @@
+=== CORE TEST: query without a tenant filter - does it return BOTH tenants' data from one query call? ===
+HTTP/1.1 200 OK
+content-length: 267
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:30:03 GMT
+
+{"result":{"points":[{"id":2,"version":1,"score":0.9890707,"payload":{"tenant_id":"beta","secret":"BETA_TENANT_SECRET_22b"}},{"id":1,"version":0,"score":0.91287094,"payload":{"tenant_id":"alpha","secret":"ALPHA_TENANT_SECRET_11a"}}]},"status":"ok","time":0.000843801}
+(If a client application forgets to add the tenant_id filter - a plain client-side coding error, not a Qdrant bug per se - this shows what happens: does Qdrant enforce any server-side tenant boundary, or does it return all tenants' data by default since there is no tenant concept in the engine itself?)

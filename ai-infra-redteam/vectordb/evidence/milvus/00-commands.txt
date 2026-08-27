@@ -1,0 +1,69 @@
+Exact commands run against Milvus standalone for this evidence set, in order.
+Stack started via scripts/run_milvus.sh: etcd (quay.io/coreos/etcd@sha256:52f17f7e56e4f7239f0320dbfcbcc24721163d7d78ae710b466af3254ccf6366),
+minio (minio/minio@sha256:391d1d45fdbe79944cb6de9337b073864bb9ee38c4c24280bfb39572e925af08),
+milvus standalone (milvusdb/milvus@sha256:49371c30af46b1013e4d3e0b980e691d81376d69cdbe1b372725baf1d7255862),
+host ports 19530 (gRPC) and 9091 (metrics/health). All commands after startup
+were run via the pymilvus 3.0.1 SDK in a Python venv (vectordb/.venv), since
+Milvus's primary API is gRPC and there is no simple curl equivalent for it
+(9091/healthz is the one plain-HTTP endpoint, used for the readiness check).
+
+# 01: bind address
+docker inspect vectordb-milvus-standalone --format '{{json .NetworkSettings.Ports}}'
+
+# 02: auth test, host, no credentials (Python, via .venv/bin/python3)
+from pymilvus import MilvusClient
+client = MilvusClient(uri='http://localhost:19530')
+client.list_collections()
+
+# 03: tenancy model check
+client.list_databases()                          # -> ['default']
+client.create_database(db_name='tenant_db_a')
+client.create_database(db_name='tenant_db_b')
+client.list_databases()                          # -> ['default','tenant_db_a','tenant_db_b']
+
+# 04: setup distinct data in each database
+client_a = MilvusClient(uri='http://localhost:19530', db_name='tenant_db_a')
+client_a.create_collection(collection_name='secrets', dimension=4, metric_type='L2')
+client_a.insert(collection_name='secrets', data=[{'id': 1, 'vector': [0.1,0.2,0.3,0.4], 'secret': 'DBA_SECRET_VALUE_44f1'}])
+client_a.insert(collection_name='secrets', data=[{'id': 2, 'vector': [0.15,0.25,0.35,0.45], 'secret': 'DBA_SECRET_VALUE_44f1_v2'}])
+client_a.flush(collection_name='secrets')
+client_a.query(collection_name='secrets', filter='id >= 0', output_fields=['secret'])
+
+client_b = MilvusClient(uri='http://localhost:19530', db_name='tenant_db_b')
+client_b.create_collection(collection_name='secrets', dimension=4, metric_type='L2')
+client_b.insert(collection_name='secrets', data=[{'id': 1, 'vector': [0.9,0.8,0.7,0.6], 'secret': 'DBB_SECRET_VALUE_99a2'}])
+client_b.flush(collection_name='secrets')
+client_b.query(collection_name='secrets', filter='id >= 0', output_fields=['secret'])
+
+# 05/06: cross-database attempts (05 includes an invalid test - db_name= is
+# not a real kwarg on .query(), it is silently absorbed by **kwargs and
+# ignored; see FINDINGS.md for why this result was discarded and redone)
+client_a.list_collections()
+client_a.query(collection_name='secrets', filter='id >= 0', output_fields=['secret'])
+client_a.query(collection_name='secrets', filter='id >= 0', output_fields=['secret'], db_name='tenant_db_b')  # INVALID TEST - kwarg ignored
+client_a.use_database('tenant_db_b')
+client_a.query(collection_name='secrets', filter='id >= 0', output_fields=['secret'])   # control: use_database properly switches
+
+# 06 corrected: raw ORM-style connections API cross-check
+from pymilvus import connections, Collection
+connections.connect(alias='conn_a', uri='http://localhost:19530', db_name='tenant_db_a')
+col = Collection(name='secrets', using='conn_a')
+col.load()
+col.query(expr='id >= 0', output_fields=['secret'])
+
+# 07: decisive server-side enforcement test
+client_a.describe_collection('secrets')   # collection_id: 468659560957609174
+client_b.describe_collection('secrets')   # collection_id: 468659560958980318
+client_b.create_collection(collection_name='only_in_db_b', dimension=4, metric_type='L2')
+client_a.has_collection('only_in_db_b')   # -> False
+client_b.has_collection('only_in_db_b')   # -> True
+
+# 08: auth test from peer container
+docker exec vectordb-milvus-client sh -c "curl -sf http://vectordb-milvus-standalone:9091/healthz"
+
+# 09: RBAC model check, no credentials
+client.list_users()   # -> ['root']
+client.list_roles()   # -> ['admin', 'public']
+
+Exit status: all commands completed successfully (exit 0 / no exception)
+except where explicitly noted as an invalid test above.

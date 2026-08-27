@@ -1,0 +1,8 @@
+=== tenant enumeration check: does listing tenants require any credential? ===
+Vary: Origin
+Date: Thu, 27 Aug 2026 01:31:43 GMT
+Content-Length: 86
+
+[{"activityStatus":"HOT","name":"tenantA"},{"activityStatus":"HOT","name":"tenantB"}]
+
+(No auth means anyone reaching the API can enumerate tenant names, even though object data itself is properly isolated per-tenant once you scope a query. Enumerable tenant names + no auth = an attacker just needs to guess/brute the tenant string, not the object UUID.)

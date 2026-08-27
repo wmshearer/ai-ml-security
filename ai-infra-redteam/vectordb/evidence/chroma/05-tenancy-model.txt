@@ -1,0 +1,22 @@
+=== c/d) tenancy model check: list tenants, create a second tenant ===
+--- GET default tenant ---
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 46
+date: Thu, 27 Aug 2026 01:28:04 GMT
+
+{"name":"default_tenant","resource_name":null}
+--- create a NEW tenant 'tenant_b' ---
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 2
+date: Thu, 27 Aug 2026 01:28:04 GMT
+
+{}
+--- create database 'db_b' under tenant_b ---
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 2
+date: Thu, 27 Aug 2026 01:28:04 GMT
+
+{}

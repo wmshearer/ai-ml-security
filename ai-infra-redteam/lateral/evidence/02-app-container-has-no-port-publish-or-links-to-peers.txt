@@ -1,0 +1,23 @@
+PortBindings: map[9000/tcp:[{ 19000}]]
+Links: []
+NetworkMode: lateral-net
+ExtraHosts: []
+[
+    "CHROMA_URL=http://lateral-chroma:8000",
+    "OLLAMA_URL=http://lateral-ollama:11434",
+    "OLLAMA_MODEL=tinyllama",
+    "INTERNAL_API_TOKEN=INTERNAL_API_TOKEN_PLANTED_9f3a7c",
+    "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "LANG=C.UTF-8",
+    "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+    "PYTHON_VERSION=3.12.14",
+    "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a"
+]
+
+Interpretation: lateral-app was started with -p 19000:9000 only (its own
+listen port). No -p, --link, or --add-host referencing chroma or ollama
+was used. Reachability shown in 01- comes solely from shared bridge
+network membership plus Docker's embedded DNS resolving the container
+name (a name only known because the env vars given to THIS app happen
+to name it; an attacker without that env var would instead sweep the
+bridge subnet, e.g. 172.19.0.0/16 as shown in 03-.

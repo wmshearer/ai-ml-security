@@ -1,0 +1,2 @@
+=== auth test from peer container on vectordb-net ===
+OK <- healthz reachable without auth from peer container

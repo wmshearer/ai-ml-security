@@ -1,0 +1,2 @@
+=== config.yaml shipped in image ===
+persist_path: "/data"

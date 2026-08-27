@@ -1,0 +1,18 @@
+=== d) does listing collections in tenant A leak tenant B's collections? ===
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 1380
+date: Thu, 27 Aug 2026 01:28:50 GMT
+
+[{"id":"10464d3c-ab05-4e1c-b21a-38a285e84ec3","name":"secrets_a","configuration_json":{"hnsw":{"space":"l2","ef_construction":100,"ef_search":100,"max_neighbors":16,"resize_factor":1.2,"sync_threshold":1000},"spann":null,"embedding_function":null},"schema":{"defaults":{"string":{"fts_index":{"enabled":false,"config":{}},"string_inverted_index":{"enabled":true,"config":{}}},"float_list":{"vector_index":{"enabled":false,"config":{"space":"l2","hnsw":{"ef_construction":100,"max_neighbors":16,"ef_search":100,"num_threads":20,"batch_size":100,"sync_threshold":1000,"resize_factor":1.2}}}},"sparse_vector":{"sparse_vector_index":{"enabled":false,"config":{"embedding_function":{"type":"unknown"},"bm25":false}}},"int":{"int_inverted_index":{"enabled":true,"config":{}}},"float":{"float_inverted_index":{"enabled":true,"config":{}}},"bool":{"bool_inverted_index":{"enabled":true,"config":{}}}},"keys":{"#document":{"string":{"fts_index":{"enabled":true,"config":{}},"string_inverted_index":{"enabled":false,"config":{}}}},"#embedding":{"float_list":{"vector_index":{"enabled":true,"config":{"space":"l2","source_key":"#document","hnsw":{"ef_construction":100,"max_neighbors":16,"ef_search":100,"num_threads":20,"batch_size":100,"sync_threshold":1000,"resize_factor":1.2}}}}}}},"metadata":null,"dimension":4,"tenant":"default_tenant","database":"db_a","log_position":0,"version":0}]
+--- is there a global/admin list-all-collections endpoint? ---
+HTTP/1.1 404 Not Found
+chroma-trace-id: 00000000000000000000000000000000
+content-length: 0
+date: Thu, 27 Aug 2026 01:28:50 GMT
+
+
+--- UUID predictability check: are collection IDs sequential/guessable? ---
+secrets_a id: 10464d3c-ab05-4e1c-b21a-38a285e84ec3
+secrets_b id: 61350239-747e-408f-bc05-612c82323b7b
+(these are random UUIDv4 - not sequential. Cross-tenant read requires knowing/guessing the UUID, or the caller must be told it out of band, or an app that reuses a stale/wrong-scope ID leaks data.)

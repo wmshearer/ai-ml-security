@@ -1,0 +1,66 @@
+Exact commands run against Weaviate for this evidence set, in order.
+Container started via scripts/run_weaviate.sh (docker run semitechnologies/weaviate@sha256:5c62e5cbce4c48fc770abcee71099d9de32aad3b44d12299611f8135ee412362
+--host 0.0.0.0 --port 8080 --scheme http), host port 18080 -> 8080, 18081 -> 50051
+(host port 8080 was already bound by another service on the test box).
+
+# 01: bind address
+docker inspect vectordb-weaviate --format '{{json .NetworkSettings.Ports}}'
+docker exec vectordb-weaviate cat /proc/net/tcp
+
+# 02: auth test, host, no credentials
+curl -s -i http://localhost:18080/v1/meta
+curl -s -i http://localhost:18080/v1/schema
+
+# 03: auth test from peer container
+docker exec vectordb-weaviate-client curl -s -i http://vectordb-weaviate:8080/v1/schema
+
+# 04: tenancy model check
+curl -s -i -X POST http://localhost:18080/v1/schema -H "Content-Type: application/json" -d '{"class":"FlatCollection","vectorizer":"none"}'
+curl -s http://localhost:18080/v1/schema/FlatCollection
+
+# 05: two flat classes with distinct data
+curl -s -i -X POST http://localhost:18080/v1/schema -H "Content-Type: application/json" -d '{"class":"ClassA","vectorizer":"none"}'
+curl -s -i -X POST http://localhost:18080/v1/schema -H "Content-Type: application/json" -d '{"class":"ClassB","vectorizer":"none"}'
+curl -s -i -X POST http://localhost:18080/v1/objects -H "Content-Type: application/json" \
+  -d '{"class":"ClassA","properties":{"secret":"CLASSA_SECRET_7f1d"},"vector":[0.1,0.2,0.3,0.4]}'
+curl -s -i -X POST http://localhost:18080/v1/objects -H "Content-Type: application/json" \
+  -d '{"class":"ClassB","properties":{"secret":"CLASSB_SECRET_9e2a"},"vector":[0.9,0.8,0.7,0.6]}'
+# ClassA object id: e90938c3-9225-4a95-a682-d7ae018f4c48
+# ClassB object id: 446e9133-aa47-46ae-9965-fc17eef3d763
+
+# 06: cross-class GraphQL and REST tests
+curl -s -i -X POST http://localhost:18080/v1/graphql -H "Content-Type: application/json" -d '{"query":"{ Get { ClassA { secret } } }"}'
+curl -s -i "http://localhost:18080/v1/objects/ClassA/446e9133-aa47-46ae-9965-fc17eef3d763"
+curl -s -i "http://localhost:18080/v1/objects/ClassB/446e9133-aa47-46ae-9965-fc17eef3d763"
+curl -s -i "http://localhost:18080/v1/objects/446e9133-aa47-46ae-9965-fc17eef3d763"
+
+# 07: status code check for wrong-class fetch
+curl -s -o /dev/null -w "HTTP_STATUS: %{http_code}\n" "http://localhost:18080/v1/objects/ClassA/446e9133-aa47-46ae-9965-fc17eef3d763"
+
+# 08: opt-in multi-tenancy feature setup
+curl -s -i -X POST http://localhost:18080/v1/schema -H "Content-Type: application/json" \
+  -d '{"class":"MultiTenantClass","vectorizer":"none","multiTenancyConfig":{"enabled":true}}'
+curl -s -i -X POST http://localhost:18080/v1/schema/MultiTenantClass/tenants -H "Content-Type: application/json" \
+  -d '[{"name":"tenantA"},{"name":"tenantB"}]'
+
+# 09: add distinct data per tenant
+curl -s -i -X POST http://localhost:18080/v1/objects -H "Content-Type: application/json" \
+  -d '{"class":"MultiTenantClass","tenant":"tenantA","properties":{"secret":"TENANTA_MT_SECRET_5c3f"},"vector":[0.1,0.2,0.3,0.4]}'
+curl -s -i -X POST http://localhost:18080/v1/objects -H "Content-Type: application/json" \
+  -d '{"class":"MultiTenantClass","tenant":"tenantB","properties":{"secret":"TENANTB_MT_SECRET_8d1e"},"vector":[0.9,0.8,0.7,0.6]}'
+# tenantB object id: 948cf734-a4cb-4137-bafd-f70912690f15
+
+# 10: cross-tenant tests
+curl -s -i -X POST http://localhost:18080/v1/graphql -H "Content-Type: application/json" \
+  -d '{"query":"{ Get { MultiTenantClass(tenant: \"tenantA\") { secret } } }"}'
+curl -s -i -X POST http://localhost:18080/v1/graphql -H "Content-Type: application/json" \
+  -d '{"query":"{ Get { MultiTenantClass { secret } } }"}'
+curl -s -i -o /dev/null -w "HTTP_STATUS: %{http_code}\n" "http://localhost:18080/v1/objects/MultiTenantClass/948cf734-a4cb-4137-bafd-f70912690f15?tenant=tenantA"
+curl -s "http://localhost:18080/v1/objects/MultiTenantClass/948cf734-a4cb-4137-bafd-f70912690f15?tenant=tenantA"
+curl -s "http://localhost:18080/v1/objects/MultiTenantClass/948cf734-a4cb-4137-bafd-f70912690f15?tenant=tenantB"
+
+# 11: tenant enumeration check
+curl -s -i http://localhost:18080/v1/schema/MultiTenantClass/tenants
+
+Exit status: all curl commands returned exit status 0; HTTP status codes
+captured in each response and in the .txt files above.

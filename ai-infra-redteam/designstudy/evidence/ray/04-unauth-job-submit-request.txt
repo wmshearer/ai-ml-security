@@ -1,0 +1,3 @@
+$ curl -s -X POST http://localhost:12265/api/jobs/ -H 'Content-Type: application/json' -d '{"entrypoint": "echo DESIGNSTUDY_UNAUTH_JOB_SUBMIT_TEST && whoami && hostname"}'
+{"job_id": "raysubmit_d8rzDF2Dc5ytNxvp", "submission_id": "raysubmit_d8rzDF2Dc5ytNxvp"}
+HTTP_CODE:200

@@ -1,0 +1,8 @@
+=== auth test from peer container ===
+HTTP/1.1 200 OK
+content-length: 59
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:29:24 GMT
+
+{"result":{"collections":[]},"status":"ok","time":4.612e-6}

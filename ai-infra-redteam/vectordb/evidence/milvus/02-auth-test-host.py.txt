@@ -1,0 +1,3 @@
+=== b) auth test: connect from host with NO credentials via pymilvus ===
+CONNECTED without credentials
+list_collections: []

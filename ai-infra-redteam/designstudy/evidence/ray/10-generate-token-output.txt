@@ -1,0 +1,3 @@
+Generating new authentication token...
+<REDACTED_RAY_AUTH_TOKEN>2026-08-26 18:50:43,571	INFO authentication_token_setup.py:46 -- Generated new authentication token and saved to /home/ray/.ray/auth_token
+

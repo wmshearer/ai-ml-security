@@ -1,0 +1,60 @@
+=== DEFAULT (no extra flags) ===
+$ docker run --rm  redteam/capcheck:latest sh -c '<decode CapEff>'
+--- /proc/self/status Cap lines ---
+CapInh:	0000000000000000
+CapPrm:	00000000a80425fb
+CapEff:	00000000a80425fb
+CapBnd:	00000000a80425fb
+CapAmb:	0000000000000000
+
+--- decoded CapEff (00000000a80425fb) ---
+0x00000000a80425fb=cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,cap_audit_write,cap_setfcap
+
+=== --privileged ===
+$ docker run --rm --privileged redteam/capcheck:latest sh -c '<decode CapEff>'
+--- /proc/self/status Cap lines ---
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+
+--- decoded CapEff (000001ffffffffff) ---
+0x000001ffffffffff=cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read,cap_perfmon,cap_bpf,cap_checkpoint_restore
+
+=== --cap-add=SYS_ADMIN ===
+$ docker run --rm --cap-add=SYS_ADMIN redteam/capcheck:latest sh -c '<decode CapEff>'
+--- /proc/self/status Cap lines ---
+CapInh:	0000000000000000
+CapPrm:	00000000a82425fb
+CapEff:	00000000a82425fb
+CapBnd:	00000000a82425fb
+CapAmb:	0000000000000000
+
+--- decoded CapEff (00000000a82425fb) ---
+0x00000000a82425fb=cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_sys_admin,cap_mknod,cap_audit_write,cap_setfcap
+
+=== --cap-add=SYS_PTRACE ===
+$ docker run --rm --cap-add=SYS_PTRACE redteam/capcheck:latest sh -c '<decode CapEff>'
+--- /proc/self/status Cap lines ---
+CapInh:	0000000000000000
+CapPrm:	00000000a80c25fb
+CapEff:	00000000a80c25fb
+CapBnd:	00000000a80c25fb
+CapAmb:	0000000000000000
+
+--- decoded CapEff (00000000a80c25fb) ---
+0x00000000a80c25fb=cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_sys_ptrace,cap_mknod,cap_audit_write,cap_setfcap
+
+=== --cap-add=DAC_READ_SEARCH ===
+$ docker run --rm --cap-add=DAC_READ_SEARCH redteam/capcheck:latest sh -c '<decode CapEff>'
+--- /proc/self/status Cap lines ---
+CapInh:	0000000000000000
+CapPrm:	00000000a80425ff
+CapEff:	00000000a80425ff
+CapBnd:	00000000a80425ff
+CapAmb:	0000000000000000
+
+--- decoded CapEff (00000000a80425ff) ---
+0x00000000a80425ff=cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,cap_audit_write,cap_setfcap
+

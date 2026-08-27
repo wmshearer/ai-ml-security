@@ -1,0 +1,18 @@
+=== DEFAULT: does /dev/nvme0n1 device node exist? ===
+/dev/nvme0n1: ABSENT
+/dev/mem: ABSENT
+/dev/kmsg: ABSENT
+
+=== --privileged: device node presence + permissions ===
+/dev/nvme0n1: PRESENT
+/dev/mem: PRESENT
+/dev/kmsg: PRESENT
+crw-r--r-- 1 root root   1, 11 Aug 27 01:32 /dev/kmsg
+crw-r----- 1 root kmem   1,  1 Aug 27 01:32 /dev/mem
+brw-rw---- 1 root disk 259,  0 Aug 27 01:32 /dev/nvme0n1
+
+=== Read-only proof: first 64 bytes of host disk from --privileged (no write performed) ===
+000000 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  >................<
+*
+000040
+dd+od exit: 0

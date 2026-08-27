@@ -1,0 +1,10 @@
+Name: ray
+Version: 2.58.0
+Summary: Ray provides a simple, universal API for building distributed applications.
+Home-page: https://github.com/ray-project/ray
+Author: Ray Team
+Author-email: ray-dev@googlegroups.com
+License: Apache 2.0
+Location: /home/ray/anaconda3/lib/python3.11/site-packages
+Requires: click, filelock, jsonschema, msgpack, packaging, protobuf, pyyaml, requests
+Required-by: 

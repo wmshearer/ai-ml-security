@@ -1,0 +1,31 @@
+=== CORE TEST: GraphQL Get query scoped to ClassA - does it return ClassB data? ===
+Content-Type: application/json
+Vary: Origin
+Date: Thu, 27 Aug 2026 01:31:10 GMT
+Content-Length: 62
+
+{"data":{"Get":{"ClassA":[{"secret":"CLASSA_SECRET_7f1d"}]}}}
+
+=== REST test: fetch ClassB's object UUID via ClassA's class-scoped endpoint (wrong class param) ===
+Access-Control-Allow-Methods: *
+Access-Control-Allow-Origin: *
+Vary: Origin
+Date: Thu, 27 Aug 2026 01:31:10 GMT
+Content-Length: 0
+
+
+=== REST test: fetch ClassB's object UUID via its OWN correct class param (control) ===
+Content-Type: application/json
+Vary: Origin
+Date: Thu, 27 Aug 2026 01:31:10 GMT
+Content-Length: 197
+
+{"class":"ClassB","creationTimeUnix":1787794261867,"id":"446e9133-aa47-46ae-9965-fc17eef3d763","lastUpdateTimeUnix":1787794261867,"properties":{"secret":"CLASSB_SECRET_9e2a"},"vectorWeights":null}
+
+=== REST test: fetch by UUID alone with NO class specified (legacy /v1/objects/{id} route) ===
+Content-Type: application/json
+Vary: Origin
+Date: Thu, 27 Aug 2026 01:31:10 GMT
+Content-Length: 197
+
+{"class":"ClassB","creationTimeUnix":1787794261867,"id":"446e9133-aa47-46ae-9965-fc17eef3d763","lastUpdateTimeUnix":1787794261867,"properties":{"secret":"CLASSB_SECRET_9e2a"},"vectorWeights":null}

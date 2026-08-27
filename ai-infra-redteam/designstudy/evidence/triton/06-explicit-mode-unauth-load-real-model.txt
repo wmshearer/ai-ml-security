@@ -1,0 +1,3 @@
+$ curl -s -X POST -w '\nHTTP_CODE:%{http_code}\n' http://localhost:12000/v2/repository/models/identity_demo/load
+
+HTTP_CODE:200

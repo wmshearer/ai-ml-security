@@ -1,0 +1,3 @@
+=== status code check for wrong-class fetch ===
+HTTP_STATUS: 404
+(404/empty confirms Weaviate correctly rejects a class/UUID mismatch - this is NOT a leak. The /v1/objects/{id} route without a class is a documented global-UUID lookup, since Weaviate UUIDs are unique across the whole instance by design, not per-class.)

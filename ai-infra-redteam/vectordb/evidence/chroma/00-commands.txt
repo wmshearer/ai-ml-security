@@ -1,0 +1,61 @@
+Exact commands run against ChromaDB for this evidence set, in order.
+Container started via scripts/run_chroma.sh (docker run chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6),
+host port 18000 -> container port 8000 (host port 8000 was already bound by
+another service on the test box; the image's own internal default is 8000/tcp
+on 0.0.0.0, see 01-bind-address.txt for the in-container proof).
+
+# 01: bind address
+docker exec vectordb-chroma sh -c "cat /proc/net/tcp | head -5"
+docker exec vectordb-chroma sh -c "which ss netstat 2>&1; ss -tln 2>&1 || netstat -tln 2>&1"
+docker inspect vectordb-chroma --format '{{json .NetworkSettings.Ports}}'
+docker inspect chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6 --format '{{json .Config}}'
+
+# 02: default config.yaml shipped in the image
+docker exec vectordb-chroma cat /config.yaml
+
+# 03: auth test from host, no credentials
+curl -s -i http://localhost:18000/api/v2/heartbeat
+curl -s -i http://localhost:18000/api/v2/tenants/default_tenant/databases/default_database/collections
+
+# 04: auth test from a peer container on vectordb-net
+docker exec vectordb-chroma-client curl -s -i http://vectordb-chroma:8000/api/v2/heartbeat
+
+# 05: tenancy model check
+curl -s -i http://localhost:18000/api/v2/tenants/default_tenant
+curl -s -i -X POST http://localhost:18000/api/v2/tenants -H "Content-Type: application/json" -d '{"name":"tenant_b"}'
+curl -s -i -X POST http://localhost:18000/api/v2/tenants/tenant_b/databases -H "Content-Type: application/json" -d '{"name":"db_b"}'
+
+# 06: create db_a + collection secrets_a
+curl -s -i -X POST http://localhost:18000/api/v2/tenants/default_tenant/databases -H "Content-Type: application/json" -d '{"name":"db_a"}'
+curl -s -i -X POST "http://localhost:18000/api/v2/tenants/default_tenant/databases/db_a/collections" -H "Content-Type: application/json" -d '{"name":"secrets_a"}'
+# -> returned collection id 10464d3c-ab05-4e1c-b21a-38a285e84ec3
+
+# 07: add distinct data to collection A, create collection secrets_b in tenant_b/db_b
+curl -s -i -X POST "http://localhost:18000/api/v2/tenants/default_tenant/databases/db_a/collections/10464d3c-ab05-4e1c-b21a-38a285e84ec3/add" \
+  -H "Content-Type: application/json" \
+  -d '{"ids":["doc-a-1"],"documents":["TENANT_A_SECRET_VALUE_af92f1"],"embeddings":[[0.1,0.2,0.3,0.4]]}'
+curl -s -i -X POST "http://localhost:18000/api/v2/tenants/tenant_b/databases/db_b/collections" -H "Content-Type: application/json" -d '{"name":"secrets_b"}'
+# -> returned collection id 61350239-747e-408f-bc05-612c82323b7b
+
+# 08: add distinct data to collection B
+curl -s -i -X POST "http://localhost:18000/api/v2/tenants/tenant_b/databases/db_b/collections/61350239-747e-408f-bc05-612c82323b7b/add" \
+  -H "Content-Type: application/json" \
+  -d '{"ids":["doc-b-1"],"documents":["TENANT_B_SECRET_VALUE_ce31d4"],"embeddings":[[0.9,0.8,0.7,0.6]]}'
+
+# 09: core cross-tenant tests (COLL_A=10464d3c-ab05-4e1c-b21a-38a285e84ec3, COLL_B=61350239-747e-408f-bc05-612c82323b7b)
+curl -s -i "http://localhost:18000/api/v2/tenants/default_tenant/databases/db_a/collections"
+curl -s -i "http://localhost:18000/api/v2/tenants/default_tenant/databases/db_a/collections/${COLL_B}"
+curl -s -i -X POST "http://localhost:18000/api/v2/tenants/default_tenant/databases/db_a/collections/${COLL_B}/get" -H "Content-Type: application/json" -d '{"ids":["doc-b-1"]}'
+curl -s -i -X POST "http://localhost:18000/api/v2/tenants/tenant_b/databases/db_b/collections/${COLL_B}/get" -H "Content-Type: application/json" -d '{"ids":["doc-b-1"]}'
+
+# 10: confirm not a fluke + vector query endpoint + fabricated tenant/db path
+curl -s -i -X POST "http://localhost:18000/api/v2/tenants/default_tenant/databases/db_a/collections/${COLL_B}/get" -H "Content-Type: application/json" -d '{}'
+curl -s -i -X POST "http://localhost:18000/api/v2/tenants/default_tenant/databases/db_a/collections/${COLL_B}/query" -H "Content-Type: application/json" -d '{"query_embeddings":[[0.9,0.8,0.7,0.6]],"n_results":5}'
+curl -s -i -X POST "http://localhost:18000/api/v2/tenants/nonexistent_tenant/databases/nonexistent_db/collections/${COLL_B}/get" -H "Content-Type: application/json" -d '{}'
+
+# 11: listing-leak check
+curl -s -i "http://localhost:18000/api/v2/tenants/default_tenant/databases/db_a/collections"
+curl -s -i "http://localhost:18000/api/v2/collections"
+
+Exit status: all curl commands returned exit status 0 (connection succeeded);
+HTTP status codes are captured in each response and in the .txt files above.

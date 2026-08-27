@@ -1,0 +1,3 @@
+$ curl -s -H "Authorization: Bearer <token>" -w '\nHTTP_CODE:%{http_code}\n' http://localhost:12266/api/jobs/
+[]
+HTTP_CODE:200
