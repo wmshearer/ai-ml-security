@@ -17,7 +17,7 @@ seccomp enabled by default, NVIDIA Container Toolkit 1.20.0, GPU is an RTX
 | Area | Finding | Evidence |
 |---|---|---|
 | release_agent escape (cgroup v1) | Does not apply. This host is cgroup v2 only, no v1 hierarchy exists anywhere, and the file the technique writes to does not exist. | `evidence/01-*`, `evidence/02-*`, `evidence/05-*` |
-| `--privileged` | Grants the full capability set (38 capabilities vs 14 default) and access to every host device node, including the raw disk. Not blocked by cgroup version. | `evidence/06-*`, `evidence/07-*`, `evidence/08-*` |
+| `--privileged` | Grants the full capability set (41 capabilities vs 14 default, decoded from CapEff 0x1ffffffffff vs 0xa80425fb) and access to every host device node, including the raw disk. Not blocked by cgroup version. | `evidence/06-*`, `evidence/07-*`, `evidence/08-*` |
 | Docker socket mount | Full Docker Engine API reachable from inside the container. Container listing, version, and (per Docker's own docs) host root all follow from this. | `evidence/09-*` |
 | `--pid=host` | Every host process, including PID 1, is visible from inside the container. | `evidence/10-*` |
 | `--cap-add=SYS_ADMIN` / `SYS_PTRACE` / `DAC_READ_SEARCH` | Each adds exactly the named capability on top of the default set. Measured precisely via `/proc/self/status`. | `evidence/06-*` |
@@ -73,7 +73,7 @@ cap_mknod, cap_audit_write, cap_setfcap`), own PID namespace, no host device
 nodes beyond the minimal safe set (`/dev/null`, `/dev/zero`, ttys, etc).
 Source: `evidence/06-capability-comparison.txt`.
 
-**`--privileged`**: effective capability set jumps from 14 to 38 (everything
+**`--privileged`**: effective capability set jumps from 14 to 41 (everything
 the kernel defines, including `cap_sys_admin`, `cap_sys_module`,
 `cap_sys_ptrace`, `cap_dac_read_search`, `cap_sys_boot`, `cap_mac_admin`, and
 so on) (`evidence/06-capability-comparison.txt`). `/dev` inside the container

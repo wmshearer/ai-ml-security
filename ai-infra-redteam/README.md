@@ -30,9 +30,9 @@ including under `--privileged` with AppArmor unconfined, then reading the kernel
 own answer with `strace`.
 
 **AI workloads do not need `--privileged` for GPU access, and the tutorials that
-say otherwise are giving away 24 capabilities for nothing.** A container using
+say otherwise are giving away 27 capabilities for nothing.** A container using
 `--gpus all` has a capability set byte-for-byte identical to an ordinary
-unprivileged container. A `--privileged` container has the full set of 38 plus the
+unprivileged container. A `--privileged` container has the full set of 41 plus the
 raw host disk.
 
 **One foothold reaches the whole stack.** Given code execution in the application
