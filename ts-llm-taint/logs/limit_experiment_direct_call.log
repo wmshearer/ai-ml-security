@@ -1,0 +1,6 @@
+/home/kali/director/projects/ts-llm-taint/fixtures/limit-experiment/direct-call.ts:17  [http-request-to-prompt-construction]
+  source (line 22): HTTP request property `req.body`
+  sink   (line 17): SystemMessage constructor argument
+  tainted argument: value
+
+Total findings: 1

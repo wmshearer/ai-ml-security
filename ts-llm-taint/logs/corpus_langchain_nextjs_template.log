@@ -1,0 +1,11 @@
+/home/kali/director/projects/ts-llm-taint/corpus/langchain-nextjs-template/app/api/chat/agents/route.ts:26  [user-message-to-prompt-construction]
+  source (line 26): HumanMessage constructor argument `getMessageText(message)`
+  sink   (line 26): HumanMessage constructor argument
+  tainted argument: getMessageText(message)
+
+/home/kali/director/projects/ts-llm-taint/corpus/langchain-nextjs-template/app/api/chat/retrieval_agents/route.ts:28  [user-message-to-prompt-construction]
+  source (line 28): HumanMessage constructor argument `getMessageText(message)`
+  sink   (line 28): HumanMessage constructor argument
+  tainted argument: getMessageText(message)
+
+Total findings: 2

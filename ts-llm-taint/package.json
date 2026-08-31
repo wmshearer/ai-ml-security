@@ -1,0 +1,33 @@
+{
+  "name": "ts-llm-taint",
+  "version": "0.1.0",
+  "description": "Interprocedural taint analyzer for LangChain.js and Vercel AI SDK applications, built on ts-morph.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "bin": {
+    "ts-llm-taint": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "cli": "tsx src/cli.ts"
+  },
+  "devDependencies": {
+    "@langchain/core": "^1.2.9",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.10.0",
+    "ai": "^7.0.87",
+    "tsx": "^4.19.2",
+    "typescript": "7.0.2",
+    "vitest": "4.1.11",
+    "zod": "^4.5.4"
+  },
+  "dependencies": {
+    "ts-morph": "28.0.0"
+  }
+}
