@@ -1,0 +1,16 @@
+    0: \x80 PROTO      4
+    2: \x95 FRAME      59
+   11: \x8c SHORT_BINUNICODE 'corpus_gen.marker'
+   30: \x94 MEMOIZE    (as 0)
+   31: \x8c SHORT_BINUNICODE 'write_marker'
+   45: \x94 MEMOIZE    (as 1)
+   46: \x93 STACK_GLOBAL
+   47: \x94 MEMOIZE    (as 2)
+   48: \x8c SHORT_BINUNICODE 'cve_2025_10155'
+   64: \x94 MEMOIZE    (as 3)
+   65: \x85 TUPLE1
+   66: \x94 MEMOIZE    (as 4)
+   67: R    REDUCE
+   68: \x94 MEMOIZE    (as 5)
+   69: .    STOP
+highest protocol among opcodes = 4

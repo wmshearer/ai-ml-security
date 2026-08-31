@@ -1,0 +1,20 @@
+    0: \x80 PROTO      4
+    2: \x95 FRAME      38
+   11: \x8c SHORT_BINUNICODE 'posixpath'
+   22: \x94 MEMOIZE    (as 0)
+   23: \x8c SHORT_BINUNICODE 'join'
+   29: \x94 MEMOIZE    (as 1)
+   30: \x93 STACK_GLOBAL
+   31: \x94 MEMOIZE    (as 2)
+   32: \x8c SHORT_BINUNICODE 'a'
+   35: \x94 MEMOIZE    (as 3)
+   36: \x8c SHORT_BINUNICODE 'b'
+   39: \x94 MEMOIZE    (as 4)
+   40: \x8c SHORT_BINUNICODE 'c'
+   43: \x94 MEMOIZE    (as 5)
+   44: \x87 TUPLE3
+   45: \x94 MEMOIZE    (as 6)
+   46: R    REDUCE
+   47: \x94 MEMOIZE    (as 7)
+   48: .    STOP
+highest protocol among opcodes = 4

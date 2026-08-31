@@ -1,0 +1,16 @@
+    0: \x80 PROTO      4
+    2: \x95 FRAME      51
+   11: }    EMPTY_DICT
+   12: \x94 MEMOIZE    (as 0)
+   13: (    MARK
+   14: \x8c     SHORT_BINUNICODE 'greeting'
+   24: \x94     MEMOIZE    (as 1)
+   25: \x8c     SHORT_BINUNICODE 'hello'
+   32: \x94     MEMOIZE    (as 2)
+   33: \x8c     SHORT_BINUNICODE 'note'
+   39: \x94     MEMOIZE    (as 3)
+   40: \x8c     SHORT_BINUNICODE 'no callables here'
+   59: \x94     MEMOIZE    (as 4)
+   60: u        SETITEMS   (MARK at 13)
+   61: .    STOP
+highest protocol among opcodes = 4

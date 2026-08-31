@@ -1,0 +1,40 @@
+    0: \x80 PROTO      4
+    2: \x95 FRAME      89
+   11: }    EMPTY_DICT
+   12: \x94 MEMOIZE    (as 0)
+   13: (    MARK
+   14: \x8c     SHORT_BINUNICODE 'config'
+   22: \x94     MEMOIZE    (as 1)
+   23: }        EMPTY_DICT
+   24: \x94     MEMOIZE    (as 2)
+   25: (        MARK
+   26: \x8c         SHORT_BINUNICODE 'retries'
+   35: \x94         MEMOIZE    (as 3)
+   36: K            BININT1    3
+   38: \x8c         SHORT_BINUNICODE 'timeout'
+   47: \x94         MEMOIZE    (as 4)
+   48: G            BINFLOAT   30.0
+   57: u            SETITEMS   (MARK at 25)
+   58: \x8c     SHORT_BINUNICODE 'history'
+   67: \x94     MEMOIZE    (as 5)
+   68: ]        EMPTY_LIST
+   69: \x94     MEMOIZE    (as 6)
+   70: (        MARK
+   71: K            BININT1    1
+   73: K            BININT1    2
+   75: K            BININT1    3
+   77: K            BININT1    5
+   79: K            BININT1    8
+   81: K            BININT1    13
+   83: e            APPENDS    (MARK at 70)
+   84: \x8c     SHORT_BINUNICODE 'flags'
+   91: \x94     MEMOIZE    (as 7)
+   92: \x8f     EMPTY_SET
+   93: \x94     MEMOIZE    (as 8)
+   94: (        MARK
+   95: \x89         NEWFALSE
+   96: \x88         NEWTRUE
+   97: \x90         ADDITEMS   (MARK at 94)
+   98: u        SETITEMS   (MARK at 13)
+   99: .    STOP
+highest protocol among opcodes = 4
