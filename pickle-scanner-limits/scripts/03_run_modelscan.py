@@ -12,6 +12,7 @@ payloads is an expected, informative result, not a bug in the corpus -- see
 FINDINGS.md.
 """
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -32,7 +33,13 @@ def find_corpus_files() -> list[Path]:
 
 def run_one(target: Path) -> dict:
     cmd = [str(MODELSCAN_BIN), "-p", str(target), "-r", "json"]
-    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+    # modelscan's JSON reporter goes through rich's Console, which line-wraps
+    # at terminal width by inserting literal newlines inside string values --
+    # this breaks strict JSON parsing if left at a narrow default width. A
+    # wide COLUMNS value avoids the wrap without changing modelscan's actual
+    # detection logic or output content.
+    env = {**os.environ, "COLUMNS": "2000"}
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=30, env=env)
     parsed = None
     # modelscan's console preamble ("No settings file detected...") precedes
     # the JSON blob on stdout even in -r json mode; extract the JSON object
@@ -41,7 +48,8 @@ def run_one(target: Path) -> dict:
     if idx != -1:
         try:
             parsed = json.loads(proc.stdout[idx:])
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as e:
+            print(f"WARNING: modelscan JSON did not parse for {target}: {e}", file=sys.stderr)
             parsed = None
     return {
         "file": str(target.relative_to(ROOT)),

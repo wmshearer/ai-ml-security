@@ -5,72 +5,289 @@
     {
       "file": "corpus/benign/benign_dict.pkl",
       "returncode": 0,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_dict.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_dict.pk\nl\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:12.924930\", \n\"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_dict.pkl\"]}}, \n\"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_dict.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_dict.pkl\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:57.575675\", \"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_dict.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_dict.pkl",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:57.575675",
+          "scanned": {
+            "total_scanned": 1,
+            "scanned_files": [
+              "benign_dict.pkl"
+            ]
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     },
     {
       "file": "corpus/benign/benign_empty.pkl",
       "returncode": 0,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_empty.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_empty.p\nkl\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:13.091654\", \n\"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_empty.pkl\"]}}, \n\"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_empty.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_empty.pkl\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:57.740928\", \"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_empty.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_empty.pkl",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:57.740928",
+          "scanned": {
+            "total_scanned": 1,
+            "scanned_files": [
+              "benign_empty.pkl"
+            ]
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     },
     {
       "file": "corpus/benign/benign_list_of_tuples.pkl",
       "returncode": 0,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_list_of_tuples.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_list_of\n_tuples.pkl\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:13.265312\", \n\"scanned\": {\"total_scanned\": 1, \"scanned_files\": \n[\"benign_list_of_tuples.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_list_of_tuples.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_list_of_tuples.pkl\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:57.894219\", \"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_list_of_tuples.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_list_of_tuples.pkl",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:57.894219",
+          "scanned": {
+            "total_scanned": 1,
+            "scanned_files": [
+              "benign_list_of_tuples.pkl"
+            ]
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     },
     {
       "file": "corpus/benign/benign_nested.pkl",
       "returncode": 0,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_nested.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_nested.\npkl\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:13.418925\", \n\"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_nested.pkl\"]}}, \n\"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_nested.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_nested.pkl\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:58.056983\", \"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_nested.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_nested.pkl",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:58.056983",
+          "scanned": {
+            "total_scanned": 1,
+            "scanned_files": [
+              "benign_nested.pkl"
+            ]
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     },
     {
       "file": "corpus/benign/benign_numbers.pkl",
       "returncode": 0,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_numbers.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_numbers\n.pkl\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:13.570165\", \n\"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_numbers.pkl\"]}}, \n\"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_numbers.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_numbers.pkl\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:58.211571\", \"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_numbers.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_numbers.pkl",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:58.211571",
+          "scanned": {
+            "total_scanned": 1,
+            "scanned_files": [
+              "benign_numbers.pkl"
+            ]
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     },
     {
       "file": "corpus/benign/benign_strings.pkl",
       "returncode": 0,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_strings.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_strings\n.pkl\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:13.729003\", \n\"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_strings.pkl\"]}}, \n\"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_strings.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_strings.pkl\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/benign\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:58.368958\", \"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"benign_strings.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign/benign_strings.pkl",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/benign",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:58.368958",
+          "scanned": {
+            "total_scanned": 1,
+            "scanned_files": [
+              "benign_strings.pkl"
+            ]
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     },
     {
       "file": "corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin",
       "returncode": 3,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin using modelscan.scanners.PyTorchUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_\n10155_extension_mismatch.bin\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:13.888935\", \n\"scanned\": {\"total_scanned\": 0}}, \"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin using modelscan.scanners.PyTorchUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:58.525189\", \"scanned\": {\"total_scanned\": 0}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:58.525189",
+          "scanned": {
+            "total_scanned": 0
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     },
     {
       "file": "corpus/poc_evasive/cve_2025_10157_submodule_import.pkl",
       "returncode": 0,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10157_submodule_import.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_\n10157_submodule_import.pkl\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:14.056992\", \n\"scanned\": {\"total_scanned\": 1, \"scanned_files\": \n[\"cve_2025_10157_submodule_import.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10157_submodule_import.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10157_submodule_import.pkl\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:58.685558\", \"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"cve_2025_10157_submodule_import.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10157_submodule_import.pkl",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:58.685558",
+          "scanned": {
+            "total_scanned": 1,
+            "scanned_files": [
+              "cve_2025_10157_submodule_import.pkl"
+            ]
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     },
     {
       "file": "corpus/poc_overt/poc_overt_reduce.pkl",
       "returncode": 0,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_reduce.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_r\neduce.pkl\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:14.220346\", \n\"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"poc_overt_reduce.pkl\"]}}, \n\"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_reduce.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_reduce.pkl\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:58.864184\", \"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"poc_overt_reduce.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_reduce.pkl",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:58.864184",
+          "scanned": {
+            "total_scanned": 1,
+            "scanned_files": [
+              "poc_overt_reduce.pkl"
+            ]
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     },
     {
       "file": "corpus/poc_overt/poc_overt_stdlib_global.pkl",
       "returncode": 0,
-      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_stdlib_global.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \n\"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_s\ntdlib_global.pkl\", \"absolute_path\": \n\"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt\", \n\"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:39:14.381509\", \n\"scanned\": {\"total_scanned\": 1, \"scanned_files\": \n[\"poc_overt_stdlib_global.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
+      "stdout": "No settings file detected at /home/kali/director/projects/pickle-scanner-limits/modelscan-settings.toml. Using defaults. \n\nScanning /home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_stdlib_global.pkl using modelscan.scanners.PickleUnsafeOpScan model scan\n{\"summary\": {\"total_issues_by_severity\": {\"LOW\": 0, \"MEDIUM\": 0, \"HIGH\": 0, \"CRITICAL\": 0}, \"total_issues\": 0, \"input_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_stdlib_global.pkl\", \"absolute_path\": \"/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt\", \"modelscan_version\": \"0.8.8\", \"timestamp\": \"2026-08-31T15:42:59.033853\", \"scanned\": {\"total_scanned\": 1, \"scanned_files\": [\"poc_overt_stdlib_global.pkl\"]}}, \"issues\": [], \"errors\": []}\n",
       "stderr": "",
-      "parsed": null
+      "parsed": {
+        "summary": {
+          "total_issues_by_severity": {
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 0,
+            "CRITICAL": 0
+          },
+          "total_issues": 0,
+          "input_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_stdlib_global.pkl",
+          "absolute_path": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt",
+          "modelscan_version": "0.8.8",
+          "timestamp": "2026-08-31T15:42:59.033853",
+          "scanned": {
+            "total_scanned": 1,
+            "scanned_files": [
+              "poc_overt_stdlib_global.pkl"
+            ]
+          }
+        },
+        "issues": [],
+        "errors": []
+      }
     }
   ]
 }

@@ -53,9 +53,16 @@ def modelscan_verdicts(raw: dict) -> dict[str, bool]:
     for r in raw["results"]:
         f = r["file"]
         parsed = r.get("parsed")
-        total_issues = 0
-        if parsed and "summary" in parsed:
-            total_issues = parsed["summary"].get("total_issues", 0)
+        if parsed is None or "summary" not in parsed:
+            # A parse failure is never silently treated as "no issues found":
+            # that would make a broken parser indistinguishable from a real
+            # miss. If this fires, evidence/modelscan/raw_results.json must
+            # be regenerated (scripts/03_run_modelscan.py) before scoring.
+            raise ValueError(
+                f"modelscan output for {f} did not parse to a usable summary; "
+                "rerun scripts/03_run_modelscan.py rather than scoring stale/broken output"
+            )
+        total_issues = parsed["summary"].get("total_issues", 0)
         out[f] = total_issues > 0
     return out
 
