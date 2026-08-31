@@ -1,0 +1,138 @@
+{
+  "tool": "fickling",
+  "version": "0.1.12",
+  "results": [
+    {
+      "file": "corpus/benign/benign_dict.pkl",
+      "returncode": 0,
+      "stdout": "{\n    \"severity\": \"LIKELY_SAFE\",\n    \"analysis\": \"Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\\n\\n\",\n    \"detailed_results\": {}\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "LIKELY_SAFE",
+        "analysis": "Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\n\n",
+        "detailed_results": {}
+      }
+    },
+    {
+      "file": "corpus/benign/benign_empty.pkl",
+      "returncode": 0,
+      "stdout": "{\n    \"severity\": \"LIKELY_SAFE\",\n    \"analysis\": \"Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\\n\\n\",\n    \"detailed_results\": {}\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "LIKELY_SAFE",
+        "analysis": "Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\n\n",
+        "detailed_results": {}
+      }
+    },
+    {
+      "file": "corpus/benign/benign_list_of_tuples.pkl",
+      "returncode": 0,
+      "stdout": "{\n    \"severity\": \"LIKELY_SAFE\",\n    \"analysis\": \"Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\\n\\n\",\n    \"detailed_results\": {}\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "LIKELY_SAFE",
+        "analysis": "Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\n\n",
+        "detailed_results": {}
+      }
+    },
+    {
+      "file": "corpus/benign/benign_nested.pkl",
+      "returncode": 0,
+      "stdout": "{\n    \"severity\": \"LIKELY_SAFE\",\n    \"analysis\": \"Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\\n\\n\",\n    \"detailed_results\": {}\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "LIKELY_SAFE",
+        "analysis": "Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\n\n",
+        "detailed_results": {}
+      }
+    },
+    {
+      "file": "corpus/benign/benign_numbers.pkl",
+      "returncode": 0,
+      "stdout": "{\n    \"severity\": \"LIKELY_SAFE\",\n    \"analysis\": \"Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\\n\\n\",\n    \"detailed_results\": {}\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "LIKELY_SAFE",
+        "analysis": "Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\n\n",
+        "detailed_results": {}
+      }
+    },
+    {
+      "file": "corpus/benign/benign_strings.pkl",
+      "returncode": 0,
+      "stdout": "{\n    \"severity\": \"LIKELY_SAFE\",\n    \"analysis\": \"Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\\n\\n\",\n    \"detailed_results\": {}\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "LIKELY_SAFE",
+        "analysis": "Warning: Fickling failed to detect any overtly unsafe code,but the pickle file may still be unsafe.Do not unpickle this file if it is from an untrusted source!\n\n",
+        "detailed_results": {}
+      }
+    },
+    {
+      "file": "corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin",
+      "returncode": 1,
+      "stdout": "{\n    \"severity\": \"LIKELY_UNSAFE\",\n    \"analysis\": \"`from corpus_gen.marker import write_marker` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\\nCall to `write_marker('cve_2025_10155')` can execute arbitrary code and is inherently unsafe\\nVariable `_var0` is assigned value `write_marker('cve_2025_10155')` but unused afterward; this is suspicious and indicative of a malicious pickle file\",\n    \"detailed_results\": {\n        \"AnalysisResult\": {\n            \"NonStandardImports\": \"from corpus_gen.marker import write_marker\",\n            \"OvertlyBadEval\": \"write_marker('cve_2025_10155')\",\n            \"UnusedVariables\": \"_var0: write_marker('cve_2025_10155')\"\n        }\n    }\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "LIKELY_UNSAFE",
+        "analysis": "`from corpus_gen.marker import write_marker` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\nCall to `write_marker('cve_2025_10155')` can execute arbitrary code and is inherently unsafe\nVariable `_var0` is assigned value `write_marker('cve_2025_10155')` but unused afterward; this is suspicious and indicative of a malicious pickle file",
+        "detailed_results": {
+          "AnalysisResult": {
+            "NonStandardImports": "from corpus_gen.marker import write_marker",
+            "OvertlyBadEval": "write_marker('cve_2025_10155')",
+            "UnusedVariables": "_var0: write_marker('cve_2025_10155')"
+          }
+        }
+      }
+    },
+    {
+      "file": "corpus/poc_evasive/cve_2025_10157_submodule_import.pkl",
+      "returncode": 1,
+      "stdout": "{\n    \"severity\": \"LIKELY_UNSAFE\",\n    \"analysis\": \"`from corpus_gen.marker.submodule import write_marker_via_submodule` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\\nCall to `write_marker_via_submodule(...)` can execute arbitrary code and is inherently unsafe\\nVariable `_var0` is assigned value `write_marker_via_submodule(...)` but unused afterward; this is suspicious and indicative of a malicious pickle file\",\n    \"detailed_results\": {\n        \"AnalysisResult\": {\n            \"NonStandardImports\": \"from corpus_gen.marker.submodule import write_marker_via_submodule\",\n            \"OvertlyBadEval\": \"write_marker_via_submodule(...)\",\n            \"UnusedVariables\": \"_var0: write_marker_via_submodule(...)\"\n        }\n    }\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "LIKELY_UNSAFE",
+        "analysis": "`from corpus_gen.marker.submodule import write_marker_via_submodule` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\nCall to `write_marker_via_submodule(...)` can execute arbitrary code and is inherently unsafe\nVariable `_var0` is assigned value `write_marker_via_submodule(...)` but unused afterward; this is suspicious and indicative of a malicious pickle file",
+        "detailed_results": {
+          "AnalysisResult": {
+            "NonStandardImports": "from corpus_gen.marker.submodule import write_marker_via_submodule",
+            "OvertlyBadEval": "write_marker_via_submodule(...)",
+            "UnusedVariables": "_var0: write_marker_via_submodule(...)"
+          }
+        }
+      }
+    },
+    {
+      "file": "corpus/poc_overt/poc_overt_reduce.pkl",
+      "returncode": 1,
+      "stdout": "{\n    \"severity\": \"LIKELY_UNSAFE\",\n    \"analysis\": \"`from corpus_gen.marker import write_marker` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\\nCall to `write_marker('poc_overt_reduce')` can execute arbitrary code and is inherently unsafe\\nVariable `_var0` is assigned value `write_marker('poc_overt_reduce')` but unused afterward; this is suspicious and indicative of a malicious pickle file\",\n    \"detailed_results\": {\n        \"AnalysisResult\": {\n            \"NonStandardImports\": \"from corpus_gen.marker import write_marker\",\n            \"OvertlyBadEval\": \"write_marker('poc_overt_reduce')\",\n            \"UnusedVariables\": \"_var0: write_marker('poc_overt_reduce')\"\n        }\n    }\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "LIKELY_UNSAFE",
+        "analysis": "`from corpus_gen.marker import write_marker` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\nCall to `write_marker('poc_overt_reduce')` can execute arbitrary code and is inherently unsafe\nVariable `_var0` is assigned value `write_marker('poc_overt_reduce')` but unused afterward; this is suspicious and indicative of a malicious pickle file",
+        "detailed_results": {
+          "AnalysisResult": {
+            "NonStandardImports": "from corpus_gen.marker import write_marker",
+            "OvertlyBadEval": "write_marker('poc_overt_reduce')",
+            "UnusedVariables": "_var0: write_marker('poc_overt_reduce')"
+          }
+        }
+      }
+    },
+    {
+      "file": "corpus/poc_overt/poc_overt_stdlib_global.pkl",
+      "returncode": 1,
+      "stdout": "{\n    \"severity\": \"SUSPICIOUS\",\n    \"analysis\": \"Variable `_var0` is assigned value `join('a', 'b', 'c')` but unused afterward; this is suspicious and indicative of a malicious pickle file\",\n    \"detailed_results\": {\n        \"AnalysisResult\": {\n            \"UnusedVariables\": \"_var0: join('a', 'b', 'c')\"\n        }\n    }\n}",
+      "stderr": "",
+      "parsed": {
+        "severity": "SUSPICIOUS",
+        "analysis": "Variable `_var0` is assigned value `join('a', 'b', 'c')` but unused afterward; this is suspicious and indicative of a malicious pickle file",
+        "detailed_results": {
+          "AnalysisResult": {
+            "UnusedVariables": "_var0: join('a', 'b', 'c')"
+          }
+        }
+      }
+    }
+  ]
+}
