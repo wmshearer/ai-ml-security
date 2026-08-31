@@ -1,0 +1,184 @@
+{
+  "run_id": "smoke-1788203552",
+  "model": "qwen3:4b",
+  "n_prompts": 5,
+  "n_valid_tool_calls": 5,
+  "pass": true,
+  "results": [
+    {
+      "prompt": "Write the text 'hello world' to a file named hello.txt using the write_file tool.",
+      "valid_tool_call": true,
+      "duration_seconds": 6.302488407003693,
+      "raw_response": {
+        "model": "qwen3:4b",
+        "created_at": "2026-08-31T19:12:38.327575356Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "thinking": "Okay, let's see. The user wants me to write 'hello world' to a file called hello.txt using the write_file tool. Hmm, the tools provided have a function called write_file that takes a path and content. The function's parameters are path (string) and content (string). So I need to make sure I structure the arguments correctly.\n\nWait, the function signature says: write_file Write text content to a named file. The arguments are path and content. The user specified the file name as hello.txt and the content as 'hello world'. So the path should be \"hello.txt\" and the content is \"hello world\".\n\nI should check if there are any other parameters, but the tool description says the function takes path and content. The example in the tool shows {\"content\": {\"type\": \"string\", \"description\": \"text content to write\"}, \"path\": {\"type\": \"string\", \"description\": \"file path to write\"}}.\n\nSo the arguments for the tool call would be path: \"hello.txt\" and content: \"hello world\". I need to format this into a JSON object for the tool call. The function name is write_file.\n\nWait, the user said \"using the write_file tool\", so the function name is write_file. The arguments should be a JSON object with path and content. Let me make sure the keys are correct. The tool's function parameters are path and content, both strings.\n\nSo the tool call should be:\n\n{\n  \"name\": \"write_file\",\n  \"arguments\": {\n    \"path\": \"hello.txt\",\n    \"content\": \"hello world\"\n  }\n}\n\nI think that's it. Let me double-check. The user wants to write 'hello world' to hello.txt. Yep, so path is hello.txt, content is the string. The tool expects those two parameters. Looks good.\n",
+          "tool_calls": [
+            {
+              "id": "call_34jyep1l",
+              "function": {
+                "index": 0,
+                "name": "write_file",
+                "arguments": {
+                  "path": "hello.txt",
+                  "content": "hello world"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 6273979457,
+        "load_duration": 2570814780,
+        "prompt_eval_count": 172,
+        "prompt_eval_duration": 53419000,
+        "eval_count": 409,
+        "eval_duration": 3646842000
+      }
+    },
+    {
+      "prompt": "Create a file called notes.txt containing 'buy milk' using the write_file tool.",
+      "valid_tool_call": true,
+      "duration_seconds": 2.5045792949968018,
+      "raw_response": {
+        "model": "qwen3:4b",
+        "created_at": "2026-08-31T19:12:40.831961845Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "thinking": "Okay, let's see. The user wants me to create a file called notes.txt with the content 'buy milk' using the write_file tool.\n\nFirst, I need to check the available tools. The provided tool is write_file, which takes a path and content. The function signature says it requires path and content as parameters.\n\nSo, the path here should be \"notes.txt\" and the content is \"buy milk\". I need to make sure the arguments are correctly formatted as JSON.\n\nWait, the tool's arguments are a JSON object with \"path\" and \"content\". The content is a string. The user specified 'buy milk' so the content string is \"buy milk\".\n\nI should construct the tool call with those parameters. Let me double-check the function definition. The function write_file has arguments path (string) and content (string). So the tool call should be:\n\n{\n  \"name\": \"write_file\",\n  \"arguments\": {\n    \"path\": \"notes.txt\",\n    \"content\": \"buy milk\"\n  }\n}\n\nYes, that seems right. The user didn't mention any other parameters, so this should work.\n",
+          "tool_calls": [
+            {
+              "id": "call_7axajt2e",
+              "function": {
+                "index": 0,
+                "name": "write_file",
+                "arguments": {
+                  "content": "buy milk",
+                  "path": "notes.txt"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2485917349,
+        "load_duration": 125477431,
+        "prompt_eval_count": 170,
+        "prompt_eval_duration": 14309000,
+        "eval_count": 261,
+        "eval_duration": 2316358000
+      }
+    },
+    {
+      "prompt": "Use the write_file tool to save 'done' into status.txt.",
+      "valid_tool_call": true,
+      "duration_seconds": 2.4175681849883404,
+      "raw_response": {
+        "model": "qwen3:4b",
+        "created_at": "2026-08-31T19:12:43.249928397Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "thinking": "Okay, let's see. The user wants me to use the write_file tool to save 'done' into status.txt. Hmm, first I need to check the available functions. The tool provided is write_file, which takes a path and content.\n\nSo the function is write_file. The path should be \"status.txt\" and the content is the string 'done'. I need to make sure the arguments are correctly formatted as JSON. The function expects a path and content. The content is a string, so I'll put 'done' in quotes. The path is \"status.txt\".\n\nWait, the tool's description says the content is a string. So the arguments should be {\"path\": \"status.txt\", \"content\": \"done\"}. Let me double-check the function signature. The function write_file has parameters path (string) and content (string). Yes, so that's correct.\n\nI think that's all. Just need to output the tool call in JSON inside the tool_call tags. So the function name is write_file, arguments are path: status.txt and content: done.\n",
+          "tool_calls": [
+            {
+              "id": "call_q44t57uu",
+              "function": {
+                "index": 0,
+                "name": "write_file",
+                "arguments": {
+                  "path": "status.txt",
+                  "content": "done"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2399371508,
+        "load_duration": 151054992,
+        "prompt_eval_count": 167,
+        "prompt_eval_duration": 13805000,
+        "eval_count": 249,
+        "eval_duration": 2215604000
+      }
+    },
+    {
+      "prompt": "Please write 'ok' to result.txt with the write_file tool.",
+      "valid_tool_call": true,
+      "duration_seconds": 2.240386629011482,
+      "raw_response": {
+        "model": "qwen3:4b",
+        "created_at": "2026-08-31T19:12:45.490216266Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "thinking": "Okay, the user wants me to write 'ok' to a file called result.txt using the write_file tool. Let me check the tools provided.\n\nThe tool given is write_file, which takes a path and content. The path should be \"result.txt\" and the content is \"ok\". So I need to structure the tool call correctly.\n\nWait, the function parameters are path and content. The content is a string. The user said 'ok', so the content is \"ok\". The path is \"result.txt\".\n\nI should make sure the JSON is correctly formatted. The tool call should be a JSON object with name \"write_file\" and arguments { \"path\": \"result.txt\", \"content\": \"ok\" }.\n\nLet me double-check the tool definition. The function is write_file with parameters path (string) and content (string). Yes, that's right.\n\nSo the tool_call should be in the specified XML tags with the correct JSON. No other tools are needed here. Just this one function call.\n",
+          "tool_calls": [
+            {
+              "id": "call_prat5s61",
+              "function": {
+                "index": 0,
+                "name": "write_file",
+                "arguments": {
+                  "content": "ok",
+                  "path": "result.txt"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2224393600,
+        "load_duration": 126644056,
+        "prompt_eval_count": 167,
+        "prompt_eval_duration": 14028000,
+        "eval_count": 235,
+        "eval_duration": 2065226999
+      }
+    },
+    {
+      "prompt": "Save the string 'test-123' into out.txt using the available tool.",
+      "valid_tool_call": true,
+      "duration_seconds": 3.769243662012741,
+      "raw_response": {
+        "model": "qwen3:4b",
+        "created_at": "2026-08-31T19:12:49.262251507Z",
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "thinking": "Okay, let's see. The user wants to save the string 'test-123' into out.txt using the available tool. The tool provided is write_file, which takes a path and content.\n\nFirst, I need to check the function signature. The function is write_file, and it requires path and content as arguments. The path here is 'out.txt' and the content is 'test-123'.\n\nWait, the user said \"Save the string 'test-123' into out.txt\". So the path should be 'out.txt' and the content is 'test-123'. \n\nThe tool's function parameters are path (string) and content (string). So I should construct the tool call with those values.\n\nLet me make sure there's no typo. The string is 'test-123', so the content argument is exactly that. The path is 'out.txt'.\n\nSo the tool call would be write_file with path: 'out.txt' and content: 'test-123'. \n\nI think that's it. Let me structure the JSON as per the required format. The function name is write_file, arguments should be a JSON object with path and content.\n\nWait, the function signature says: {object <nil> <nil> [path content] {\"content\":{\"type\":\"string\",\"description\":\"text content to write\"},\"path\":{\"type\":\"string\",\"description\":\"file path to write\"}}}\n\nSo the arguments are path and content. So the tool call JSON should have \"name\": \"write_file\", \"arguments\": {\"path\": \"out.txt\", \"content\": \"test-123\"}.\n\nYes, that seems correct. I don't see any other parameters needed. So I'll output that in the tool_call XML tags.\n",
+          "tool_calls": [
+            {
+              "id": "call_uzvje1uh",
+              "function": {
+                "index": 0,
+                "name": "write_file",
+                "arguments": {
+                  "path": "out.txt",
+                  "content": "test-123"
+                }
+              }
+            }
+          ]
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 3753464621,
+        "load_duration": 149407591,
+        "prompt_eval_count": 171,
+        "prompt_eval_duration": 15407000,
+        "eval_count": 398,
+        "eval_duration": 3564800000
+      }
+    }
+  ]
+}

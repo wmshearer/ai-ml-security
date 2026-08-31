@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+scratch_repo/
+evidence/*.db-journal
+.pytest_cache/
+*.egg-info/
