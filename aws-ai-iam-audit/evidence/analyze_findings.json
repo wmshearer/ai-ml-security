@@ -1,0 +1,862 @@
+{
+  "policies_analyzed": [
+    "AmazonBedrockFullAccess",
+    "AmazonBedrockLimitedAccess",
+    "AmazonBedrockReadOnly",
+    "AmazonSageMakerCanvasFullAccess",
+    "AmazonSageMakerFullAccess",
+    "AmazonSageMakerGroundTruthExecution",
+    "AmazonSageMakerModelGovernanceUseAccess",
+    "AmazonSageMakerReadOnly"
+  ],
+  "policy_count": 8,
+  "passrole_wildcard": {
+    "count": 3,
+    "findings": [
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "IAMPassOperation",
+        "resource": "arn:aws:iam::*:role/*",
+        "condition": {
+          "StringEquals": {
+            "iam:PassedToService": "sagemaker.amazonaws.com"
+          }
+        }
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "IAMPassOperationForForecast",
+        "resource": "arn:aws:iam::*:role/*",
+        "condition": {
+          "StringEquals": {
+            "iam:PassedToService": "forecast.amazonaws.com"
+          }
+        }
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowPassRoleToSageMaker",
+        "resource": "arn:aws:iam::*:role/*",
+        "condition": {
+          "StringEquals": {
+            "iam:PassedToService": "sagemaker.amazonaws.com"
+          }
+        }
+      }
+    ]
+  },
+  "tag_gated_condition": {
+    "count": 14,
+    "findings": [
+      {
+        "policy": "AmazonBedrockFullAccess",
+        "sid": "MarketplaceModelEndpointMutatingAPIs",
+        "action": [
+          "sagemaker:CreateEndpoint",
+          "sagemaker:CreateEndpointConfig",
+          "sagemaker:CreateModel",
+          "sagemaker:DeleteEndpoint",
+          "sagemaker:UpdateEndpoint"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "aws:ResourceTag/sagemaker-sdk:bedrock",
+            "value": "compatible"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonBedrockFullAccess",
+        "sid": "MarketplaceModelEndpointAddTagsOperations",
+        "action": [
+          "sagemaker:AddTags"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringLike",
+            "key": "aws:RequestTag/sagemaker-sdk:bedrock",
+            "value": "compatible"
+          },
+          {
+            "operator": "StringLike",
+            "key": "aws:RequestTag/bedrock:marketplace-registration-status",
+            "value": "registered"
+          },
+          {
+            "operator": "StringLike",
+            "key": "aws:RequestTag/sagemaker-studio:hub-content-arn",
+            "value": "arn:aws:sagemaker:*:aws:hub-content/SageMakerPublicHub/Model/*"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonBedrockFullAccess",
+        "sid": "MarketplaceModelEndpointDeleteTagsOperations",
+        "action": [
+          "sagemaker:DeleteTags"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringLike",
+            "key": "aws:ResourceTag/sagemaker-sdk:bedrock",
+            "value": "compatible"
+          },
+          {
+            "operator": "StringLike",
+            "key": "aws:ResourceTag/bedrock:marketplace-registration-status",
+            "value": "registered"
+          },
+          {
+            "operator": "StringLike",
+            "key": "aws:ResourceTag/sagemaker-studio:hub-content-arn",
+            "value": "arn:aws:sagemaker:*:aws:hub-content/SageMakerPublicHub/Model/*"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonBedrockFullAccess",
+        "sid": "MarketplaceModelEndpointInvokingOperations",
+        "action": [
+          "sagemaker:InvokeEndpoint",
+          "sagemaker:InvokeEndpointWithResponseStream"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "aws:ResourceTag/sagemaker-sdk:bedrock",
+            "value": "compatible"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "AllowUseOfKeyInAccount",
+        "action": [
+          "kms:DescribeKey"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "aws:ResourceTag/Source",
+            "value": "SageMakerCanvas"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "EMRServerlessCreateApplicationOperation",
+        "action": "emr-serverless:CreateApplication",
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "aws:RequestTag/sagemaker:is-canvas-resource",
+            "value": "True"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "EMRServerlessApplicationOperations",
+        "action": [
+          "emr-serverless:UpdateApplication",
+          "emr-serverless:StopApplication",
+          "emr-serverless:GetApplication",
+          "emr-serverless:StartApplication"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "aws:ResourceTag/sagemaker:is-canvas-resource",
+            "value": "True"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "EMRServerlessStartJobRunOperation",
+        "action": "emr-serverless:StartJobRun",
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "aws:RequestTag/sagemaker:is-canvas-resource",
+            "value": "True"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "EMRServerlessListJobRunOperation",
+        "action": "emr-serverless:ListJobRuns",
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "aws:ResourceTag/sagemaker:is-canvas-resource",
+            "value": "True"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "EMRServerlessJobRunOperations",
+        "action": [
+          "emr-serverless:GetJobRun",
+          "emr-serverless:CancelJobRun"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "aws:ResourceTag/sagemaker:is-canvas-resource",
+            "value": "True"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "EMRServerlessTagResourceOperation",
+        "action": "emr-serverless:TagResource",
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "aws:RequestTag/sagemaker:is-canvas-resource",
+            "value": "True"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowS3GetObjectWithSageMakerExistingObjectTag",
+        "action": [
+          "s3:GetObject"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringEqualsIgnoreCase",
+            "key": "s3:ExistingObjectTag/SageMaker",
+            "value": "true"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowS3GetObjectWithServiceCatalogProvisioningExistingObjectTag",
+        "action": [
+          "s3:GetObject"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringEquals",
+            "key": "s3:ExistingObjectTag/servicecatalog:provisioning",
+            "value": "true"
+          }
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerGroundTruthExecution",
+        "sid": "(no Sid)",
+        "action": [
+          "s3:GetObject"
+        ],
+        "tag_conditions": [
+          {
+            "operator": "StringEqualsIgnoreCase",
+            "key": "s3:ExistingObjectTag/SageMaker",
+            "value": "true"
+          }
+        ]
+      }
+    ]
+  },
+  "wildcard_resource_grant": {
+    "count": 42,
+    "findings": [
+      {
+        "policy": "AmazonBedrockFullAccess",
+        "sid": "BedrockAll",
+        "action": [
+          "bedrock:*"
+        ]
+      },
+      {
+        "policy": "AmazonBedrockFullAccess",
+        "sid": "BedrockMantleAll",
+        "action": [
+          "bedrock-mantle:*"
+        ]
+      },
+      {
+        "policy": "AmazonBedrockFullAccess",
+        "sid": "APIsWithAllResourceAccess",
+        "action": [
+          "iam:ListRoles",
+          "ec2:DescribeVpcs",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeSecurityGroups"
+        ]
+      },
+      {
+        "policy": "AmazonBedrockFullAccess",
+        "sid": "MarketplaceOperationsFromBedrockFor3pModels",
+        "action": [
+          "aws-marketplace:Subscribe",
+          "aws-marketplace:ViewSubscriptions",
+          "aws-marketplace:Unsubscribe"
+        ]
+      },
+      {
+        "policy": "AmazonBedrockLimitedAccess",
+        "sid": "BedrockAPIs",
+        "action": [
+          "bedrock:Get*",
+          "bedrock:List*",
+          "bedrock:CallWithBearerToken",
+          "bedrock:BatchDeleteEvaluationJob",
+          "bedrock:CancelAutomatedReasoningPolicyBuildWorkflow",
+          "bedrock:CreateAutomatedReasoningPolicy",
+          "bedrock:CreateAutomatedReasoningPolicyTestCase",
+          "bedrock:CreateAutomatedReasoningPolicyVersion",
+          "bedrock:CreateEvaluationJob",
+          "bedrock:CreateGuardrail",
+          "bedrock:CreateGuardrailVersion",
+          "bedrock:CreateInferenceProfile",
+          "bedrock:CreateModelCopyJob",
+          "bedrock:CreateModelCustomizationJob",
+          "bedrock:CreateModelImportJob",
+          "bedrock:CreateModelInvocationJob",
+          "bedrock:CreatePromptRouter",
+          "bedrock:CreateProvisionedModelThroughput",
+          "bedrock:DeleteAutomatedReasoningPolicy",
+          "bedrock:DeleteAutomatedReasoningPolicyBuildWorkflow",
+          "bedrock:DeleteAutomatedReasoningPolicyTestCase",
+          "bedrock:DeleteCustomModel",
+          "bedrock:DeleteGuardrail",
+          "bedrock:DeleteImportedModel",
+          "bedrock:DeleteInferenceProfile",
+          "bedrock:DeletePromptRouter",
+          "bedrock:DeleteProvisionedModelThroughput",
+          "bedrock:ExportAutomatedReasoningPolicyVersion",
+          "bedrock:StartAutomatedReasoningPolicyBuildWorkflow",
+          "bedrock:StartAutomatedReasoningPolicyTestWorkflow",
+          "bedrock:StopEvaluationJob",
+          "bedrock:StopModelCustomizationJob",
+          "bedrock:StopModelInvocationJob",
+          "bedrock:TagResource",
+          "bedrock:UntagResource",
+          "bedrock:UpdateAutomatedReasoningPolicy",
+          "bedrock:UpdateAutomatedReasoningPolicyAnnotations",
+          "bedrock:UpdateAutomatedReasoningPolicyTestCase",
+          "bedrock:UpdateGuardrail",
+          "bedrock:UpdateProvisionedModelThroughput",
+          "bedrock:ApplyGuardrail",
+          "bedrock:InvokeAutomatedReasoningPolicy",
+          "bedrock:InvokeModel",
+          "bedrock:InvokeModelWithResponseStream"
+        ]
+      },
+      {
+        "policy": "AmazonBedrockLimitedAccess",
+        "sid": "APIsWithAllResourceAccess",
+        "action": [
+          "iam:ListRoles",
+          "ec2:DescribeVpcs",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeSecurityGroups"
+        ]
+      },
+      {
+        "policy": "AmazonBedrockLimitedAccess",
+        "sid": "BedrockMantleAPIs",
+        "action": [
+          "bedrock-mantle:CallWithBearerToken",
+          "bedrock-mantle:Get*",
+          "bedrock-mantle:List*",
+          "bedrock-mantle:CreateInference"
+        ]
+      },
+      {
+        "policy": "AmazonBedrockLimitedAccess",
+        "sid": "MarketplaceOperationsFromBedrockFor3pModels",
+        "action": [
+          "aws-marketplace:Subscribe",
+          "aws-marketplace:ViewSubscriptions",
+          "aws-marketplace:Unsubscribe"
+        ]
+      },
+      {
+        "policy": "AmazonBedrockReadOnly",
+        "sid": "AmazonBedrockReadOnly",
+        "action": [
+          "bedrock:Get*",
+          "bedrock:List*"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "SageMakerUserDetailsAndPackageOperations",
+        "action": [
+          "sagemaker:DescribeDomain",
+          "sagemaker:DescribeUserProfile",
+          "sagemaker:ListTags",
+          "sagemaker:ListModelPackages",
+          "sagemaker:ListModelPackageGroups",
+          "sagemaker:ListEndpoints"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "EC2VPCOperation",
+        "action": [
+          "ec2:CreateVpcEndpoint",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeVpcs",
+          "ec2:DescribeVpcEndpoints",
+          "ec2:DescribeVpcEndpointServices"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "ECROperations",
+        "action": [
+          "ecr:BatchGetImage",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:GetAuthorizationToken"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "S3ListOperations",
+        "action": [
+          "s3:ListBucket",
+          "s3:ListAllMyBuckets"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "SecretManagerTagBasedOperation",
+        "action": [
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:GetSecretValue"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "RedshiftOperations",
+        "action": [
+          "redshift-data:ExecuteStatement",
+          "redshift-data:DescribeStatement",
+          "redshift-data:CancelStatement",
+          "redshift-data:GetStatementResult",
+          "redshift-data:ListSchemas",
+          "redshift-data:ListTables",
+          "redshift-data:DescribeTable"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "RDSOperation",
+        "action": "rds:DescribeDBInstances"
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "AsyncEndpointOperations",
+        "action": [
+          "cloudwatch:DescribeAlarms",
+          "sagemaker:DescribeEndpointConfig"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "DescribeScalingOperations",
+        "action": [
+          "application-autoscaling:DescribeScalingActivities"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "AthenaOperation",
+        "action": [
+          "athena:ListTableMetadata",
+          "athena:ListDataCatalogs",
+          "athena:ListDatabases"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "QuicksightOperation",
+        "action": [
+          "quicksight:ListNamespaces"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerCanvasFullAccess",
+        "sid": "AllowUseOfKeyInAccount",
+        "action": [
+          "kms:DescribeKey"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowStudioActions",
+        "action": [
+          "sagemaker:CreatePresignedDomainUrl",
+          "sagemaker:DescribeDomain",
+          "sagemaker:ListDomains",
+          "sagemaker:DescribeUserProfile",
+          "sagemaker:ListUserProfiles",
+          "sagemaker:DescribeSpace",
+          "sagemaker:ListSpaces",
+          "sagemaker:DescribeApp",
+          "sagemaker:ListApps"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowAWSServiceActions",
+        "action": [
+          "application-autoscaling:DeleteScalingPolicy",
+          "application-autoscaling:DeleteScheduledAction",
+          "application-autoscaling:DeregisterScalableTarget",
+          "application-autoscaling:DescribeScalableTargets",
+          "application-autoscaling:DescribeScalingActivities",
+          "application-autoscaling:DescribeScalingPolicies",
+          "application-autoscaling:DescribeScheduledActions",
+          "application-autoscaling:PutScalingPolicy",
+          "application-autoscaling:PutScheduledAction",
+          "application-autoscaling:RegisterScalableTarget",
+          "aws-marketplace:ViewSubscriptions",
+          "cloudformation:GetTemplateSummary",
+          "cloudwatch:DeleteAlarms",
+          "cloudwatch:DescribeAlarms",
+          "cloudwatch:GetMetricData",
+          "cloudwatch:GetMetricStatistics",
+          "cloudwatch:ListMetrics",
+          "cloudwatch:PutMetricAlarm",
+          "cloudwatch:PutMetricData",
+          "codecommit:BatchGetRepositories",
+          "codecommit:CreateRepository",
+          "codecommit:GetRepository",
+          "codecommit:List*",
+          "cognito-idp:AdminAddUserToGroup",
+          "cognito-idp:AdminCreateUser",
+          "cognito-idp:AdminDeleteUser",
+          "cognito-idp:AdminDisableUser",
+          "cognito-idp:AdminEnableUser",
+          "cognito-idp:AdminRemoveUserFromGroup",
+          "cognito-idp:CreateGroup",
+          "cognito-idp:CreateUserPool",
+          "cognito-idp:CreateUserPoolClient",
+          "cognito-idp:CreateUserPoolDomain",
+          "cognito-idp:DescribeUserPool",
+          "cognito-idp:DescribeUserPoolClient",
+          "cognito-idp:List*",
+          "cognito-idp:UpdateUserPool",
+          "cognito-idp:UpdateUserPoolClient",
+          "ec2:CreateNetworkInterface",
+          "ec2:CreateNetworkInterfacePermission",
+          "ec2:CreateVpcEndpoint",
+          "ec2:DeleteNetworkInterface",
+          "ec2:DeleteNetworkInterfacePermission",
+          "ec2:DescribeDhcpOptions",
+          "ec2:DescribeNetworkInterfaces",
+          "ec2:DescribeRouteTables",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeVpcEndpoints",
+          "ec2:DescribeVpcs",
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:BatchGetImage",
+          "ecr:CreateRepository",
+          "ecr:Describe*",
+          "ecr:GetAuthorizationToken",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:StartImageScan",
+          "elastic-inference:Connect",
+          "elasticfilesystem:DescribeFileSystems",
+          "elasticfilesystem:DescribeMountTargets",
+          "fsx:DescribeFileSystems",
+          "glue:CreateJob",
+          "glue:DeleteJob",
+          "glue:GetJob*",
+          "glue:GetTable*",
+          "glue:GetWorkflowRun",
+          "glue:ResetJobBookmark",
+          "glue:StartJobRun",
+          "glue:StartWorkflowRun",
+          "glue:UpdateJob",
+          "groundtruthlabeling:*",
+          "iam:ListRoles",
+          "kms:DescribeKey",
+          "kms:ListAliases",
+          "lambda:ListFunctions",
+          "logs:CreateLogDelivery",
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:DeleteLogDelivery",
+          "logs:Describe*",
+          "logs:GetLogDelivery",
+          "logs:GetLogEvents",
+          "logs:ListLogDeliveries",
+          "logs:PutLogEvents",
+          "logs:PutResourcePolicy",
+          "logs:UpdateLogDelivery",
+          "robomaker:CreateSimulationApplication",
+          "robomaker:DescribeSimulationApplication",
+          "robomaker:DeleteSimulationApplication",
+          "robomaker:CreateSimulationJob",
+          "robomaker:DescribeSimulationJob",
+          "robomaker:CancelSimulationJob",
+          "secretsmanager:ListSecrets",
+          "servicecatalog:Describe*",
+          "servicecatalog:List*",
+          "servicecatalog:ScanProvisionedProducts",
+          "servicecatalog:SearchProducts",
+          "servicecatalog:SearchProvisionedProducts",
+          "sns:ListTopics",
+          "tag:GetResources"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowReadOnlySecretManagerActions",
+        "action": [
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:GetSecretValue"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowServiceCatalogProvisionProduct",
+        "action": [
+          "servicecatalog:ProvisionProduct"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowServiceCatalogTerminateUpdateProvisionProduct",
+        "action": [
+          "servicecatalog:TerminateProvisionedProduct",
+          "servicecatalog:UpdateProvisionedProduct"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowS3BucketActions",
+        "action": [
+          "s3:CreateBucket",
+          "s3:GetBucketLocation",
+          "s3:ListBucket",
+          "s3:ListAllMyBuckets",
+          "s3:GetBucketCors",
+          "s3:PutBucketCors"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowCreateServiceLinkedRoleForRobomaker",
+        "action": "iam:CreateServiceLinkedRole"
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowAthenaActions",
+        "action": [
+          "athena:ListDataCatalogs",
+          "athena:ListDatabases",
+          "athena:ListTableMetadata",
+          "athena:GetQueryExecution",
+          "athena:GetQueryResults",
+          "athena:StartQueryExecution",
+          "athena:StopQueryExecution"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowRedshiftDataActions",
+        "action": [
+          "redshift-data:ExecuteStatement",
+          "redshift-data:DescribeStatement",
+          "redshift-data:CancelStatement",
+          "redshift-data:GetStatementResult",
+          "redshift-data:ListSchemas",
+          "redshift-data:ListTables"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowS3ExpressListBucketActions",
+        "action": [
+          "s3express:ListAllMyDirectoryBuckets"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerGroundTruthExecution",
+        "sid": "(no Sid)",
+        "action": [
+          "s3:GetObject"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerGroundTruthExecution",
+        "sid": "(no Sid)",
+        "action": [
+          "s3:GetBucketLocation",
+          "s3:ListBucket"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerGroundTruthExecution",
+        "sid": "CloudWatch",
+        "action": [
+          "cloudwatch:PutMetricData",
+          "logs:CreateLogStream",
+          "logs:CreateLogGroup",
+          "logs:DescribeLogStreams",
+          "logs:PutLogEvents"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerGroundTruthExecution",
+        "sid": "StreamingTopicUnsubscribe",
+        "action": [
+          "sns:Unsubscribe"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerGroundTruthExecution",
+        "sid": "WorkforceVPC",
+        "action": [
+          "ec2:CreateVpcEndpoint",
+          "ec2:DescribeVpcEndpoints",
+          "ec2:DeleteVpcEndpoints"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerModelGovernanceUseAccess",
+        "sid": "AllowSMMonitoringModelCards",
+        "action": [
+          "sagemaker:ListMonitoringAlerts",
+          "sagemaker:ListMonitoringExecutions",
+          "sagemaker:UpdateMonitoringAlert",
+          "sagemaker:StartMonitoringSchedule",
+          "sagemaker:StopMonitoringSchedule",
+          "sagemaker:ListMonitoringAlertHistory",
+          "sagemaker:DescribeModelPackage",
+          "sagemaker:DescribeModelPackageGroup",
+          "sagemaker:CreateModelCard",
+          "sagemaker:DescribeModelCard",
+          "sagemaker:UpdateModelCard",
+          "sagemaker:DeleteModelCard",
+          "sagemaker:ListModelCards",
+          "sagemaker:ListModelCardVersions",
+          "sagemaker:CreateModelCardExportJob",
+          "sagemaker:DescribeModelCardExportJob",
+          "sagemaker:ListModelCardExportJobs"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerModelGovernanceUseAccess",
+        "sid": "AllowSMTrainingModelsSearchTags",
+        "action": [
+          "sagemaker:ListTrainingJobs",
+          "sagemaker:DescribeTrainingJob",
+          "sagemaker:ListModels",
+          "sagemaker:DescribeModel",
+          "sagemaker:Search",
+          "sagemaker:AddTags",
+          "sagemaker:DeleteTags",
+          "sagemaker:ListTags"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerModelGovernanceUseAccess",
+        "sid": "AllowKMSActions",
+        "action": [
+          "kms:ListAliases"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerModelGovernanceUseAccess",
+        "sid": "AllowS3ListActions",
+        "action": [
+          "s3:ListBucket",
+          "s3:ListAllMyBuckets"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerReadOnly",
+        "sid": "(no Sid)",
+        "action": [
+          "sagemaker:Describe*",
+          "sagemaker:List*",
+          "sagemaker:BatchGetMetrics",
+          "sagemaker:GetDeviceRegistration",
+          "sagemaker:GetDeviceFleetReport",
+          "sagemaker:GetSearchSuggestions",
+          "sagemaker:BatchGetRecord",
+          "sagemaker:GetRecord",
+          "sagemaker:Search",
+          "sagemaker:QueryLineage",
+          "sagemaker:GetLineageGroupPolicy",
+          "sagemaker:BatchDescribeModelPackage",
+          "sagemaker:GetModelPackageGroupPolicy"
+        ]
+      },
+      {
+        "policy": "AmazonSageMakerReadOnly",
+        "sid": "(no Sid)",
+        "action": [
+          "application-autoscaling:DescribeScalableTargets",
+          "application-autoscaling:DescribeScalingActivities",
+          "application-autoscaling:DescribeScalingPolicies",
+          "application-autoscaling:DescribeScheduledActions",
+          "aws-marketplace:ViewSubscriptions",
+          "cloudwatch:DescribeAlarms",
+          "cognito-idp:DescribeUserPool",
+          "cognito-idp:DescribeUserPoolClient",
+          "cognito-idp:ListGroups",
+          "cognito-idp:ListIdentityProviders",
+          "cognito-idp:ListUserPoolClients",
+          "cognito-idp:ListUserPools",
+          "cognito-idp:ListUsers",
+          "cognito-idp:ListUsersInGroup",
+          "ecr:Describe*"
+        ]
+      }
+    ]
+  },
+  "any_bucket_resource": {
+    "count": 2,
+    "findings": [
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowS3GetObjectWithSageMakerExistingObjectTag",
+        "action": [
+          "s3:GetObject"
+        ],
+        "resource": [
+          "arn:aws:s3:::*"
+        ],
+        "condition": {
+          "StringEqualsIgnoreCase": {
+            "s3:ExistingObjectTag/SageMaker": "true"
+          }
+        }
+      },
+      {
+        "policy": "AmazonSageMakerFullAccess",
+        "sid": "AllowS3GetObjectWithServiceCatalogProvisioningExistingObjectTag",
+        "action": [
+          "s3:GetObject"
+        ],
+        "resource": [
+          "arn:aws:s3:::*"
+        ],
+        "condition": {
+          "StringEquals": {
+            "s3:ExistingObjectTag/servicecatalog:provisioning": "true"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "policy_name": "AmazonBedrockReadOnly",
+  "arn": "arn:aws:iam::aws:policy/AmazonBedrockReadOnly",
+  "policy_version": "v7",
+  "creation_time": "December 06, 2023, 15:48 UTC",
+  "edited_time": "February 12, 2026, 17:57 UTC",
+  "source_url": "https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonBedrockReadOnly.html",
+  "retrieved_at_utc": "2026-08-27 01:32:34 UTC",
+  "statement_count": 4,
+  "statement_ids": [
+    "AmazonBedrockReadOnly",
+    "MarketplaceModelEndpointNonMutatingAPIs",
+    "DiscoveringMarketplaceModel",
+    "AllowMarketplaceModelsListing"
+  ]
+}

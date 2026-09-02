@@ -1,0 +1,22 @@
+{
+  "policy_name": "AmazonSageMakerGroundTruthExecution",
+  "arn": "arn:aws:iam::aws:policy/AmazonSageMakerGroundTruthExecution",
+  "policy_version": "v3",
+  "creation_time": "July 09, 2020, 19:30 UTC",
+  "edited_time": "April 29, 2022, 20:49 UTC",
+  "source_url": "https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonSageMakerGroundTruthExecution.html",
+  "retrieved_at_utc": "2026-08-27 01:32:36 UTC",
+  "statement_count": 10,
+  "statement_ids": [
+    "CustomLabelingJobs",
+    "(no Sid)",
+    "(no Sid)",
+    "(no Sid)",
+    "CloudWatch",
+    "StreamingQueue",
+    "StreamingTopicSubscribe",
+    "StreamingTopic",
+    "StreamingTopicUnsubscribe",
+    "WorkforceVPC"
+  ]
+}

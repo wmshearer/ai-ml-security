@@ -1,0 +1,45 @@
+{
+  "run_id": "d6efd014",
+  "question": "Is ATT&CK technique T1078.002 (Domain Accounts) covered by a Sigma rule in the cloud rule corpus? Investigate and give your conclusion.",
+  "technique_id": "T1078.002",
+  "started_at": "2026-08-21T20:31:20Z",
+  "model": "qwen2.5:7b-instruct-q4_K_M",
+  "final_answer": "INCONCLUSIVE - T1078.002 is not in the 152-technique cloud set for ATT&CK v19.2. It may not exist, may not touch a cloud platform, or may be deprecated/revoked. We cannot determine coverage without more information.",
+  "final_label": "INCONCLUSIVE",
+  "hit_iteration_cap": false,
+  "total_wall_s": 1.58,
+  "tool_call_count": 1,
+  "invalid_tool_calls": 0,
+  "bad_argument_calls": 0,
+  "steps": [
+    {
+      "step": 2,
+      "kind": "tool_call",
+      "duration_s": 0.55,
+      "iteration": 1,
+      "tool": "get_technique",
+      "arguments": {
+        "technique_id": "T1078.002"
+      },
+      "result": {
+        "found": false,
+        "technique_id": "T1078.002",
+        "note": "T1078.002 is not in the 152-technique cloud set for ATT&CK v19.2. It may not exist, may not touch a cloud platform, or may be deprecated/revoked."
+      }
+    },
+    {
+      "step": 3,
+      "kind": "assistant_text",
+      "duration_s": 1.03,
+      "iteration": 2,
+      "text": "INCONCLUSIVE - T1078.002 is not in the 152-technique cloud set for ATT&CK v19.2. It may not exist, may not touch a cloud platform, or may be deprecated/revoked. We cannot determine coverage without more information."
+    },
+    {
+      "step": 3,
+      "kind": "final",
+      "duration_s": 0.0,
+      "iteration": 2,
+      "label": "INCONCLUSIVE"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+Command: cloudsplaining scan-policy-file --input-file policies/AmazonBedrockReadOnly.json -v
+
+There were no results found.
+
+EXIT_CODE: 0

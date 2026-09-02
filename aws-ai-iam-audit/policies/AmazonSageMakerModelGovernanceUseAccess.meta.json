@@ -1,0 +1,17 @@
+{
+  "policy_name": "AmazonSageMakerModelGovernanceUseAccess",
+  "arn": "arn:aws:iam::aws:policy/AmazonSageMakerModelGovernanceUseAccess",
+  "policy_version": "v3",
+  "creation_time": "November 30, 2022, 08:58 UTC",
+  "edited_time": "June 04, 2024, 21:48 UTC",
+  "source_url": "https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonSageMakerModelGovernanceUseAccess.html",
+  "retrieved_at_utc": "2026-08-27 01:32:37 UTC",
+  "statement_count": 5,
+  "statement_ids": [
+    "AllowSMMonitoringModelCards",
+    "AllowSMTrainingModelsSearchTags",
+    "AllowKMSActions",
+    "AllowS3Actions",
+    "AllowS3ListActions"
+  ]
+}

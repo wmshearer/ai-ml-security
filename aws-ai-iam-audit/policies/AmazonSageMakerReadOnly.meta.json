@@ -1,0 +1,14 @@
+{
+  "policy_name": "AmazonSageMakerReadOnly",
+  "arn": "arn:aws:iam::aws:policy/AmazonSageMakerReadOnly",
+  "policy_version": "v11",
+  "creation_time": "November 29, 2017, 13:07 UTC",
+  "edited_time": "December 01, 2021, 16:29 UTC",
+  "source_url": "https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonSageMakerReadOnly.html",
+  "retrieved_at_utc": "2026-08-27 01:32:33 UTC",
+  "statement_count": 2,
+  "statement_ids": [
+    "(no Sid)",
+    "(no Sid)"
+  ]
+}

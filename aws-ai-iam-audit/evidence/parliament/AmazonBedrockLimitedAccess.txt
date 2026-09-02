@@ -1,0 +1,27 @@
+/home/kali/director/projects/aws-ai-iam-audit/.venv/lib/python3.13/site-packages/parliament/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+LOW - Unknown action -  - Unknown action bedrock:CallWithBearerToken - {'string': 'bedrock:CallWithBearerToken', 'line': 10, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:CancelAutomatedReasoningPolicyBuildWorkflow - {'string': 'bedrock:CancelAutomatedReasoningPolicyBuildWorkflow', 'line': 12, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:CreateAutomatedReasoningPolicy - {'string': 'bedrock:CreateAutomatedReasoningPolicy', 'line': 13, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:CreateAutomatedReasoningPolicyTestCase - {'string': 'bedrock:CreateAutomatedReasoningPolicyTestCase', 'line': 14, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:CreateAutomatedReasoningPolicyVersion - {'string': 'bedrock:CreateAutomatedReasoningPolicyVersion', 'line': 15, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:CreatePromptRouter - {'string': 'bedrock:CreatePromptRouter', 'line': 24, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:DeleteAutomatedReasoningPolicy - {'string': 'bedrock:DeleteAutomatedReasoningPolicy', 'line': 26, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:DeleteAutomatedReasoningPolicyBuildWorkflow - {'string': 'bedrock:DeleteAutomatedReasoningPolicyBuildWorkflow', 'line': 27, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:DeleteAutomatedReasoningPolicyTestCase - {'string': 'bedrock:DeleteAutomatedReasoningPolicyTestCase', 'line': 28, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:DeletePromptRouter - {'string': 'bedrock:DeletePromptRouter', 'line': 33, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:ExportAutomatedReasoningPolicyVersion - {'string': 'bedrock:ExportAutomatedReasoningPolicyVersion', 'line': 35, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:StartAutomatedReasoningPolicyBuildWorkflow - {'string': 'bedrock:StartAutomatedReasoningPolicyBuildWorkflow', 'line': 36, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:StartAutomatedReasoningPolicyTestWorkflow - {'string': 'bedrock:StartAutomatedReasoningPolicyTestWorkflow', 'line': 37, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:UpdateAutomatedReasoningPolicy - {'string': 'bedrock:UpdateAutomatedReasoningPolicy', 'line': 43, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:UpdateAutomatedReasoningPolicyAnnotations - {'string': 'bedrock:UpdateAutomatedReasoningPolicyAnnotations', 'line': 44, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:UpdateAutomatedReasoningPolicyTestCase - {'string': 'bedrock:UpdateAutomatedReasoningPolicyTestCase', 'line': 45, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown action -  - Unknown action bedrock:InvokeAutomatedReasoningPolicy - {'string': 'bedrock:InvokeAutomatedReasoningPolicy', 'line': 49, 'column': 9, 'filepath': '<stdin>'}
+MEDIUM - No resources match for the given action -  - [{'action': 'kms:DescribeKey', 'required_format': 'arn:*:kms:*:*:key/*'}] - {'line': 55, 'column': 5, 'filepath': '<stdin>'}
+LOW - Unknown prefix -  - Unknown prefix bedrock-mantle - {'string': 'bedrock-mantle:CallWithBearerToken', 'line': 78, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown prefix -  - Unknown prefix bedrock-mantle - {'string': 'bedrock-mantle:Get*', 'line': 79, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown prefix -  - Unknown prefix bedrock-mantle - {'string': 'bedrock-mantle:List*', 'line': 80, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown prefix -  - Unknown prefix bedrock-mantle - {'string': 'bedrock-mantle:CreateInference', 'line': 81, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown prefix -  - Unknown prefix bedrock-websearch - {'string': 'bedrock-websearch:InvokeSearch', 'line': 89, 'column': 9, 'filepath': '<stdin>'}
+LOW - Unknown prefix -  - Unknown prefix bedrock-websearch - {'string': 'bedrock-websearch:InvokeFetch', 'line': 90, 'column': 9, 'filepath': '<stdin>'}
+EXIT_CODE: 1

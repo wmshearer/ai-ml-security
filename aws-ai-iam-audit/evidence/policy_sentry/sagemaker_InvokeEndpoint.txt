@@ -1,0 +1,43 @@
+Command: policy_sentry query action-table --service sagemaker --name InvokeEndpoint
+
+{
+    "sagemaker": [
+        {
+            "action": "sagemaker:InvokeEndpoint",
+            "description": "Grants permission to invoke an endpoint. After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint",
+            "access_level": "Read",
+            "api_documentation_link": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html",
+            "resource_arn_format": "arn:${Partition}:sagemaker:${Region}:${Account}:endpoint/${EndpointName}",
+            "condition_keys": [
+                "aws:ResourceTag/${TagKey}",
+                "sagemaker:ResourceTag/${TagKey}",
+                "sagemaker:TargetModel"
+            ],
+            "dependent_actions": []
+        },
+        {
+            "action": "sagemaker:InvokeEndpoint",
+            "description": "Grants permission to invoke an endpoint. After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint",
+            "access_level": "Read",
+            "api_documentation_link": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html",
+            "resource_arn_format": "arn:${Partition}:sagemaker:${Region}:${Account}:inference-component/${InferenceComponentName}",
+            "condition_keys": [
+                "aws:ResourceTag/${TagKey}",
+                "sagemaker:ResourceTag/${TagKey}",
+                "sagemaker:TargetModel"
+            ],
+            "dependent_actions": []
+        },
+        {
+            "action": "sagemaker:InvokeEndpoint",
+            "description": "Grants permission to invoke an endpoint. After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint",
+            "access_level": "Read",
+            "api_documentation_link": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html",
+            "resource_arn_format": "*",
+            "condition_keys": [
+                "sagemaker:TargetModel"
+            ],
+            "dependent_actions": []
+        }
+    ]
+}

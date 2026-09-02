@@ -1,0 +1,68 @@
+Command: policy_sentry query action-table --service s3 --name GetObject
+
+{
+    "s3": [
+        {
+            "action": "s3:GetObject",
+            "description": "Grants permission to retrieve objects from Amazon S3",
+            "access_level": "Read",
+            "api_documentation_link": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html",
+            "resource_arn_format": "arn:${Partition}:s3:${Region}:${Account}:accesspoint/${AccessPointName}/object/${ObjectName}",
+            "condition_keys": [
+                "aws:ResourceTag/${TagKey}",
+                "s3:AccessPointNetworkOrigin",
+                "s3:AccessPointTag/${TagKey}",
+                "s3:BucketTag/${TagKey}",
+                "s3:DataAccessPointAccount",
+                "s3:DataAccessPointArn",
+                "s3:AccessGrantsInstanceArn",
+                "s3:ExistingObjectTag/<key>",
+                "s3:authType",
+                "s3:ResourceAccount",
+                "s3:signatureAge",
+                "s3:signatureversion",
+                "s3:TlsVersion",
+                "s3:x-amz-content-sha256"
+            ],
+            "dependent_actions": []
+        },
+        {
+            "action": "s3:GetObject",
+            "description": "Grants permission to retrieve objects from Amazon S3",
+            "access_level": "Read",
+            "api_documentation_link": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html",
+            "resource_arn_format": "arn:${Partition}:s3:::${BucketName}/${ObjectName}",
+            "condition_keys": [
+                "aws:ResourceTag/${TagKey}",
+                "s3:BucketTag/${TagKey}",
+                "s3:AccessGrantsInstanceArn",
+                "s3:ExistingObjectTag/<key>",
+                "s3:authType",
+                "s3:ResourceAccount",
+                "s3:signatureAge",
+                "s3:signatureversion",
+                "s3:TlsVersion",
+                "s3:x-amz-content-sha256"
+            ],
+            "dependent_actions": []
+        },
+        {
+            "action": "s3:GetObject",
+            "description": "Grants permission to retrieve objects from Amazon S3",
+            "access_level": "Read",
+            "api_documentation_link": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html",
+            "resource_arn_format": "*",
+            "condition_keys": [
+                "s3:AccessGrantsInstanceArn",
+                "s3:ExistingObjectTag/<key>",
+                "s3:authType",
+                "s3:ResourceAccount",
+                "s3:signatureAge",
+                "s3:signatureversion",
+                "s3:TlsVersion",
+                "s3:x-amz-content-sha256"
+            ],
+            "dependent_actions": []
+        }
+    ]
+}

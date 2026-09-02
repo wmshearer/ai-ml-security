@@ -1,0 +1,132 @@
+Command: policy_sentry query action-table --service sagemaker --name CreateTrainingJob
+
+{
+    "sagemaker": [
+        {
+            "action": "sagemaker:CreateTrainingJob",
+            "description": "Grants permission to start a model training job. After training completes, Amazon SageMaker saves the resulting model artifacts and other optional output to an Amazon S3 location that you specify",
+            "access_level": "Write",
+            "api_documentation_link": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html",
+            "resource_arn_format": "arn:${Partition}:sagemaker:${Region}:${Account}:training-job/${TrainingJobName}",
+            "condition_keys": [
+                "aws:ResourceTag/${TagKey}",
+                "sagemaker:ResourceTag/${TagKey}",
+                "aws:RequestTag/${TagKey}",
+                "aws:TagKeys",
+                "sagemaker:FileSystemAccessMode",
+                "sagemaker:FileSystemDirectoryPath",
+                "sagemaker:FileSystemId",
+                "sagemaker:FileSystemType",
+                "sagemaker:InstanceTypes",
+                "sagemaker:InterContainerTrafficEncryption",
+                "sagemaker:MaxRuntimeInSeconds",
+                "sagemaker:NetworkIsolation",
+                "sagemaker:OutputKmsKey",
+                "sagemaker:VolumeKmsKey",
+                "sagemaker:VpcSecurityGroupIds",
+                "sagemaker:VpcSubnets",
+                "sagemaker:KeepAlivePeriod",
+                "sagemaker:EnableRemoteDebug",
+                "sagemaker:DirectGatedModelAccess"
+            ],
+            "dependent_actions": [
+                "iam:PassRole",
+                "sagemaker:AddTags"
+            ]
+        },
+        {
+            "action": "sagemaker:CreateTrainingJob",
+            "description": "Grants permission to start a model training job. After training completes, Amazon SageMaker saves the resulting model artifacts and other optional output to an Amazon S3 location that you specify",
+            "access_level": "Write",
+            "api_documentation_link": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html",
+            "resource_arn_format": "arn:${Partition}:sagemaker:${Region}:${Account}:reserved-capacity/${RandomString}",
+            "condition_keys": [
+                "aws:ResourceTag/${TagKey}",
+                "sagemaker:ResourceTag/${TagKey}",
+                "aws:RequestTag/${TagKey}",
+                "aws:TagKeys",
+                "sagemaker:FileSystemAccessMode",
+                "sagemaker:FileSystemDirectoryPath",
+                "sagemaker:FileSystemId",
+                "sagemaker:FileSystemType",
+                "sagemaker:InstanceTypes",
+                "sagemaker:InterContainerTrafficEncryption",
+                "sagemaker:MaxRuntimeInSeconds",
+                "sagemaker:NetworkIsolation",
+                "sagemaker:OutputKmsKey",
+                "sagemaker:VolumeKmsKey",
+                "sagemaker:VpcSecurityGroupIds",
+                "sagemaker:VpcSubnets",
+                "sagemaker:KeepAlivePeriod",
+                "sagemaker:EnableRemoteDebug",
+                "sagemaker:DirectGatedModelAccess"
+            ],
+            "dependent_actions": [
+                "iam:PassRole",
+                "sagemaker:AddTags"
+            ]
+        },
+        {
+            "action": "sagemaker:CreateTrainingJob",
+            "description": "Grants permission to start a model training job. After training completes, Amazon SageMaker saves the resulting model artifacts and other optional output to an Amazon S3 location that you specify",
+            "access_level": "Write",
+            "api_documentation_link": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html",
+            "resource_arn_format": "arn:${Partition}:sagemaker:${Region}:${Account}:training-plan/${TrainingPlanName}",
+            "condition_keys": [
+                "aws:ResourceTag/${TagKey}",
+                "sagemaker:ResourceTag/${TagKey}",
+                "aws:RequestTag/${TagKey}",
+                "aws:TagKeys",
+                "sagemaker:FileSystemAccessMode",
+                "sagemaker:FileSystemDirectoryPath",
+                "sagemaker:FileSystemId",
+                "sagemaker:FileSystemType",
+                "sagemaker:InstanceTypes",
+                "sagemaker:InterContainerTrafficEncryption",
+                "sagemaker:MaxRuntimeInSeconds",
+                "sagemaker:NetworkIsolation",
+                "sagemaker:OutputKmsKey",
+                "sagemaker:VolumeKmsKey",
+                "sagemaker:VpcSecurityGroupIds",
+                "sagemaker:VpcSubnets",
+                "sagemaker:KeepAlivePeriod",
+                "sagemaker:EnableRemoteDebug",
+                "sagemaker:DirectGatedModelAccess"
+            ],
+            "dependent_actions": [
+                "iam:PassRole",
+                "sagemaker:AddTags"
+            ]
+        },
+        {
+            "action": "sagemaker:CreateTrainingJob",
+            "description": "Grants permission to start a model training job. After training completes, Amazon SageMaker saves the resulting model artifacts and other optional output to an Amazon S3 location that you specify",
+            "access_level": "Write",
+            "api_documentation_link": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html",
+            "resource_arn_format": "*",
+            "condition_keys": [
+                "aws:RequestTag/${TagKey}",
+                "aws:TagKeys",
+                "sagemaker:FileSystemAccessMode",
+                "sagemaker:FileSystemDirectoryPath",
+                "sagemaker:FileSystemId",
+                "sagemaker:FileSystemType",
+                "sagemaker:InstanceTypes",
+                "sagemaker:InterContainerTrafficEncryption",
+                "sagemaker:MaxRuntimeInSeconds",
+                "sagemaker:NetworkIsolation",
+                "sagemaker:OutputKmsKey",
+                "sagemaker:VolumeKmsKey",
+                "sagemaker:VpcSecurityGroupIds",
+                "sagemaker:VpcSubnets",
+                "sagemaker:KeepAlivePeriod",
+                "sagemaker:EnableRemoteDebug",
+                "sagemaker:DirectGatedModelAccess"
+            ],
+            "dependent_actions": [
+                "iam:PassRole",
+                "sagemaker:AddTags"
+            ]
+        }
+    ]
+}

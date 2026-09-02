@@ -1,0 +1,8 @@
+/home/kali/director/projects/aws-ai-iam-audit/.venv/lib/python3.13/site-packages/parliament/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+LOW - Unnecessary use of Resource * -  - ['s3:GetObject'] - {'line': 34, 'column': 5, 'filepath': '<stdin>'}
+LOW - Unnecessary use of Resource * -  - ['s3:GetBucketLocation', 's3:ListBucket'] - {'line': 46, 'column': 5, 'filepath': '<stdin>'}
+LOW - Unnecessary use of Resource * -  - ['logs:CreateLogGroup', 'logs:CreateLogStream', 'logs:DescribeLogStreams', 'logs:PutLogEvents'] - {'line': 54, 'column': 5, 'filepath': '<stdin>'}
+MEDIUM - Unknown condition for action - The given condition is not documented to work with the given action - Unknown condition ec2:VpceServiceName for action ec2:DescribeVpcEndpoints - {'line': 138, 'column': 31, 'filepath': '<stdin>'}
+LOW - Unnecessary use of Resource * -  - ['ec2:CreateVpcEndpoint', 'ec2:DeleteVpcEndpoints'] - {'line': 128, 'column': 5, 'filepath': '<stdin>'}
+EXIT_CODE: 1

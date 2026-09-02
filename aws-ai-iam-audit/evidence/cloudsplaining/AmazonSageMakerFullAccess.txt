@@ -1,0 +1,15 @@
+Command: cloudsplaining scan-policy-file --input-file policies/AmazonSageMakerFullAccess.json -v
+
+[91mPotential Issue found: Policy is capable of Resource Exposure[0m
+[1mActions[0m: ec2:CreateNetworkInterfacePermission, ec2:DeleteNetworkInterfacePermission
+
+[91mPotential Issue found: Policy allows ALL Actions from a service (like service:*)[0m
+[1mActions[0m: groundtruthlabeling, sagemaker, sagemaker-geospatial
+
+[91mPotential Issue found: Policy allows actions that return credentials[0m
+[1mActions[0m: ecr:GetAuthorizationToken
+
+[91mPotential Issue found: Policy is capable of Unrestricted Infrastructure Modification[0m
+[1mActions[0m: application-autoscaling:DeleteScalingPolicy, application-autoscaling:DeleteScheduledAction, application-autoscaling:DeregisterScalableTarget, application-autoscaling:PutScalingPolicy, application-autoscaling:PutScheduledAction, application-autoscaling:RegisterScalableTarget, athena:StartQueryExecution, athena:StopQueryExecution, cloudwatch:DeleteAlarms, cloudwatch:PutMetricAlarm, codecommit:CreateRepository, cognito-idp:AdminAddUserToGroup, cognito-idp:AdminCreateUser, cognito-idp:AdminDeleteUser, cognito-idp:AdminDisableUser, cognito-idp:AdminEnableUser, cognito-idp:AdminRemoveUserFromGroup, cognito-idp:CreateGroup, cognito-idp:CreateUserPoolClient, cognito-idp:CreateUserPoolDomain, cognito-idp:UpdateUserPool, cognito-idp:UpdateUserPoolClient, ec2:CreateNetworkInterface, ec2:CreateNetworkInterfacePermission, ec2:CreateVpcEndpoint, ec2:DeleteNetworkInterface, ec2:DeleteNetworkInterfacePermission, ecr:CreateRepository, ecr:StartImageScan, glue:CreateJob, glue:DeleteJob, glue:StartJobRun, glue:StartWorkflowRun, glue:UpdateJob, logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents, redshift-data:ExecuteStatement, robomaker:CancelSimulationJob, robomaker:DeleteSimulationApplication, s3:CreateBucket, s3:PutBucketCORS, sagemaker:CreatePresignedDomainUrl, servicecatalog:ProvisionProduct
+
+EXIT_CODE: 0

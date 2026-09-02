@@ -1,0 +1,32 @@
+Command: policy_sentry query action-table --service iam --name PassRole
+
+{
+    "iam": [
+        {
+            "action": "iam:PassRole",
+            "description": "Grants permission to pass a role to a service",
+            "access_level": "Permissions management",
+            "api_documentation_link": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html",
+            "resource_arn_format": "arn:${Partition}:iam::${Account}:role/${RoleNameWithPath}",
+            "condition_keys": [
+                "aws:ResourceTag/${TagKey}",
+                "iam:ResourceTag/${TagKey}",
+                "iam:AssociatedResourceArn",
+                "iam:PassedToService"
+            ],
+            "dependent_actions": []
+        },
+        {
+            "action": "iam:PassRole",
+            "description": "Grants permission to pass a role to a service",
+            "access_level": "Permissions management",
+            "api_documentation_link": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html",
+            "resource_arn_format": "*",
+            "condition_keys": [
+                "iam:AssociatedResourceArn",
+                "iam:PassedToService"
+            ],
+            "dependent_actions": []
+        }
+    ]
+}

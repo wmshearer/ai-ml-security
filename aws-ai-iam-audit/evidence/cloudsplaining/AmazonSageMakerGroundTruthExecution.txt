@@ -1,0 +1,6 @@
+Command: cloudsplaining scan-policy-file --input-file policies/AmazonSageMakerGroundTruthExecution.json -v
+
+[91mPotential Issue found: Policy is capable of Unrestricted Infrastructure Modification[0m
+[1mActions[0m: logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents
+
+EXIT_CODE: 0

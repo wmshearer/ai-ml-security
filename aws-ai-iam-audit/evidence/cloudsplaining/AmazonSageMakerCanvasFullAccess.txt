@@ -1,0 +1,9 @@
+Command: cloudsplaining scan-policy-file --input-file policies/AmazonSageMakerCanvasFullAccess.json -v
+
+[91mPotential Issue found: Policy allows actions that return credentials[0m
+[1mActions[0m: ecr:GetAuthorizationToken
+
+[91mPotential Issue found: Policy is capable of Unrestricted Infrastructure Modification[0m
+[1mActions[0m: ec2:CreateVpcEndpoint, redshift-data:ExecuteStatement
+
+EXIT_CODE: 0

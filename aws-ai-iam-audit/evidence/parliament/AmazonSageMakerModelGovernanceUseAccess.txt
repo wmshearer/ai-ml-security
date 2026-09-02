@@ -1,0 +1,6 @@
+/home/kali/director/projects/aws-ai-iam-audit/.venv/lib/python3.13/site-packages/parliament/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+LOW - Unnecessary use of Resource * -  - ['sagemaker:CreateModelCard', 'sagemaker:CreateModelCardExportJob', 'sagemaker:DeleteModelCard', 'sagemaker:DescribeModelCard', 'sagemaker:DescribeModelCardExportJob', 'sagemaker:DescribeModelPackage', 'sagemaker:DescribeModelPackageGroup', 'sagemaker:ListModelCardExportJobs', 'sagemaker:ListModelCardVersions', 'sagemaker:StartMonitoringSchedule', 'sagemaker:StopMonitoringSchedule', 'sagemaker:UpdateModelCard', 'sagemaker:UpdateMonitoringAlert'] - {'line': 4, 'column': 5, 'filepath': '<stdin>'}
+LOW - Unnecessary use of Resource * -  - ['sagemaker:DescribeModel', 'sagemaker:DescribeTrainingJob'] - {'line': 28, 'column': 5, 'filepath': '<stdin>'}
+LOW - Unnecessary use of Resource * -  - ['s3:ListBucket'] - {'line': 66, 'column': 5, 'filepath': '<stdin>'}
+EXIT_CODE: 1
