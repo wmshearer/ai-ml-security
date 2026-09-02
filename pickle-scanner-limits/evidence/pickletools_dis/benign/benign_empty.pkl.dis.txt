@@ -1,0 +1,5 @@
+    0: \x80 PROTO      4
+    2: }    EMPTY_DICT
+    3: \x94 MEMOIZE    (as 0)
+    4: .    STOP
+highest protocol among opcodes = 4

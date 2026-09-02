@@ -1,0 +1,16 @@
+    0: \x80 PROTO      4
+    2: \x95 FRAME      61
+   11: \x8c SHORT_BINUNICODE 'corpus_gen.marker'
+   30: \x94 MEMOIZE    (as 0)
+   31: \x8c SHORT_BINUNICODE 'write_marker'
+   45: \x94 MEMOIZE    (as 1)
+   46: \x93 STACK_GLOBAL
+   47: \x94 MEMOIZE    (as 2)
+   48: \x8c SHORT_BINUNICODE 'poc_overt_reduce'
+   66: \x94 MEMOIZE    (as 3)
+   67: \x85 TUPLE1
+   68: \x94 MEMOIZE    (as 4)
+   69: R    REDUCE
+   70: \x94 MEMOIZE    (as 5)
+   71: .    STOP
+highest protocol among opcodes = 4

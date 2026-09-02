@@ -1,0 +1,11 @@
+file,class,technique,cve,expected_detection,picklescan_default_alerted,picklescan_default_verdict,picklescan_strict_alerted,picklescan_strict_verdict,modelscan_alerted,modelscan_verdict,fickling_severity,fickling_alerted,fickling_verdict
+corpus/benign/benign_dict.pkl,benign,none,,no_alert,False,true_negative,False,true_negative,False,true_negative,LIKELY_SAFE,False,true_negative
+corpus/benign/benign_list_of_tuples.pkl,benign,none,,no_alert,False,true_negative,False,true_negative,False,true_negative,LIKELY_SAFE,False,true_negative
+corpus/benign/benign_nested.pkl,benign,none,,no_alert,False,true_negative,False,true_negative,False,true_negative,LIKELY_SAFE,False,true_negative
+corpus/benign/benign_numbers.pkl,benign,none,,no_alert,False,true_negative,False,true_negative,False,true_negative,LIKELY_SAFE,False,true_negative
+corpus/benign/benign_strings.pkl,benign,none,,no_alert,False,true_negative,False,true_negative,False,true_negative,LIKELY_SAFE,False,true_negative
+corpus/benign/benign_empty.pkl,benign,none,,no_alert,False,true_negative,False,true_negative,False,true_negative,LIKELY_SAFE,False,true_negative
+corpus/poc_overt/poc_overt_reduce.pkl,poc_overt,plain_reduce,,alert,True,detected,True,detected,False,missed,LIKELY_UNSAFE,True,detected
+corpus/poc_overt/poc_overt_stdlib_global.pkl,poc_overt,stdlib_global_reduce,,alert,True,detected,True,detected,False,missed,SUSPICIOUS,True,detected
+corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin,poc_evasive,extension_mismatch,CVE-2025-10155,"alert_if_patched,miss_if_vulnerable",True,detected_bypass_failed_to_evade,True,detected_bypass_failed_to_evade,False,missed_bypass_still_works,LIKELY_UNSAFE,True,detected_bypass_failed_to_evade
+corpus/poc_evasive/cve_2025_10157_submodule_import.pkl,poc_evasive,submodule_import,CVE-2025-10157,"alert_if_patched,miss_if_vulnerable",True,detected_bypass_failed_to_evade,True,detected_bypass_failed_to_evade,False,missed_bypass_still_works,LIKELY_UNSAFE,True,detected_bypass_failed_to_evade

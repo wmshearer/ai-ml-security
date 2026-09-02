@@ -1,0 +1,13 @@
+tool,class,n_files,detected,detected_bypass_failed_to_evade,missed,missed_bypass_still_works,true_negative
+picklescan_default,benign,6,0,0,0,0,6
+picklescan_default,poc_evasive,2,0,2,0,0,0
+picklescan_default,poc_overt,2,2,0,0,0,0
+picklescan_strict,benign,6,0,0,0,0,6
+picklescan_strict,poc_evasive,2,0,2,0,0,0
+picklescan_strict,poc_overt,2,2,0,0,0,0
+modelscan,benign,6,0,0,0,0,6
+modelscan,poc_evasive,2,0,0,0,2,0
+modelscan,poc_overt,2,0,0,2,0,0
+fickling,benign,6,0,0,0,0,6
+fickling,poc_evasive,2,0,2,0,0,0
+fickling,poc_overt,2,2,0,0,0,0

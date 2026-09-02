@@ -1,0 +1,25 @@
+    0: \x80 PROTO      4
+    2: \x95 FRAME      57
+   11: }    EMPTY_DICT
+   12: \x94 MEMOIZE    (as 0)
+   13: (    MARK
+   14: \x8c     SHORT_BINUNICODE 'user'
+   20: \x94     MEMOIZE    (as 1)
+   21: \x8c     SHORT_BINUNICODE 'alice'
+   28: \x94     MEMOIZE    (as 2)
+   29: \x8c     SHORT_BINUNICODE 'id'
+   33: \x94     MEMOIZE    (as 3)
+   34: K        BININT1    42
+   36: \x8c     SHORT_BINUNICODE 'roles'
+   43: \x94     MEMOIZE    (as 4)
+   44: ]        EMPTY_LIST
+   45: \x94     MEMOIZE    (as 5)
+   46: (        MARK
+   47: \x8c         SHORT_BINUNICODE 'reader'
+   55: \x94         MEMOIZE    (as 6)
+   56: \x8c         SHORT_BINUNICODE 'editor'
+   64: \x94         MEMOIZE    (as 7)
+   65: e            APPENDS    (MARK at 46)
+   66: u        SETITEMS   (MARK at 13)
+   67: .    STOP
+highest protocol among opcodes = 4

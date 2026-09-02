@@ -1,0 +1,23 @@
+    0: \x80 PROTO      4
+    2: \x95 FRAME      29
+   11: ]    EMPTY_LIST
+   12: \x94 MEMOIZE    (as 0)
+   13: (    MARK
+   14: K        BININT1    1
+   16: \x8c     SHORT_BINUNICODE 'a'
+   19: \x94     MEMOIZE    (as 1)
+   20: \x86     TUPLE2
+   21: \x94     MEMOIZE    (as 2)
+   22: K        BININT1    2
+   24: \x8c     SHORT_BINUNICODE 'b'
+   27: \x94     MEMOIZE    (as 3)
+   28: \x86     TUPLE2
+   29: \x94     MEMOIZE    (as 4)
+   30: K        BININT1    3
+   32: \x8c     SHORT_BINUNICODE 'c'
+   35: \x94     MEMOIZE    (as 5)
+   36: \x86     TUPLE2
+   37: \x94     MEMOIZE    (as 6)
+   38: e        APPENDS    (MARK at 13)
+   39: .    STOP
+highest protocol among opcodes = 4

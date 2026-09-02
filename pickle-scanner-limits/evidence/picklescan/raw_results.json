@@ -1,0 +1,146 @@
+{
+  "tool": "picklescan",
+  "version": "1.0.5",
+  "results": [
+    {
+      "file": "corpus/benign/benign_dict.pkl",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_dict.pkl",
+      "strict": true,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_empty.pkl",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_empty.pkl",
+      "strict": true,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_list_of_tuples.pkl",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_list_of_tuples.pkl",
+      "strict": true,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_nested.pkl",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_nested.pkl",
+      "strict": true,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_numbers.pkl",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_numbers.pkl",
+      "strict": true,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_strings.pkl",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/benign/benign_strings.pkl",
+      "strict": true,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 0\nDangerous globals: 0\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 1\nDangerous globals: 0\nAll globals found:\n  * corpus_gen.marker.write_marker - suspicious\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin",
+      "strict": true,
+      "returncode": 1,
+      "stdout": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10155_extension_mismatch.bin: dangerous import 'corpus_gen.marker write_marker' FOUND (promoted by --strict)\n----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 1\nSuspicious globals: 0\nDangerous globals: 1\nAll globals found:\n  * corpus_gen.marker.write_marker - dangerous\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/poc_evasive/cve_2025_10157_submodule_import.pkl",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 1\nDangerous globals: 0\nAll globals found:\n  * corpus_gen.marker.submodule.write_marker_via_submodule - suspicious\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/poc_evasive/cve_2025_10157_submodule_import.pkl",
+      "strict": true,
+      "returncode": 1,
+      "stdout": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_evasive/cve_2025_10157_submodule_import.pkl: dangerous import 'corpus_gen.marker.submodule write_marker_via_submodule' FOUND (promoted by --strict)\n----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 1\nSuspicious globals: 0\nDangerous globals: 1\nAll globals found:\n  * corpus_gen.marker.submodule.write_marker_via_submodule - dangerous\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/poc_overt/poc_overt_reduce.pkl",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 1\nDangerous globals: 0\nAll globals found:\n  * corpus_gen.marker.write_marker - suspicious\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/poc_overt/poc_overt_reduce.pkl",
+      "strict": true,
+      "returncode": 1,
+      "stdout": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_reduce.pkl: dangerous import 'corpus_gen.marker write_marker' FOUND (promoted by --strict)\n----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 1\nSuspicious globals: 0\nDangerous globals: 1\nAll globals found:\n  * corpus_gen.marker.write_marker - dangerous\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/poc_overt/poc_overt_stdlib_global.pkl",
+      "strict": false,
+      "returncode": 0,
+      "stdout": "----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 0\nSuspicious globals: 1\nDangerous globals: 0\nAll globals found:\n  * posixpath.join - suspicious\n",
+      "stderr": ""
+    },
+    {
+      "file": "corpus/poc_overt/poc_overt_stdlib_global.pkl",
+      "strict": true,
+      "returncode": 1,
+      "stdout": "/home/kali/director/projects/pickle-scanner-limits/corpus/poc_overt/poc_overt_stdlib_global.pkl: dangerous import 'posixpath join' FOUND (promoted by --strict)\n----------- SCAN SUMMARY -----------\nScanned files: 1\nInfected files: 1\nSuspicious globals: 0\nDangerous globals: 1\nAll globals found:\n  * posixpath.join - dangerous\n",
+      "stderr": ""
+    }
+  ]
+}
