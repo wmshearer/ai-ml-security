@@ -1,0 +1,11 @@
+Files in this directory are fetched verbatim from InjecAgent
+(https://github.com/uiuc-kang-lab/InjecAgent), MIT license.
+
+  dh_base.json  <- data/test_cases_dh_base.json   (direct-harm attacker cases)
+  ds_base.json  <- data/test_cases_ds_base.json   (data-stealing attacker cases)
+  tools.json    <- data/tools.json                (tool/toolkit descriptions)
+
+Fetched by scripts/01_fetch_corpus.py. Not modified after download.
+Citation: Zhan et al., "InjecAgent: Benchmarking Indirect Prompt Injections
+in Tool-Integrated Large Language Model Agents", ACL Findings 2024,
+arXiv:2403.02691.
