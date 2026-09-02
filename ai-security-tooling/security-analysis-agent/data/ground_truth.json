@@ -1,0 +1,4192 @@
+{
+  "attack_version": "19.2",
+  "cloud_platforms": [
+    "IaaS",
+    "Identity Provider",
+    "Office Suite",
+    "SaaS"
+  ],
+  "cloud_techniques_total": 152,
+  "covered": [
+    "T1021",
+    "T1021.007",
+    "T1059",
+    "T1059.009",
+    "T1070",
+    "T1074",
+    "T1078",
+    "T1078.004",
+    "T1087",
+    "T1087.004",
+    "T1098",
+    "T1098.001",
+    "T1098.003",
+    "T1098.005",
+    "T1110",
+    "T1114",
+    "T1114.003",
+    "T1136",
+    "T1136.003",
+    "T1190",
+    "T1199",
+    "T1484",
+    "T1484.002",
+    "T1485",
+    "T1486",
+    "T1489",
+    "T1490",
+    "T1496",
+    "T1525",
+    "T1526",
+    "T1528",
+    "T1531",
+    "T1537",
+    "T1548",
+    "T1550",
+    "T1550.001",
+    "T1552",
+    "T1552.001",
+    "T1555",
+    "T1556",
+    "T1556.006",
+    "T1566",
+    "T1566.002",
+    "T1578",
+    "T1578.003",
+    "T1580",
+    "T1606",
+    "T1619",
+    "T1621",
+    "T1685",
+    "T1685.002",
+    "T1686.001"
+  ],
+  "off_matrix": [
+    "T1003",
+    "T1005",
+    "T1020",
+    "T1053",
+    "T1053.003",
+    "T1059.001",
+    "T1059.003",
+    "T1059.004",
+    "T1078.002",
+    "T1090",
+    "T1140",
+    "T1552.007",
+    "T1565",
+    "T1565.001",
+    "T1566.001",
+    "T1573",
+    "T1589",
+    "T1608",
+    "T1608.003",
+    "T1686"
+  ],
+  "rules_per_technique": {
+    "T1021.007": 1,
+    "T1059": 4,
+    "T1059.009": 3,
+    "T1070": 1,
+    "T1074": 1,
+    "T1078": 33,
+    "T1078.004": 32,
+    "T1087.004": 2,
+    "T1098": 11,
+    "T1098.001": 1,
+    "T1098.003": 5,
+    "T1098.005": 1,
+    "T1110": 9,
+    "T1114": 2,
+    "T1114.003": 2,
+    "T1136": 1,
+    "T1136.003": 2,
+    "T1190": 3,
+    "T1199": 1,
+    "T1484": 1,
+    "T1484.002": 1,
+    "T1485": 11,
+    "T1486": 3,
+    "T1489": 8,
+    "T1490": 1,
+    "T1496": 7,
+    "T1525": 1,
+    "T1526": 1,
+    "T1528": 8,
+    "T1531": 4,
+    "T1537": 4,
+    "T1548": 9,
+    "T1550": 3,
+    "T1550.001": 4,
+    "T1552": 9,
+    "T1552.001": 3,
+    "T1555": 1,
+    "T1556": 9,
+    "T1556.006": 2,
+    "T1566": 2,
+    "T1566.002": 2,
+    "T1578": 1,
+    "T1578.003": 1,
+    "T1580": 1,
+    "T1606": 1,
+    "T1619": 1,
+    "T1621": 2,
+    "T1685": 7,
+    "T1685.002": 3,
+    "T1686.001": 5
+  },
+  "rules_total": 225,
+  "source_project": "cloud-detection-coverage",
+  "techniques": {
+    "T1020.001": {
+      "covered": false,
+      "id": "T1020.001",
+      "is_subtechnique": true,
+      "name": "Traffic Duplication",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "exfiltration"
+      ]
+    },
+    "T1021": {
+      "covered": true,
+      "id": "T1021",
+      "is_subtechnique": false,
+      "name": "Remote Services",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_console_getsignintoken.yml",
+          "tag_exact": "T1021.007",
+          "title": "AWS Console GetSigninToken Potential Abuse",
+          "via_subtechnique": true
+        }
+      ],
+      "tactics": [
+        "lateral-movement"
+      ]
+    },
+    "T1021.007": {
+      "covered": true,
+      "id": "T1021.007",
+      "is_subtechnique": true,
+      "name": "Cloud Services",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_console_getsignintoken.yml",
+          "tag_exact": "T1021.007",
+          "title": "AWS Console GetSigninToken Potential Abuse"
+        }
+      ],
+      "tactics": [
+        "lateral-movement"
+      ]
+    },
+    "T1021.008": {
+      "covered": false,
+      "id": "T1021.008",
+      "is_subtechnique": true,
+      "name": "Direct Cloud VM Connections",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "lateral-movement"
+      ]
+    },
+    "T1036.010": {
+      "covered": false,
+      "id": "T1036.010",
+      "is_subtechnique": true,
+      "name": "Masquerade Account Name",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1040": {
+      "covered": false,
+      "id": "T1040",
+      "is_subtechnique": false,
+      "name": "Network Sniffing",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access",
+        "discovery"
+      ]
+    },
+    "T1046": {
+      "covered": false,
+      "id": "T1046",
+      "is_subtechnique": false,
+      "name": "Network Service Discovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1048": {
+      "covered": false,
+      "id": "T1048",
+      "is_subtechnique": false,
+      "name": "Exfiltration Over Alternative Protocol",
+      "platforms": [
+        "IaaS",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "exfiltration"
+      ]
+    },
+    "T1049": {
+      "covered": false,
+      "id": "T1049",
+      "is_subtechnique": false,
+      "name": "System Network Connections Discovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1059": {
+      "covered": true,
+      "id": "T1059",
+      "is_subtechnique": false,
+      "name": "Command and Scripting Interpreter",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 7,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_ec2_startup_script_change.yml",
+          "tag_exact": "T1059.003",
+          "title": "AWS EC2 Startup Shell Script Change",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_ec2_startup_script_change.yml",
+          "tag_exact": "T1059.001",
+          "title": "AWS EC2 Startup Shell Script Change",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_ec2_startup_script_change.yml",
+          "tag_exact": "T1059.004",
+          "title": "AWS EC2 Startup Shell Script Change",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_loginprofile_creation.yml",
+          "tag_exact": "T1059.009",
+          "title": "AWS IAM S3Browser LoginProfile Creation",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_templated_s3_bucket_policy_creation.yml",
+          "tag_exact": "T1059.009",
+          "title": "AWS IAM S3Browser Templated S3 Bucket Policy Creation",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_user_or_accesskey_creation.yml",
+          "tag_exact": "T1059.009",
+          "title": "AWS IAM S3Browser User or AccessKey Creation",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_new_cloudshell_created.yml",
+          "tag_exact": "T1059",
+          "title": "Azure New CloudShell Created"
+        }
+      ],
+      "tactics": [
+        "execution"
+      ]
+    },
+    "T1059.009": {
+      "covered": true,
+      "id": "T1059.009",
+      "is_subtechnique": true,
+      "name": "Cloud API",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 3,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_loginprofile_creation.yml",
+          "tag_exact": "T1059.009",
+          "title": "AWS IAM S3Browser LoginProfile Creation"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_templated_s3_bucket_policy_creation.yml",
+          "tag_exact": "T1059.009",
+          "title": "AWS IAM S3Browser Templated S3 Bucket Policy Creation"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_user_or_accesskey_creation.yml",
+          "tag_exact": "T1059.009",
+          "title": "AWS IAM S3Browser User or AccessKey Creation"
+        }
+      ],
+      "tactics": [
+        "execution"
+      ]
+    },
+    "T1069": {
+      "covered": false,
+      "id": "T1069",
+      "is_subtechnique": false,
+      "name": "Permission Groups Discovery",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1069.003": {
+      "covered": false,
+      "id": "T1069.003",
+      "is_subtechnique": true,
+      "name": "Cloud Groups",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1070": {
+      "covered": true,
+      "id": "T1070",
+      "is_subtechnique": false,
+      "name": "Indicator Removal",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_delete_identity.yml",
+          "tag_exact": "T1070",
+          "title": "SES Identity Has Been Deleted"
+        }
+      ],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1070.008": {
+      "covered": false,
+      "id": "T1070.008",
+      "is_subtechnique": true,
+      "name": "Clear Mailbox Data",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1072": {
+      "covered": false,
+      "id": "T1072",
+      "is_subtechnique": false,
+      "name": "Software Deployment Tools",
+      "platforms": [
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "execution",
+        "lateral-movement"
+      ]
+    },
+    "T1074": {
+      "covered": true,
+      "id": "T1074",
+      "is_subtechnique": false,
+      "name": "Data Staged",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/gcp/audit/gcp_full_network_traffic_packet_capture.yml",
+          "tag_exact": "T1074",
+          "title": "Google Full Network Traffic Packet Capture"
+        }
+      ],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1074.002": {
+      "covered": false,
+      "id": "T1074.002",
+      "is_subtechnique": true,
+      "name": "Remote Data Staging",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1078": {
+      "covered": true,
+      "id": "T1078",
+      "is_subtechnique": false,
+      "name": "Valid Accounts",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 65,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_console_login_success_without_mfa.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS Successful Console Login Without MFA",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_imds_malicious_usage.yml",
+          "tag_exact": "T1078",
+          "title": "Malicious Usage Of IMDS Credentials Outside Of AWS Infrastructure"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_imds_malicious_usage.yml",
+          "tag_exact": "T1078.002",
+          "title": "Malicious Usage Of IMDS Credentials Outside Of AWS Infrastructure",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_delete_saml_provider.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS SAML Provider Deletion Activity",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_ec2_import_key_pair_activity.yml",
+          "tag_exact": "T1078",
+          "title": "AWS Key Pair Import Activity"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_loginprofile_creation.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS IAM S3Browser LoginProfile Creation",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_templated_s3_bucket_policy_creation.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS IAM S3Browser Templated S3 Bucket Policy Creation",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_user_or_accesskey_creation.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS IAM S3Browser User or AccessKey Creation",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_root_account_usage.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS Root Credentials",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_susp_saml_activity.yml",
+          "tag_exact": "T1078",
+          "title": "AWS Suspicious SAML Activity"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_admission_controller.yml",
+          "tag_exact": "T1078",
+          "title": "Azure Kubernetes Admission Controller"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_subscription_permissions_elevation_via_activitylogs.yml",
+          "tag_exact": "T1078.004",
+          "title": "Azure Subscription Permission Elevation Via ActivityLogs",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_account_created_deleted.yml",
+          "tag_exact": "T1078",
+          "title": "Account Created And Deleted Within A Close Time Frame"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_bitlocker_key_retrieval.yml",
+          "tag_exact": "T1078.004",
+          "title": "Bitlocker Key Retrieval",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_user_added_to_admin_role.yml",
+          "tag_exact": "T1078",
+          "title": "User Added to an Administrator's Azure AD Role"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_users_added_to_device_admin_roles.yml",
+          "tag_exact": "T1078.004",
+          "title": "Users Added to Global or Device Admin Roles",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_appid_uri_changes.yml",
+          "tag_exact": "T1078.004",
+          "title": "Application AppID Uri Configuration Changes",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_uri_modifications.yml",
+          "tag_exact": "T1078.004",
+          "title": "Application URI Configuration Changes",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_federation_modified.yml",
+          "tag_exact": "T1078",
+          "title": "Azure Domain Federation Settings Modified"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_guest_invite_failure.yml",
+          "tag_exact": "T1078.004",
+          "title": "Guest User Invited By Non Approved Inviters",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_guest_to_member.yml",
+          "tag_exact": "T1078.004",
+          "title": "User State Changed From Guest To Member",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_pim_activation_approve_deny.yml",
+          "tag_exact": "T1078.004",
+          "title": "PIM Approvals And Deny Elevation",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_pim_alerts_disabled.yml",
+          "tag_exact": "T1078",
+          "title": "PIM Alert Setting Changes To Disabled"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_pim_change_settings.yml",
+          "tag_exact": "T1078.004",
+          "title": "Changes To PIM Settings",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_priviledged_role_assignment_add.yml",
+          "tag_exact": "T1078.004",
+          "title": "User Added To Privilege Role",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_privileged_account_creation.yml",
+          "tag_exact": "T1078.004",
+          "title": "Privileged Account Creation",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_subscription_permissions_elevation_via_auditlogs.yml",
+          "tag_exact": "T1078",
+          "title": "Azure Subscription Permission Elevation Via AuditLogs"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_tap_added.yml",
+          "tag_exact": "T1078.004",
+          "title": "Temporary Access Pass Added To An Account",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_user_password_change.yml",
+          "tag_exact": "T1078.004",
+          "title": "Password Reset By User Account",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_anonymous_ip_activity.yml",
+          "tag_exact": "T1078",
+          "title": "Activity From Anonymous IP Address"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_atypical_travel.yml",
+          "tag_exact": "T1078",
+          "title": "Atypical Travel"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_impossible_travel.yml",
+          "tag_exact": "T1078",
+          "title": "Impossible Travel"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_new_coutry_region.yml",
+          "tag_exact": "T1078",
+          "title": "New Country"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_suspicious_browser.yml",
+          "tag_exact": "T1078",
+          "title": "Suspicious Browser Activity"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_threat_intel.yml",
+          "tag_exact": "T1078",
+          "title": "Azure AD Threat Intelligence"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_unfamilar_sign_in.yml",
+          "tag_exact": "T1078",
+          "title": "Unfamiliar Sign-In Properties"
+        },
+        {
+          "rule_id": "rules/cloud/azure/privileged_identity_management/azure_pim_account_stale.yml",
+          "tag_exact": "T1078",
+          "title": "Stale Accounts In A Privileged Role"
+        },
+        {
+          "rule_id": "rules/cloud/azure/privileged_identity_management/azure_pim_invalid_license.yml",
+          "tag_exact": "T1078",
+          "title": "Invalid PIM License"
+        },
+        {
+          "rule_id": "rules/cloud/azure/privileged_identity_management/azure_pim_role_assigned_outside_of_pim.yml",
+          "tag_exact": "T1078",
+          "title": "Roles Assigned Outside PIM"
+        },
+        {
+          "rule_id": "rules/cloud/azure/privileged_identity_management/azure_pim_role_frequent_activation.yml",
+          "tag_exact": "T1078",
+          "title": "Roles Activated Too Frequently"
+        },
+        {
+          "rule_id": "rules/cloud/azure/privileged_identity_management/azure_pim_role_no_mfa_required.yml",
+          "tag_exact": "T1078",
+          "title": "Roles Activation Doesn't Require MFA"
+        },
+        {
+          "rule_id": "rules/cloud/azure/privileged_identity_management/azure_pim_role_not_used.yml",
+          "tag_exact": "T1078",
+          "title": "Roles Are Not Being Used"
+        },
+        {
+          "rule_id": "rules/cloud/azure/privileged_identity_management/azure_pim_too_many_global_admins.yml",
+          "tag_exact": "T1078",
+          "title": "Too Many Global Admins"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_device_registration_or_join_without_mfa.yml",
+          "tag_exact": "T1078.004",
+          "title": "Device Registration or Join Without MFA",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_only_single_factor_auth_required.yml",
+          "tag_exact": "T1078.004",
+          "title": "Azure AD Only Single Factor Authentication Required",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_risky_sign_ins_with_singlefactorauth_from_unknown_devices.yml",
+          "tag_exact": "T1078",
+          "title": "Suspicious SignIns From A Non Registered Device"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_sign_ins_from_noncompliant_devices.yml",
+          "tag_exact": "T1078.004",
+          "title": "Sign-ins from Non-Compliant Devices",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_sign_ins_from_unknown_devices.yml",
+          "tag_exact": "T1078.004",
+          "title": "Sign-ins by Unknown Devices",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_suspicious_signin_bypassing_mfa.yml",
+          "tag_exact": "T1078.004",
+          "title": "Potential MFA Bypass Using Legacy Client Authentication",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_app_device_code_authentication.yml",
+          "tag_exact": "T1078",
+          "title": "Application Using Device Code Authentication Flow"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_app_ropc_authentication.yml",
+          "tag_exact": "T1078",
+          "title": "Applications That Are Using ROPC Authentication Flow"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_blocked_account_attempt.yml",
+          "tag_exact": "T1078.004",
+          "title": "Account Disabled or Blocked for Sign in Attempts",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_conditional_access_failure.yml",
+          "tag_exact": "T1078.004",
+          "title": "Sign-in Failure Due to Conditional Access Requirements Not Met",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_legacy_authentication_protocols.yml",
+          "tag_exact": "T1078.004",
+          "title": "Use of Legacy Authentication Protocols",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_login_to_disabled_account.yml",
+          "tag_exact": "T1078.004",
+          "title": "Login to Disabled Account",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_denies.yml",
+          "tag_exact": "T1078.004",
+          "title": "Multifactor Authentication Denied",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_interrupted.yml",
+          "tag_exact": "T1078.004",
+          "title": "Multifactor Authentication Interrupted",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_unusual_authentication_interruption.yml",
+          "tag_exact": "T1078",
+          "title": "Azure Unusual Authentication Interruption"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_user_login_blocked_by_conditional_access.yml",
+          "tag_exact": "T1078.004",
+          "title": "User Access Blocked by Azure Conditional Access",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/gcp/audit/gcp_kubernetes_admission_controller.yml",
+          "tag_exact": "T1078",
+          "title": "Google Cloud Kubernetes Admission Controller"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/gworkspace/login/gcp_gworkspace_govattack.yml",
+          "tag_exact": "T1078",
+          "title": "Google Workspace Government Attack Warning"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/gworkspace/login/gcp_gworkspace_suspicious_login.yml",
+          "tag_exact": "T1078.004",
+          "title": "Suspicious Login Activity Classified By Google",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/m365/audit/microsoft365_bypass_conditional_access.yml",
+          "tag_exact": "T1078",
+          "title": "Azure Login Bypassing Conditional Access Policies"
+        },
+        {
+          "rule_id": "rules/cloud/m365/threat_management/microsoft365_impossible_travel_activity.yml",
+          "tag_exact": "T1078",
+          "title": "Microsoft 365 - Impossible Travel Activity"
+        },
+        {
+          "rule_id": "rules/cloud/m365/threat_management/microsoft365_logon_from_risky_ip_address.yml",
+          "tag_exact": "T1078",
+          "title": "Logon from a Risky IP Address"
+        }
+      ],
+      "tactics": [
+        "stealth",
+        "persistence",
+        "privilege-escalation",
+        "initial-access"
+      ]
+    },
+    "T1078.001": {
+      "covered": false,
+      "id": "T1078.001",
+      "is_subtechnique": true,
+      "name": "Default Accounts",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth",
+        "persistence",
+        "privilege-escalation",
+        "initial-access"
+      ]
+    },
+    "T1078.004": {
+      "covered": true,
+      "id": "T1078.004",
+      "is_subtechnique": true,
+      "name": "Cloud Accounts",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 32,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_console_login_success_without_mfa.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS Successful Console Login Without MFA"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_delete_saml_provider.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS SAML Provider Deletion Activity"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_loginprofile_creation.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS IAM S3Browser LoginProfile Creation"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_templated_s3_bucket_policy_creation.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS IAM S3Browser Templated S3 Bucket Policy Creation"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_s3browser_user_or_accesskey_creation.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS IAM S3Browser User or AccessKey Creation"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_root_account_usage.yml",
+          "tag_exact": "T1078.004",
+          "title": "AWS Root Credentials"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_subscription_permissions_elevation_via_activitylogs.yml",
+          "tag_exact": "T1078.004",
+          "title": "Azure Subscription Permission Elevation Via ActivityLogs"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_bitlocker_key_retrieval.yml",
+          "tag_exact": "T1078.004",
+          "title": "Bitlocker Key Retrieval"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_users_added_to_device_admin_roles.yml",
+          "tag_exact": "T1078.004",
+          "title": "Users Added to Global or Device Admin Roles"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_appid_uri_changes.yml",
+          "tag_exact": "T1078.004",
+          "title": "Application AppID Uri Configuration Changes"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_uri_modifications.yml",
+          "tag_exact": "T1078.004",
+          "title": "Application URI Configuration Changes"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_guest_invite_failure.yml",
+          "tag_exact": "T1078.004",
+          "title": "Guest User Invited By Non Approved Inviters"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_guest_to_member.yml",
+          "tag_exact": "T1078.004",
+          "title": "User State Changed From Guest To Member"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_pim_activation_approve_deny.yml",
+          "tag_exact": "T1078.004",
+          "title": "PIM Approvals And Deny Elevation"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_pim_change_settings.yml",
+          "tag_exact": "T1078.004",
+          "title": "Changes To PIM Settings"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_priviledged_role_assignment_add.yml",
+          "tag_exact": "T1078.004",
+          "title": "User Added To Privilege Role"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_privileged_account_creation.yml",
+          "tag_exact": "T1078.004",
+          "title": "Privileged Account Creation"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_tap_added.yml",
+          "tag_exact": "T1078.004",
+          "title": "Temporary Access Pass Added To An Account"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_user_password_change.yml",
+          "tag_exact": "T1078.004",
+          "title": "Password Reset By User Account"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_device_registration_or_join_without_mfa.yml",
+          "tag_exact": "T1078.004",
+          "title": "Device Registration or Join Without MFA"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_only_single_factor_auth_required.yml",
+          "tag_exact": "T1078.004",
+          "title": "Azure AD Only Single Factor Authentication Required"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_sign_ins_from_noncompliant_devices.yml",
+          "tag_exact": "T1078.004",
+          "title": "Sign-ins from Non-Compliant Devices"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_sign_ins_from_unknown_devices.yml",
+          "tag_exact": "T1078.004",
+          "title": "Sign-ins by Unknown Devices"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_suspicious_signin_bypassing_mfa.yml",
+          "tag_exact": "T1078.004",
+          "title": "Potential MFA Bypass Using Legacy Client Authentication"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_blocked_account_attempt.yml",
+          "tag_exact": "T1078.004",
+          "title": "Account Disabled or Blocked for Sign in Attempts"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_conditional_access_failure.yml",
+          "tag_exact": "T1078.004",
+          "title": "Sign-in Failure Due to Conditional Access Requirements Not Met"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_legacy_authentication_protocols.yml",
+          "tag_exact": "T1078.004",
+          "title": "Use of Legacy Authentication Protocols"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_login_to_disabled_account.yml",
+          "tag_exact": "T1078.004",
+          "title": "Login to Disabled Account"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_denies.yml",
+          "tag_exact": "T1078.004",
+          "title": "Multifactor Authentication Denied"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_interrupted.yml",
+          "tag_exact": "T1078.004",
+          "title": "Multifactor Authentication Interrupted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_user_login_blocked_by_conditional_access.yml",
+          "tag_exact": "T1078.004",
+          "title": "User Access Blocked by Azure Conditional Access"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/gworkspace/login/gcp_gworkspace_suspicious_login.yml",
+          "tag_exact": "T1078.004",
+          "title": "Suspicious Login Activity Classified By Google"
+        }
+      ],
+      "tactics": [
+        "stealth",
+        "persistence",
+        "privilege-escalation",
+        "initial-access"
+      ]
+    },
+    "T1080": {
+      "covered": false,
+      "id": "T1080",
+      "is_subtechnique": false,
+      "name": "Taint Shared Content",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "lateral-movement"
+      ]
+    },
+    "T1082": {
+      "covered": false,
+      "id": "T1082",
+      "is_subtechnique": false,
+      "name": "System Information Discovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1087": {
+      "covered": true,
+      "id": "T1087",
+      "is_subtechnique": false,
+      "name": "Account Discovery",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 2,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_getcalleridentity_trufflehog.yml",
+          "tag_exact": "T1087.004",
+          "title": "AWS STS GetCallerIdentity Enumeration Via TruffleHog",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_azurehound_discovery.yml",
+          "tag_exact": "T1087.004",
+          "title": "Discovery Using AzureHound",
+          "via_subtechnique": true
+        }
+      ],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1087.003": {
+      "covered": false,
+      "id": "T1087.003",
+      "is_subtechnique": true,
+      "name": "Email Account",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1087.004": {
+      "covered": true,
+      "id": "T1087.004",
+      "is_subtechnique": true,
+      "name": "Cloud Account",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 2,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_getcalleridentity_trufflehog.yml",
+          "tag_exact": "T1087.004",
+          "title": "AWS STS GetCallerIdentity Enumeration Via TruffleHog"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_azurehound_discovery.yml",
+          "tag_exact": "T1087.004",
+          "title": "Discovery Using AzureHound"
+        }
+      ],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1098": {
+      "covered": true,
+      "id": "T1098",
+      "is_subtechnique": false,
+      "name": "Account Manipulation",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 18,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_iam_backdoor_users_keys.yml",
+          "tag_exact": "T1098",
+          "title": "AWS IAM Backdoor Users Keys"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_route_53_domain_transferred_lock_disabled.yml",
+          "tag_exact": "T1098",
+          "title": "AWS Route 53 Domain Transfer Lock Disabled"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_route_53_domain_transferred_to_another_account.yml",
+          "tag_exact": "T1098",
+          "title": "AWS Route 53 Domain Transferred to Another Account"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_update_login_profile.yml",
+          "tag_exact": "T1098",
+          "title": "AWS User Login Profile Was Modified"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_creating_number_of_resources_detection.yml",
+          "tag_exact": "T1098",
+          "title": "Number Of Resource Creation Or Deployment Activities"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_granting_permission_detection.yml",
+          "tag_exact": "T1098.003",
+          "title": "Granting Of Permissions To An Account",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_user_added_to_admin_role.yml",
+          "tag_exact": "T1098.003",
+          "title": "User Added to an Administrator's Azure AD Role",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_credential_added.yml",
+          "tag_exact": "T1098.001",
+          "title": "Added Credentials to Existing Application",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_privileged_permissions.yml",
+          "tag_exact": "T1098.003",
+          "title": "App Granted Privileged Delegated Or App Permissions",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_role_added.yml",
+          "tag_exact": "T1098.003",
+          "title": "App Assigned To Azure RBAC/Microsoft Entra Role",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_auditlogs_laps_credential_dumping.yml",
+          "tag_exact": "T1098.005",
+          "title": "Windows LAPS Credential Dump From Entra ID",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_change_to_authentication_method.yml",
+          "tag_exact": "T1098",
+          "title": "Change to Authentication Method"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_priviledged_role_assignment_bulk_change.yml",
+          "tag_exact": "T1098",
+          "title": "Bulk Deletion Changes To Privileged Account Permissions"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_anomalous_user.yml",
+          "tag_exact": "T1098",
+          "title": "Anomalous User Activity"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/audit/gcp_access_policy_deleted.yml",
+          "tag_exact": "T1098",
+          "title": "GCP Access Policy Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/gworkspace/admin/gcp_gworkspace_application_access_levels_modified.yml",
+          "tag_exact": "T1098.003",
+          "title": "Google Workspace Application Access Level Modified",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/gcp/gworkspace/admin/gcp_gworkspace_granted_domain_api_access.yml",
+          "tag_exact": "T1098",
+          "title": "Google Workspace Granted Domain API Access"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/gworkspace/admin/gcp_gworkspace_user_granted_admin_privileges.yml",
+          "tag_exact": "T1098",
+          "title": "Google Workspace User Granted Admin Privileges"
+        }
+      ],
+      "tactics": [
+        "persistence",
+        "privilege-escalation"
+      ]
+    },
+    "T1098.001": {
+      "covered": true,
+      "id": "T1098.001",
+      "is_subtechnique": true,
+      "name": "Additional Cloud Credentials",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "SaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_credential_added.yml",
+          "tag_exact": "T1098.001",
+          "title": "Added Credentials to Existing Application"
+        }
+      ],
+      "tactics": [
+        "persistence",
+        "privilege-escalation"
+      ]
+    },
+    "T1098.002": {
+      "covered": false,
+      "id": "T1098.002",
+      "is_subtechnique": true,
+      "name": "Additional Email Delegate Permissions",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence",
+        "privilege-escalation"
+      ]
+    },
+    "T1098.003": {
+      "covered": true,
+      "id": "T1098.003",
+      "is_subtechnique": true,
+      "name": "Additional Cloud Roles",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 5,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_granting_permission_detection.yml",
+          "tag_exact": "T1098.003",
+          "title": "Granting Of Permissions To An Account"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_user_added_to_admin_role.yml",
+          "tag_exact": "T1098.003",
+          "title": "User Added to an Administrator's Azure AD Role"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_privileged_permissions.yml",
+          "tag_exact": "T1098.003",
+          "title": "App Granted Privileged Delegated Or App Permissions"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_role_added.yml",
+          "tag_exact": "T1098.003",
+          "title": "App Assigned To Azure RBAC/Microsoft Entra Role"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/gworkspace/admin/gcp_gworkspace_application_access_levels_modified.yml",
+          "tag_exact": "T1098.003",
+          "title": "Google Workspace Application Access Level Modified"
+        }
+      ],
+      "tactics": [
+        "persistence",
+        "privilege-escalation"
+      ]
+    },
+    "T1098.004": {
+      "covered": false,
+      "id": "T1098.004",
+      "is_subtechnique": true,
+      "name": "SSH Authorized Keys",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence",
+        "privilege-escalation"
+      ]
+    },
+    "T1098.005": {
+      "covered": true,
+      "id": "T1098.005",
+      "is_subtechnique": true,
+      "name": "Device Registration",
+      "platforms": [
+        "Identity Provider"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_auditlogs_laps_credential_dumping.yml",
+          "tag_exact": "T1098.005",
+          "title": "Windows LAPS Credential Dump From Entra ID"
+        }
+      ],
+      "tactics": [
+        "persistence",
+        "privilege-escalation"
+      ]
+    },
+    "T1110": {
+      "covered": true,
+      "id": "T1110",
+      "is_subtechnique": false,
+      "name": "Brute Force",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 9,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_console_login_failed_authentication.yml",
+          "tag_exact": "T1110",
+          "title": "AWS ConsoleLogin Failed Authentication"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_password_spray.yml",
+          "tag_exact": "T1110",
+          "title": "Password Spray Activity"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_account_lockout.yml",
+          "tag_exact": "T1110",
+          "title": "Account Lockout"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_suspicious_signin_bypassing_mfa.yml",
+          "tag_exact": "T1110",
+          "title": "Potential MFA Bypass Using Legacy Client Authentication"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_conditional_access_failure.yml",
+          "tag_exact": "T1110",
+          "title": "Sign-in Failure Due to Conditional Access Requirements Not Met"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_legacy_authentication_protocols.yml",
+          "tag_exact": "T1110",
+          "title": "Use of Legacy Authentication Protocols"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_denies.yml",
+          "tag_exact": "T1110",
+          "title": "Multifactor Authentication Denied"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_interrupted.yml",
+          "tag_exact": "T1110",
+          "title": "Multifactor Authentication Interrupted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_user_login_blocked_by_conditional_access.yml",
+          "tag_exact": "T1110",
+          "title": "User Access Blocked by Azure Conditional Access"
+        }
+      ],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1110.001": {
+      "covered": false,
+      "id": "T1110.001",
+      "is_subtechnique": true,
+      "name": "Password Guessing",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1110.002": {
+      "covered": false,
+      "id": "T1110.002",
+      "is_subtechnique": true,
+      "name": "Password Cracking",
+      "platforms": [
+        "Identity Provider",
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1110.003": {
+      "covered": false,
+      "id": "T1110.003",
+      "is_subtechnique": true,
+      "name": "Password Spraying",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1110.004": {
+      "covered": false,
+      "id": "T1110.004",
+      "is_subtechnique": true,
+      "name": "Credential Stuffing",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1114": {
+      "covered": true,
+      "id": "T1114",
+      "is_subtechnique": false,
+      "name": "Email Collection",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 4,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_inbox_forwarding_rule.yml",
+          "tag_exact": "T1114.003",
+          "title": "Suspicious Inbox Forwarding Identity Protection",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/gcp/gworkspace/login/gcp_gworkspace_out_of_domain_email_forwarding.yml",
+          "tag_exact": "T1114.003",
+          "title": "Google Workspace Out Of Domain Email Forwarding",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/m365/threat_management/microsoft365_pst_export_alert.yml",
+          "tag_exact": "T1114",
+          "title": "PST Export Alert Using eDiscovery Alert"
+        },
+        {
+          "rule_id": "rules/cloud/m365/threat_management/microsoft365_pst_export_alert_using_new_compliancesearchaction.yml",
+          "tag_exact": "T1114",
+          "title": "PST Export Alert Using New-ComplianceSearchAction"
+        }
+      ],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1114.002": {
+      "covered": false,
+      "id": "T1114.002",
+      "is_subtechnique": true,
+      "name": "Remote Email Collection",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1114.003": {
+      "covered": true,
+      "id": "T1114.003",
+      "is_subtechnique": true,
+      "name": "Email Forwarding Rule",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 2,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_inbox_forwarding_rule.yml",
+          "tag_exact": "T1114.003",
+          "title": "Suspicious Inbox Forwarding Identity Protection"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/gworkspace/login/gcp_gworkspace_out_of_domain_email_forwarding.yml",
+          "tag_exact": "T1114.003",
+          "title": "Google Workspace Out Of Domain Email Forwarding"
+        }
+      ],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1119": {
+      "covered": false,
+      "id": "T1119",
+      "is_subtechnique": false,
+      "name": "Automated Collection",
+      "platforms": [
+        "IaaS",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1136": {
+      "covered": true,
+      "id": "T1136",
+      "is_subtechnique": false,
+      "name": "Create Account",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 3,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_elasticache_security_group_created.yml",
+          "tag_exact": "T1136",
+          "title": "AWS ElastiCache Security Group Created"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_elasticache_security_group_created.yml",
+          "tag_exact": "T1136.003",
+          "title": "AWS ElastiCache Security Group Created",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/m365/exchange/microsoft365_new_federated_domain_added_exchange.yml",
+          "tag_exact": "T1136.003",
+          "title": "New Federated Domain Added - Exchange",
+          "via_subtechnique": true
+        }
+      ],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1136.003": {
+      "covered": true,
+      "id": "T1136.003",
+      "is_subtechnique": true,
+      "name": "Cloud Account",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 2,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_elasticache_security_group_created.yml",
+          "tag_exact": "T1136.003",
+          "title": "AWS ElastiCache Security Group Created"
+        },
+        {
+          "rule_id": "rules/cloud/m365/exchange/microsoft365_new_federated_domain_added_exchange.yml",
+          "tag_exact": "T1136.003",
+          "title": "New Federated Domain Added - Exchange"
+        }
+      ],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1137": {
+      "covered": false,
+      "id": "T1137",
+      "is_subtechnique": false,
+      "name": "Office Application Startup",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1137.001": {
+      "covered": false,
+      "id": "T1137.001",
+      "is_subtechnique": true,
+      "name": "Office Template Macros",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1137.002": {
+      "covered": false,
+      "id": "T1137.002",
+      "is_subtechnique": true,
+      "name": "Office Test",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1137.003": {
+      "covered": false,
+      "id": "T1137.003",
+      "is_subtechnique": true,
+      "name": "Outlook Forms",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1137.004": {
+      "covered": false,
+      "id": "T1137.004",
+      "is_subtechnique": true,
+      "name": "Outlook Home Page",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1137.005": {
+      "covered": false,
+      "id": "T1137.005",
+      "is_subtechnique": true,
+      "name": "Outlook Rules",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1137.006": {
+      "covered": false,
+      "id": "T1137.006",
+      "is_subtechnique": true,
+      "name": "Add-ins",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1189": {
+      "covered": false,
+      "id": "T1189",
+      "is_subtechnique": false,
+      "name": "Drive-by Compromise",
+      "platforms": [
+        "Identity Provider"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "initial-access"
+      ]
+    },
+    "T1190": {
+      "covered": true,
+      "id": "T1190",
+      "is_subtechnique": false,
+      "name": "Exploit Public-Facing Application",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 3,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_security_group_change_ingress_egress.yml",
+          "tag_exact": "T1190",
+          "title": "Ingress/Egress Security Group Modification"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_security_group_change_loadbalancer.yml",
+          "tag_exact": "T1190",
+          "title": "LoadBalancer Security Group Modification"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_security_group_change_rds.yml",
+          "tag_exact": "T1190",
+          "title": "RDS Database Security Group Modification"
+        }
+      ],
+      "tactics": [
+        "initial-access"
+      ]
+    },
+    "T1195": {
+      "covered": false,
+      "id": "T1195",
+      "is_subtechnique": false,
+      "name": "Supply Chain Compromise",
+      "platforms": [
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "initial-access"
+      ]
+    },
+    "T1199": {
+      "covered": true,
+      "id": "T1199",
+      "is_subtechnique": false,
+      "name": "Trusted Relationship",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/m365/threat_management/microsoft365_user_restricted_from_sending_email.yml",
+          "tag_exact": "T1199",
+          "title": "Microsoft 365 - User Restricted from Sending Email"
+        }
+      ],
+      "tactics": [
+        "initial-access"
+      ]
+    },
+    "T1201": {
+      "covered": false,
+      "id": "T1201",
+      "is_subtechnique": false,
+      "name": "Password Policy Discovery",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1204": {
+      "covered": false,
+      "id": "T1204",
+      "is_subtechnique": false,
+      "name": "User Execution",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "execution"
+      ]
+    },
+    "T1204.003": {
+      "covered": false,
+      "id": "T1204.003",
+      "is_subtechnique": true,
+      "name": "Malicious Image",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "execution"
+      ]
+    },
+    "T1211": {
+      "covered": false,
+      "id": "T1211",
+      "is_subtechnique": false,
+      "name": "Exploitation for Stealth",
+      "platforms": [
+        "IaaS",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1212": {
+      "covered": false,
+      "id": "T1212",
+      "is_subtechnique": false,
+      "name": "Exploitation for Credential Access",
+      "platforms": [
+        "Identity Provider"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1213": {
+      "covered": false,
+      "id": "T1213",
+      "is_subtechnique": false,
+      "name": "Data from Information Repositories",
+      "platforms": [
+        "IaaS",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1213.001": {
+      "covered": false,
+      "id": "T1213.001",
+      "is_subtechnique": true,
+      "name": "Confluence",
+      "platforms": [
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1213.002": {
+      "covered": false,
+      "id": "T1213.002",
+      "is_subtechnique": true,
+      "name": "Sharepoint",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1213.003": {
+      "covered": false,
+      "id": "T1213.003",
+      "is_subtechnique": true,
+      "name": "Code Repositories",
+      "platforms": [
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1213.004": {
+      "covered": false,
+      "id": "T1213.004",
+      "is_subtechnique": true,
+      "name": "Customer Relationship Management Software",
+      "platforms": [
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1213.005": {
+      "covered": false,
+      "id": "T1213.005",
+      "is_subtechnique": true,
+      "name": "Messaging Applications",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1213.006": {
+      "covered": false,
+      "id": "T1213.006",
+      "is_subtechnique": true,
+      "name": "Databases",
+      "platforms": [
+        "IaaS",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1484": {
+      "covered": true,
+      "id": "T1484",
+      "is_subtechnique": false,
+      "name": "Domain or Tenant Policy Modification",
+      "platforms": [
+        "Identity Provider"
+      ],
+      "rule_count": 2,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_device_registration_policy_changes.yml",
+          "tag_exact": "T1484",
+          "title": "Changes to Device Registration Policy"
+        },
+        {
+          "rule_id": "rules/cloud/m365/audit/microsoft365_new_federated_domain_added_audit.yml",
+          "tag_exact": "T1484.002",
+          "title": "New Federated Domain Added",
+          "via_subtechnique": true
+        }
+      ],
+      "tactics": [
+        "defense-impairment",
+        "privilege-escalation"
+      ]
+    },
+    "T1484.002": {
+      "covered": true,
+      "id": "T1484.002",
+      "is_subtechnique": true,
+      "name": "Trust Modification",
+      "platforms": [
+        "Identity Provider"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/m365/audit/microsoft365_new_federated_domain_added_audit.yml",
+          "tag_exact": "T1484.002",
+          "title": "New Federated Domain Added"
+        }
+      ],
+      "tactics": [
+        "defense-impairment",
+        "privilege-escalation"
+      ]
+    },
+    "T1485": {
+      "covered": true,
+      "id": "T1485",
+      "is_subtechnique": false,
+      "name": "Data Destruction",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 11,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_efs_fileshare_mount_modified_or_deleted.yml",
+          "tag_exact": "T1485",
+          "title": "AWS EFS Fileshare Mount Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_eks_cluster_created_or_deleted.yml",
+          "tag_exact": "T1485",
+          "title": "AWS EKS Cluster Created or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_container_registry_created_or_deleted.yml",
+          "tag_exact": "T1485",
+          "title": "Azure Container Registry Created or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_device_or_configuration_modified_or_deleted.yml",
+          "tag_exact": "T1485",
+          "title": "Azure Device or Configuration Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_cluster_created_or_deleted.yml",
+          "tag_exact": "T1485",
+          "title": "Azure Kubernetes Cluster Created or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_network_policy_change.yml",
+          "tag_exact": "T1485",
+          "title": "Azure Kubernetes Network Policy Change"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_role_access.yml",
+          "tag_exact": "T1485",
+          "title": "Azure Kubernetes Sensitive Role Access"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_rolebinding_modified_or_deleted.yml",
+          "tag_exact": "T1485",
+          "title": "Azure Kubernetes RoleBinding/ClusterRoleBinding Modified and Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_secret_or_config_object_access.yml",
+          "tag_exact": "T1485",
+          "title": "Azure Kubernetes Secret or Config Object Access"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_service_account_modified_or_deleted.yml",
+          "tag_exact": "T1485",
+          "title": "Azure Kubernetes Service Account Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/m365/threat_management/microsoft365_unusual_volume_of_file_deletion.yml",
+          "tag_exact": "T1485",
+          "title": "Microsoft 365 - Unusual Volume of File Deletion"
+        }
+      ],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1485.001": {
+      "covered": false,
+      "id": "T1485.001",
+      "is_subtechnique": true,
+      "name": "Lifecycle-Triggered Deletion",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1486": {
+      "covered": true,
+      "id": "T1486",
+      "is_subtechnique": false,
+      "name": "Data Encrypted for Impact",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 3,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_ec2_disable_encryption.yml",
+          "tag_exact": "T1486",
+          "title": "AWS EC2 Disable EBS Encryption"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_kms_import_key_material.yml",
+          "tag_exact": "T1486",
+          "title": "AWS KMS Imported Key Material Usage"
+        },
+        {
+          "rule_id": "rules/cloud/m365/threat_management/microsoft365_potential_ransomware_activity.yml",
+          "tag_exact": "T1486",
+          "title": "Microsoft 365 - Potential Ransomware Activity"
+        }
+      ],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1489": {
+      "covered": true,
+      "id": "T1489",
+      "is_subtechnique": false,
+      "name": "Service Stop",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 8,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_container_registry_created_or_deleted.yml",
+          "tag_exact": "T1489",
+          "title": "Azure Container Registry Created or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_cluster_created_or_deleted.yml",
+          "tag_exact": "T1489",
+          "title": "Azure Kubernetes Cluster Created or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_network_policy_change.yml",
+          "tag_exact": "T1489",
+          "title": "Azure Kubernetes Network Policy Change"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_role_access.yml",
+          "tag_exact": "T1489",
+          "title": "Azure Kubernetes Sensitive Role Access"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_rolebinding_modified_or_deleted.yml",
+          "tag_exact": "T1489",
+          "title": "Azure Kubernetes RoleBinding/ClusterRoleBinding Modified and Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_secret_or_config_object_access.yml",
+          "tag_exact": "T1489",
+          "title": "Azure Kubernetes Secret or Config Object Access"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_service_account_modified_or_deleted.yml",
+          "tag_exact": "T1489",
+          "title": "Azure Kubernetes Service Account Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_application_deleted.yml",
+          "tag_exact": "T1489",
+          "title": "Azure Application Deleted"
+        }
+      ],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1490": {
+      "covered": true,
+      "id": "T1490",
+      "is_subtechnique": false,
+      "name": "Inhibit System Recovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_disable_bucket_versioning.yml",
+          "tag_exact": "T1490",
+          "title": "AWS S3 Bucket Versioning Disable"
+        }
+      ],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1491": {
+      "covered": false,
+      "id": "T1491",
+      "is_subtechnique": false,
+      "name": "Defacement",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1491.002": {
+      "covered": false,
+      "id": "T1491.002",
+      "is_subtechnique": true,
+      "name": "External Defacement",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1496": {
+      "covered": true,
+      "id": "T1496",
+      "is_subtechnique": false,
+      "name": "Resource Hijacking",
+      "platforms": [
+        "IaaS",
+        "SaaS"
+      ],
+      "rule_count": 7,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_container_registry_created_or_deleted.yml",
+          "tag_exact": "T1496",
+          "title": "Azure Container Registry Created or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_cluster_created_or_deleted.yml",
+          "tag_exact": "T1496",
+          "title": "Azure Kubernetes Cluster Created or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_network_policy_change.yml",
+          "tag_exact": "T1496",
+          "title": "Azure Kubernetes Network Policy Change"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_role_access.yml",
+          "tag_exact": "T1496",
+          "title": "Azure Kubernetes Sensitive Role Access"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_rolebinding_modified_or_deleted.yml",
+          "tag_exact": "T1496",
+          "title": "Azure Kubernetes RoleBinding/ClusterRoleBinding Modified and Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_secret_or_config_object_access.yml",
+          "tag_exact": "T1496",
+          "title": "Azure Kubernetes Secret or Config Object Access"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_service_account_modified_or_deleted.yml",
+          "tag_exact": "T1496",
+          "title": "Azure Kubernetes Service Account Modified or Deleted"
+        }
+      ],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1496.001": {
+      "covered": false,
+      "id": "T1496.001",
+      "is_subtechnique": true,
+      "name": "Compute Hijacking",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1496.002": {
+      "covered": false,
+      "id": "T1496.002",
+      "is_subtechnique": true,
+      "name": "Bandwidth Hijacking",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1496.003": {
+      "covered": false,
+      "id": "T1496.003",
+      "is_subtechnique": true,
+      "name": "SMS Pumping",
+      "platforms": [
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1496.004": {
+      "covered": false,
+      "id": "T1496.004",
+      "is_subtechnique": true,
+      "name": "Cloud Service Hijacking",
+      "platforms": [
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1498": {
+      "covered": false,
+      "id": "T1498",
+      "is_subtechnique": false,
+      "name": "Network Denial of Service",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1498.001": {
+      "covered": false,
+      "id": "T1498.001",
+      "is_subtechnique": true,
+      "name": "Direct Network Flood",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1498.002": {
+      "covered": false,
+      "id": "T1498.002",
+      "is_subtechnique": true,
+      "name": "Reflection Amplification",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1499": {
+      "covered": false,
+      "id": "T1499",
+      "is_subtechnique": false,
+      "name": "Endpoint Denial of Service",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1499.002": {
+      "covered": false,
+      "id": "T1499.002",
+      "is_subtechnique": true,
+      "name": "Service Exhaustion Flood",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1499.003": {
+      "covered": false,
+      "id": "T1499.003",
+      "is_subtechnique": true,
+      "name": "Application Exhaustion Flood",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1499.004": {
+      "covered": false,
+      "id": "T1499.004",
+      "is_subtechnique": true,
+      "name": "Application or System Exploitation",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1518": {
+      "covered": false,
+      "id": "T1518",
+      "is_subtechnique": false,
+      "name": "Software Discovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1518.001": {
+      "covered": false,
+      "id": "T1518.001",
+      "is_subtechnique": true,
+      "name": "Security Software Discovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1525": {
+      "covered": true,
+      "id": "T1525",
+      "is_subtechnique": false,
+      "name": "Implant Internal Image",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_ecs_task_definition_cred_endpoint_query.yml",
+          "tag_exact": "T1525",
+          "title": "AWS ECS Task Definition That Queries The Credential Endpoint"
+        }
+      ],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1526": {
+      "covered": true,
+      "id": "T1526",
+      "is_subtechnique": false,
+      "name": "Cloud Service Discovery",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_azurehound_discovery.yml",
+          "tag_exact": "T1526",
+          "title": "Discovery Using AzureHound"
+        }
+      ],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1528": {
+      "covered": true,
+      "id": "T1528",
+      "is_subtechnique": false,
+      "name": "Steal Application Access Token",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 8,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_delegated_permissions_all_users.yml",
+          "tag_exact": "T1528",
+          "title": "Delegated Permissions Granted For All Users"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_end_user_consent.yml",
+          "tag_exact": "T1528",
+          "title": "End User Consent"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_end_user_consent_blocked.yml",
+          "tag_exact": "T1528",
+          "title": "End User Consent Blocked"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_permissions_msft.yml",
+          "tag_exact": "T1528",
+          "title": "App Granted Microsoft Permissions"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_uri_modifications.yml",
+          "tag_exact": "T1528",
+          "title": "Application URI Configuration Changes"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_anomalous_token.yml",
+          "tag_exact": "T1528",
+          "title": "Anomalous Token"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_anonymous_ip_address.yml",
+          "tag_exact": "T1528",
+          "title": "Anonymous IP Address"
+        },
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_prt_access.yml",
+          "tag_exact": "T1528",
+          "title": "Primary Refresh Token Access Attempt"
+        }
+      ],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1530": {
+      "covered": false,
+      "id": "T1530",
+      "is_subtechnique": false,
+      "name": "Data from Cloud Storage",
+      "platforms": [
+        "IaaS",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "collection"
+      ]
+    },
+    "T1531": {
+      "covered": true,
+      "id": "T1531",
+      "is_subtechnique": false,
+      "name": "Account Access Removal",
+      "platforms": [
+        "IaaS",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 4,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_delete_saml_provider.yml",
+          "tag_exact": "T1531",
+          "title": "AWS SAML Provider Deletion Activity"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_elasticache_security_group_modified_or_deleted.yml",
+          "tag_exact": "T1531",
+          "title": "AWS ElastiCache Security Group Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_service_account_modified_or_deleted.yml",
+          "tag_exact": "T1531",
+          "title": "Azure Kubernetes Service Account Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/audit/gcp_service_account_disabled_or_deleted.yml",
+          "tag_exact": "T1531",
+          "title": "Google Cloud Service Account Disabled or Deleted"
+        }
+      ],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1534": {
+      "covered": false,
+      "id": "T1534",
+      "is_subtechnique": false,
+      "name": "Internal Spearphishing",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "lateral-movement"
+      ]
+    },
+    "T1535": {
+      "covered": false,
+      "id": "T1535",
+      "is_subtechnique": false,
+      "name": "Unused/Unsupported Cloud Regions",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1537": {
+      "covered": true,
+      "id": "T1537",
+      "is_subtechnique": false,
+      "name": "Transfer Data to Cloud Account",
+      "platforms": [
+        "IaaS",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 4,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_ec2_vm_export_failure.yml",
+          "tag_exact": "T1537",
+          "title": "AWS EC2 VM Export Failure"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_s3_data_management_tampering.yml",
+          "tag_exact": "T1537",
+          "title": "AWS S3 Data Management Tampering"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_snapshot_backup_exfiltration.yml",
+          "tag_exact": "T1537",
+          "title": "AWS Snapshot Backup Exfiltration"
+        },
+        {
+          "rule_id": "rules/cloud/m365/threat_management/microsoft365_data_exfiltration_to_unsanctioned_app.yml",
+          "tag_exact": "T1537",
+          "title": "Data Exfiltration to Unsanctioned Apps"
+        }
+      ],
+      "tactics": [
+        "exfiltration"
+      ]
+    },
+    "T1538": {
+      "covered": false,
+      "id": "T1538",
+      "is_subtechnique": false,
+      "name": "Cloud Service Dashboard",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1539": {
+      "covered": false,
+      "id": "T1539",
+      "is_subtechnique": false,
+      "name": "Steal Web Session Cookie",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1546": {
+      "covered": false,
+      "id": "T1546",
+      "is_subtechnique": false,
+      "name": "Event Triggered Execution",
+      "platforms": [
+        "IaaS",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "privilege-escalation",
+        "persistence"
+      ]
+    },
+    "T1548": {
+      "covered": true,
+      "id": "T1548",
+      "is_subtechnique": false,
+      "name": "Abuse Elevation Control Mechanism",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite"
+      ],
+      "rule_count": 9,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_assumerole_misuse.yml",
+          "tag_exact": "T1548",
+          "title": "AWS STS AssumeRole Misuse"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_getsessiontoken_misuse.yml",
+          "tag_exact": "T1548",
+          "title": "AWS STS GetSessionToken Misuse"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_susp_saml_activity.yml",
+          "tag_exact": "T1548",
+          "title": "AWS Suspicious SAML Activity"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_aad_secops_ca_policy_removedby_bad_actor.yml",
+          "tag_exact": "T1548",
+          "title": "CA Policy Removed by Non Approved Actor"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_aad_secops_ca_policy_updatedby_bad_actor.yml",
+          "tag_exact": "T1548",
+          "title": "CA Policy Updated by Non Approved Actor"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_aad_secops_new_ca_policy_addedby_bad_actor.yml",
+          "tag_exact": "T1548",
+          "title": "New CA Policy by Non-approved Actor"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_group_user_addition_ca_modification.yml",
+          "tag_exact": "T1548",
+          "title": "User Added To Group With CA Policy Modification Access"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_group_user_removal_ca_modification.yml",
+          "tag_exact": "T1548",
+          "title": "User Removed From Group With CA Policy Modification Access"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/audit/gcp_breakglass_container_workload_deployed.yml",
+          "tag_exact": "T1548",
+          "title": "GCP Break-glass Container Workload Deployed"
+        }
+      ],
+      "tactics": [
+        "privilege-escalation"
+      ]
+    },
+    "T1548.005": {
+      "covered": false,
+      "id": "T1548.005",
+      "is_subtechnique": true,
+      "name": "Temporary Elevated Cloud Access",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "privilege-escalation"
+      ]
+    },
+    "T1550": {
+      "covered": true,
+      "id": "T1550",
+      "is_subtechnique": false,
+      "name": "Use Alternate Authentication Material",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 7,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_console_getsignintoken.yml",
+          "tag_exact": "T1550.001",
+          "title": "AWS Console GetSigninToken Potential Abuse",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_assumerole_misuse.yml",
+          "tag_exact": "T1550",
+          "title": "AWS STS AssumeRole Misuse"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_assumerole_misuse.yml",
+          "tag_exact": "T1550.001",
+          "title": "AWS STS AssumeRole Misuse",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_getsessiontoken_misuse.yml",
+          "tag_exact": "T1550",
+          "title": "AWS STS GetSessionToken Misuse"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_getsessiontoken_misuse.yml",
+          "tag_exact": "T1550.001",
+          "title": "AWS STS GetSessionToken Misuse",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_susp_saml_activity.yml",
+          "tag_exact": "T1550",
+          "title": "AWS Suspicious SAML Activity"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_susp_saml_activity.yml",
+          "tag_exact": "T1550.001",
+          "title": "AWS Suspicious SAML Activity",
+          "via_subtechnique": true
+        }
+      ],
+      "tactics": [
+        "lateral-movement"
+      ]
+    },
+    "T1550.001": {
+      "covered": true,
+      "id": "T1550.001",
+      "is_subtechnique": true,
+      "name": "Application Access Token",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 4,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_console_getsignintoken.yml",
+          "tag_exact": "T1550.001",
+          "title": "AWS Console GetSigninToken Potential Abuse"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_assumerole_misuse.yml",
+          "tag_exact": "T1550.001",
+          "title": "AWS STS AssumeRole Misuse"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sts_getsessiontoken_misuse.yml",
+          "tag_exact": "T1550.001",
+          "title": "AWS STS GetSessionToken Misuse"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_susp_saml_activity.yml",
+          "tag_exact": "T1550.001",
+          "title": "AWS Suspicious SAML Activity"
+        }
+      ],
+      "tactics": [
+        "lateral-movement"
+      ]
+    },
+    "T1550.004": {
+      "covered": false,
+      "id": "T1550.004",
+      "is_subtechnique": true,
+      "name": "Web Session Cookie",
+      "platforms": [
+        "IaaS",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "lateral-movement"
+      ]
+    },
+    "T1552": {
+      "covered": true,
+      "id": "T1552",
+      "is_subtechnique": false,
+      "name": "Unsecured Credentials",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 12,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_keyvault_key_modified_or_deleted.yml",
+          "tag_exact": "T1552",
+          "title": "Azure Keyvault Key Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_keyvault_key_modified_or_deleted.yml",
+          "tag_exact": "T1552.001",
+          "title": "Azure Keyvault Key Modified or Deleted",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_keyvault_modified_or_deleted.yml",
+          "tag_exact": "T1552",
+          "title": "Azure Key Vault Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_keyvault_modified_or_deleted.yml",
+          "tag_exact": "T1552.001",
+          "title": "Azure Key Vault Modified or Deleted",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_keyvault_secrets_modified_or_deleted.yml",
+          "tag_exact": "T1552",
+          "title": "Azure Keyvault Secrets Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_keyvault_secrets_modified_or_deleted.yml",
+          "tag_exact": "T1552.001",
+          "title": "Azure Keyvault Secrets Modified or Deleted",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_admission_controller.yml",
+          "tag_exact": "T1552",
+          "title": "Azure Kubernetes Admission Controller"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_admission_controller.yml",
+          "tag_exact": "T1552.007",
+          "title": "Azure Kubernetes Admission Controller",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_appid_uri_changes.yml",
+          "tag_exact": "T1552",
+          "title": "Application AppID Uri Configuration Changes"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_app_owner_added.yml",
+          "tag_exact": "T1552",
+          "title": "Added Owner To Application"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/audit/gcp_kubernetes_admission_controller.yml",
+          "tag_exact": "T1552",
+          "title": "Google Cloud Kubernetes Admission Controller"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/audit/gcp_kubernetes_admission_controller.yml",
+          "tag_exact": "T1552.007",
+          "title": "Google Cloud Kubernetes Admission Controller",
+          "via_subtechnique": true
+        }
+      ],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1552.001": {
+      "covered": true,
+      "id": "T1552.001",
+      "is_subtechnique": true,
+      "name": "Credentials In Files",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 3,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_keyvault_key_modified_or_deleted.yml",
+          "tag_exact": "T1552.001",
+          "title": "Azure Keyvault Key Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_keyvault_modified_or_deleted.yml",
+          "tag_exact": "T1552.001",
+          "title": "Azure Key Vault Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_keyvault_secrets_modified_or_deleted.yml",
+          "tag_exact": "T1552.001",
+          "title": "Azure Keyvault Secrets Modified or Deleted"
+        }
+      ],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1552.005": {
+      "covered": false,
+      "id": "T1552.005",
+      "is_subtechnique": true,
+      "name": "Cloud Instance Metadata API",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1552.008": {
+      "covered": false,
+      "id": "T1552.008",
+      "is_subtechnique": true,
+      "name": "Chat Messages",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1555": {
+      "covered": true,
+      "id": "T1555",
+      "is_subtechnique": false,
+      "name": "Credentials from Password Stores",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_pua_trufflehog.yml",
+          "tag_exact": "T1555",
+          "title": "PUA - AWS TruffleHog Execution"
+        }
+      ],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1555.006": {
+      "covered": false,
+      "id": "T1555.006",
+      "is_subtechnique": true,
+      "name": "Cloud Secrets Management Stores",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1556": {
+      "covered": true,
+      "id": "T1556",
+      "is_subtechnique": false,
+      "name": "Modify Authentication Process",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 11,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_sso_idp_change.yml",
+          "tag_exact": "T1556",
+          "title": "AWS Identity Center Identity Provider Change"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_aad_secops_ca_policy_removedby_bad_actor.yml",
+          "tag_exact": "T1556",
+          "title": "CA Policy Removed by Non Approved Actor"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_aad_secops_ca_policy_updatedby_bad_actor.yml",
+          "tag_exact": "T1556",
+          "title": "CA Policy Updated by Non Approved Actor"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_certificate_based_authencation_enabled.yml",
+          "tag_exact": "T1556",
+          "title": "Certificate-Based Authentication Enabled"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_ad_new_root_ca_added.yml",
+          "tag_exact": "T1556",
+          "title": "New Root Certificate Authority Added"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_change_to_authentication_method.yml",
+          "tag_exact": "T1556",
+          "title": "Change to Authentication Method"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_group_user_addition_ca_modification.yml",
+          "tag_exact": "T1556",
+          "title": "User Added To Group With CA Policy Modification Access"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_group_user_removal_ca_modification.yml",
+          "tag_exact": "T1556",
+          "title": "User Removed From Group With CA Policy Modification Access"
+        },
+        {
+          "rule_id": "rules/cloud/azure/audit_logs/azure_mfa_disabled.yml",
+          "tag_exact": "T1556",
+          "title": "Disabled MFA to Bypass Authentication Mechanisms"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_only_single_factor_auth_required.yml",
+          "tag_exact": "T1556.006",
+          "title": "Azure AD Only Single Factor Authentication Required",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/m365/audit/microsoft365_disabling_mfa.yml",
+          "tag_exact": "T1556.006",
+          "title": "Disabling Multi Factor Authentication",
+          "via_subtechnique": true
+        }
+      ],
+      "tactics": [
+        "defense-impairment",
+        "persistence",
+        "credential-access"
+      ]
+    },
+    "T1556.006": {
+      "covered": true,
+      "id": "T1556.006",
+      "is_subtechnique": true,
+      "name": "Multi-Factor Authentication",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 2,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_ad_only_single_factor_auth_required.yml",
+          "tag_exact": "T1556.006",
+          "title": "Azure AD Only Single Factor Authentication Required"
+        },
+        {
+          "rule_id": "rules/cloud/m365/audit/microsoft365_disabling_mfa.yml",
+          "tag_exact": "T1556.006",
+          "title": "Disabling Multi Factor Authentication"
+        }
+      ],
+      "tactics": [
+        "defense-impairment",
+        "persistence",
+        "credential-access"
+      ]
+    },
+    "T1556.007": {
+      "covered": false,
+      "id": "T1556.007",
+      "is_subtechnique": true,
+      "name": "Hybrid Identity",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "defense-impairment",
+        "persistence",
+        "credential-access"
+      ]
+    },
+    "T1556.009": {
+      "covered": false,
+      "id": "T1556.009",
+      "is_subtechnique": true,
+      "name": "Conditional Access Policies",
+      "platforms": [
+        "IaaS",
+        "Identity Provider"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "defense-impairment",
+        "persistence",
+        "credential-access"
+      ]
+    },
+    "T1564": {
+      "covered": false,
+      "id": "T1564",
+      "is_subtechnique": false,
+      "name": "Hide Artifacts",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1564.008": {
+      "covered": false,
+      "id": "T1564.008",
+      "is_subtechnique": true,
+      "name": "Email Hiding Rules",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1566": {
+      "covered": true,
+      "id": "T1566",
+      "is_subtechnique": false,
+      "name": "Phishing",
+      "platforms": [
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 4,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_ssm_malicious_usage.yml",
+          "tag_exact": "T1566",
+          "title": "Potential Malicious Usage of CloudTrail System Manager"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_ssm_malicious_usage.yml",
+          "tag_exact": "T1566.002",
+          "title": "Potential Malicious Usage of CloudTrail System Manager",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/m365/audit/microsoft365_suspicious_email_delivered.yml",
+          "tag_exact": "T1566.001",
+          "title": "Suspicious Email Delivered In Microsoft 365",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/m365/audit/microsoft365_suspicious_email_delivered.yml",
+          "tag_exact": "T1566.002",
+          "title": "Suspicious Email Delivered In Microsoft 365",
+          "via_subtechnique": true
+        }
+      ],
+      "tactics": [
+        "initial-access"
+      ]
+    },
+    "T1566.002": {
+      "covered": true,
+      "id": "T1566.002",
+      "is_subtechnique": true,
+      "name": "Spearphishing Link",
+      "platforms": [
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 2,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_ssm_malicious_usage.yml",
+          "tag_exact": "T1566.002",
+          "title": "Potential Malicious Usage of CloudTrail System Manager"
+        },
+        {
+          "rule_id": "rules/cloud/m365/audit/microsoft365_suspicious_email_delivered.yml",
+          "tag_exact": "T1566.002",
+          "title": "Suspicious Email Delivered In Microsoft 365"
+        }
+      ],
+      "tactics": [
+        "initial-access"
+      ]
+    },
+    "T1566.004": {
+      "covered": false,
+      "id": "T1566.004",
+      "is_subtechnique": true,
+      "name": "Spearphishing Voice",
+      "platforms": [
+        "Identity Provider"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "initial-access"
+      ]
+    },
+    "T1567": {
+      "covered": false,
+      "id": "T1567",
+      "is_subtechnique": false,
+      "name": "Exfiltration Over Web Service",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "exfiltration"
+      ]
+    },
+    "T1567.004": {
+      "covered": false,
+      "id": "T1567.004",
+      "is_subtechnique": true,
+      "name": "Exfiltration Over Webhook",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "exfiltration"
+      ]
+    },
+    "T1578": {
+      "covered": true,
+      "id": "T1578",
+      "is_subtechnique": false,
+      "name": "Modify Cloud Compute Infrastructure",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 2,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_aadhybridhealth_adfs_new_server.yml",
+          "tag_exact": "T1578",
+          "title": "Azure Active Directory Hybrid Health AD FS New Server"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_aadhybridhealth_adfs_service_delete.yml",
+          "tag_exact": "T1578.003",
+          "title": "Azure Active Directory Hybrid Health AD FS Service Delete",
+          "via_subtechnique": true
+        }
+      ],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1578.001": {
+      "covered": false,
+      "id": "T1578.001",
+      "is_subtechnique": true,
+      "name": "Create Snapshot",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1578.002": {
+      "covered": false,
+      "id": "T1578.002",
+      "is_subtechnique": true,
+      "name": "Create Cloud Instance",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1578.003": {
+      "covered": true,
+      "id": "T1578.003",
+      "is_subtechnique": true,
+      "name": "Delete Cloud Instance",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_aadhybridhealth_adfs_service_delete.yml",
+          "tag_exact": "T1578.003",
+          "title": "Azure Active Directory Hybrid Health AD FS Service Delete"
+        }
+      ],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1578.004": {
+      "covered": false,
+      "id": "T1578.004",
+      "is_subtechnique": true,
+      "name": "Revert Cloud Instance",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1578.005": {
+      "covered": false,
+      "id": "T1578.005",
+      "is_subtechnique": true,
+      "name": "Modify Cloud Compute Configurations",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1580": {
+      "covered": true,
+      "id": "T1580",
+      "is_subtechnique": false,
+      "name": "Cloud Infrastructure Discovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_enum_buckets.yml",
+          "tag_exact": "T1580",
+          "title": "Potential Bucket Enumeration on AWS"
+        }
+      ],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1606": {
+      "covered": true,
+      "id": "T1606",
+      "is_subtechnique": false,
+      "name": "Forge Web Credentials",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/identity_protection/azure_identity_protection_token_issuer_anomaly.yml",
+          "tag_exact": "T1606",
+          "title": "SAML Token Issuer Anomaly"
+        }
+      ],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1606.001": {
+      "covered": false,
+      "id": "T1606.001",
+      "is_subtechnique": true,
+      "name": "Web Cookies",
+      "platforms": [
+        "IaaS",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1606.002": {
+      "covered": false,
+      "id": "T1606.002",
+      "is_subtechnique": true,
+      "name": "SAML Tokens",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1614": {
+      "covered": false,
+      "id": "T1614",
+      "is_subtechnique": false,
+      "name": "System Location Discovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1619": {
+      "covered": true,
+      "id": "T1619",
+      "is_subtechnique": false,
+      "name": "Cloud Storage Object Discovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 1,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_enum_buckets.yml",
+          "tag_exact": "T1619",
+          "title": "Potential Bucket Enumeration on AWS"
+        }
+      ],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1621": {
+      "covered": true,
+      "id": "T1621",
+      "is_subtechnique": false,
+      "name": "Multi-Factor Authentication Request Generation",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 2,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_denies.yml",
+          "tag_exact": "T1621",
+          "title": "Multifactor Authentication Denied"
+        },
+        {
+          "rule_id": "rules/cloud/azure/signin_logs/azure_mfa_interrupted.yml",
+          "tag_exact": "T1621",
+          "title": "Multifactor Authentication Interrupted"
+        }
+      ],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1648": {
+      "covered": false,
+      "id": "T1648",
+      "is_subtechnique": false,
+      "name": "Serverless Execution",
+      "platforms": [
+        "IaaS",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "execution"
+      ]
+    },
+    "T1649": {
+      "covered": false,
+      "id": "T1649",
+      "is_subtechnique": false,
+      "name": "Steal or Forge Authentication Certificates",
+      "platforms": [
+        "Identity Provider"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "credential-access"
+      ]
+    },
+    "T1651": {
+      "covered": false,
+      "id": "T1651",
+      "is_subtechnique": false,
+      "name": "Cloud Administration Command",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "execution"
+      ]
+    },
+    "T1654": {
+      "covered": false,
+      "id": "T1654",
+      "is_subtechnique": false,
+      "name": "Log Enumeration",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1657": {
+      "covered": false,
+      "id": "T1657",
+      "is_subtechnique": false,
+      "name": "Financial Theft",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1666": {
+      "covered": false,
+      "id": "T1666",
+      "is_subtechnique": false,
+      "name": "Modify Cloud Resource Hierarchy",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1667": {
+      "covered": false,
+      "id": "T1667",
+      "is_subtechnique": false,
+      "name": "Email Bombing",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "impact"
+      ]
+    },
+    "T1671": {
+      "covered": false,
+      "id": "T1671",
+      "is_subtechnique": false,
+      "name": "Cloud Application Integration",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "persistence"
+      ]
+    },
+    "T1677": {
+      "covered": false,
+      "id": "T1677",
+      "is_subtechnique": false,
+      "name": "Poisoned Pipeline Execution",
+      "platforms": [
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "execution"
+      ]
+    },
+    "T1680": {
+      "covered": false,
+      "id": "T1680",
+      "is_subtechnique": false,
+      "name": "Local Storage Discovery",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "discovery"
+      ]
+    },
+    "T1684": {
+      "covered": false,
+      "id": "T1684",
+      "is_subtechnique": false,
+      "name": "Social Engineering",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1684.001": {
+      "covered": false,
+      "id": "T1684.001",
+      "is_subtechnique": true,
+      "name": "Impersonation",
+      "platforms": [
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1684.002": {
+      "covered": false,
+      "id": "T1684.002",
+      "is_subtechnique": true,
+      "name": "Email Spoofing",
+      "platforms": [
+        "Office Suite"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "stealth"
+      ]
+    },
+    "T1685": {
+      "covered": true,
+      "id": "T1685",
+      "is_subtechnique": false,
+      "name": "Disable or Modify Tools",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 10,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_bedrock_guardrail_deleted.yml",
+          "tag_exact": "T1685",
+          "title": "AWS Bedrock Guardrail Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_bedrock_guardrail_updated.yml",
+          "tag_exact": "T1685",
+          "title": "AWS Bedrock Guardrail Updated"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_disable_logging.yml",
+          "tag_exact": "T1685.002",
+          "title": "AWS CloudTrail Important Change",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_guardduty_detector_deleted_or_updated.yml",
+          "tag_exact": "T1685",
+          "title": "AWS GuardDuty Detector Deleted Or Updated"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_guardduty_detector_deleted_or_updated.yml",
+          "tag_exact": "T1685.002",
+          "title": "AWS GuardDuty Detector Deleted Or Updated",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_config_disable_recording.yml",
+          "tag_exact": "T1685.002",
+          "title": "AWS Config Disabling Channel/Recorder",
+          "via_subtechnique": true
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_guardduty_disruption.yml",
+          "tag_exact": "T1685",
+          "title": "AWS GuardDuty Important Change"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_securityhub_finding_evasion.yml",
+          "tag_exact": "T1685",
+          "title": "AWS SecurityHub Findings Evasion"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_kubernetes_events_deleted.yml",
+          "tag_exact": "T1685",
+          "title": "Azure Kubernetes Events Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/gcp/audit/gcp_firewall_rule_modified_or_deleted.yml",
+          "tag_exact": "T1685",
+          "title": "Google Cloud Firewall Modified or Deleted"
+        }
+      ],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1685.002": {
+      "covered": true,
+      "id": "T1685.002",
+      "is_subtechnique": true,
+      "name": "Disable or Modify Cloud Log",
+      "platforms": [
+        "IaaS",
+        "Identity Provider",
+        "Office Suite",
+        "SaaS"
+      ],
+      "rule_count": 3,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_disable_logging.yml",
+          "tag_exact": "T1685.002",
+          "title": "AWS CloudTrail Important Change"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_guardduty_detector_deleted_or_updated.yml",
+          "tag_exact": "T1685.002",
+          "title": "AWS GuardDuty Detector Deleted Or Updated"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_config_disable_recording.yml",
+          "tag_exact": "T1685.002",
+          "title": "AWS Config Disabling Channel/Recorder"
+        }
+      ],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1686.001": {
+      "covered": true,
+      "id": "T1686.001",
+      "is_subtechnique": true,
+      "name": "Cloud Firewall",
+      "platforms": [
+        "IaaS"
+      ],
+      "rule_count": 5,
+      "rules": [
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_new_acl_entries.yml",
+          "tag_exact": "T1686.001",
+          "title": "New Network ACL Entry Added"
+        },
+        {
+          "rule_id": "rules/cloud/aws/cloudtrail/aws_cloudtrail_new_route_added.yml",
+          "tag_exact": "T1686.001",
+          "title": "New Network Route Added"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_firewall_modified_or_deleted.yml",
+          "tag_exact": "T1686.001",
+          "title": "Azure Firewall Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_firewall_rule_collection_modified_or_deleted.yml",
+          "tag_exact": "T1686.001",
+          "title": "Azure Firewall Rule Collection Modified or Deleted"
+        },
+        {
+          "rule_id": "rules/cloud/azure/activity_logs/azure_network_firewall_policy_modified_or_deleted.yml",
+          "tag_exact": "T1686.001",
+          "title": "Azure Network Firewall Policy Modified or Deleted"
+        }
+      ],
+      "tactics": [
+        "defense-impairment"
+      ]
+    },
+    "T1687": {
+      "covered": false,
+      "id": "T1687",
+      "is_subtechnique": false,
+      "name": "Exploitation for Defense Impairment",
+      "platforms": [
+        "IaaS",
+        "SaaS"
+      ],
+      "rule_count": 0,
+      "rules": [],
+      "tactics": [
+        "defense-impairment"
+      ]
+    }
+  },
+  "uncovered": [
+    "T1020.001",
+    "T1021.008",
+    "T1036.010",
+    "T1040",
+    "T1046",
+    "T1048",
+    "T1049",
+    "T1069",
+    "T1069.003",
+    "T1070.008",
+    "T1072",
+    "T1074.002",
+    "T1078.001",
+    "T1080",
+    "T1082",
+    "T1087.003",
+    "T1098.002",
+    "T1098.004",
+    "T1110.001",
+    "T1110.002",
+    "T1110.003",
+    "T1110.004",
+    "T1114.002",
+    "T1119",
+    "T1137",
+    "T1137.001",
+    "T1137.002",
+    "T1137.003",
+    "T1137.004",
+    "T1137.005",
+    "T1137.006",
+    "T1189",
+    "T1195",
+    "T1201",
+    "T1204",
+    "T1204.003",
+    "T1211",
+    "T1212",
+    "T1213",
+    "T1213.001",
+    "T1213.002",
+    "T1213.003",
+    "T1213.004",
+    "T1213.005",
+    "T1213.006",
+    "T1485.001",
+    "T1491",
+    "T1491.002",
+    "T1496.001",
+    "T1496.002",
+    "T1496.003",
+    "T1496.004",
+    "T1498",
+    "T1498.001",
+    "T1498.002",
+    "T1499",
+    "T1499.002",
+    "T1499.003",
+    "T1499.004",
+    "T1518",
+    "T1518.001",
+    "T1530",
+    "T1534",
+    "T1535",
+    "T1538",
+    "T1539",
+    "T1546",
+    "T1548.005",
+    "T1550.004",
+    "T1552.005",
+    "T1552.008",
+    "T1555.006",
+    "T1556.007",
+    "T1556.009",
+    "T1564",
+    "T1564.008",
+    "T1566.004",
+    "T1567",
+    "T1567.004",
+    "T1578.001",
+    "T1578.002",
+    "T1578.004",
+    "T1578.005",
+    "T1606.001",
+    "T1606.002",
+    "T1614",
+    "T1648",
+    "T1649",
+    "T1651",
+    "T1654",
+    "T1657",
+    "T1666",
+    "T1667",
+    "T1671",
+    "T1677",
+    "T1680",
+    "T1684",
+    "T1684.001",
+    "T1684.002",
+    "T1687"
+  ],
+  "untagged_rules": [
+    "rules/cloud/aws/cloudtrail/aws_cloudtrail_bucket_deleted.yml",
+    "rules/cloud/aws/cloudtrail/aws_cloudtrail_region_enabled.yml",
+    "rules/cloud/aws/cloudtrail/aws_cloudtrail_vpc_flow_logs_deleted.yml",
+    "rules/cloud/aws/cloudtrail/aws_efs_fileshare_modified_or_deleted.yml",
+    "rules/cloud/aws/cloudtrail/aws_lambda_function_url.yml",
+    "rules/cloud/aws/cloudtrail/aws_new_lambda_layer_attached.yml",
+    "rules/cloud/aws/cloudtrail/aws_passed_role_to_glue_development_endpoint.yml",
+    "rules/cloud/azure/activity_logs/azure_application_gateway_modified_or_deleted.yml",
+    "rules/cloud/azure/activity_logs/azure_application_security_group_modified_or_deleted.yml",
+    "rules/cloud/azure/activity_logs/azure_kubernetes_pods_deleted.yml",
+    "rules/cloud/azure/activity_logs/azure_network_firewall_rule_modified_or_deleted.yml",
+    "rules/cloud/azure/activity_logs/azure_network_p2s_vpn_modified_or_deleted.yml",
+    "rules/cloud/azure/activity_logs/azure_network_security_modified_or_deleted.yml",
+    "rules/cloud/azure/activity_logs/azure_network_virtual_device_modified_or_deleted.yml",
+    "rules/cloud/azure/activity_logs/azure_suppression_rule_created.yml",
+    "rules/cloud/azure/activity_logs/azure_virtual_network_modified_or_deleted.yml",
+    "rules/cloud/azure/activity_logs/azure_vpn_connection_modified_or_deleted.yml",
+    "rules/cloud/azure/audit_logs/azure_device_no_longer_managed_or_compliant.yml",
+    "rules/cloud/azure/audit_logs/azure_owner_removed_from_application_or_service_principal.yml",
+    "rules/cloud/azure/audit_logs/azure_service_principal_created.yml",
+    "rules/cloud/azure/audit_logs/azure_service_principal_removed.yml",
+    "rules/cloud/azure/audit_logs/azure_update_risk_and_mfa_registration_policy.yml",
+    "rules/cloud/azure/audit_logs/azure_user_account_mfa_disable.yml",
+    "rules/cloud/gcp/audit/gcp_bucket_enumeration.yml",
+    "rules/cloud/gcp/audit/gcp_bucket_modified_or_deleted.yml",
+    "rules/cloud/gcp/audit/gcp_dns_zone_modified_or_deleted.yml",
+    "rules/cloud/gcp/audit/gcp_kubernetes_cronjob.yml",
+    "rules/cloud/gcp/audit/gcp_kubernetes_rolebinding.yml",
+    "rules/cloud/gcp/audit/gcp_kubernetes_secrets_modified_or_deleted.yml",
+    "rules/cloud/gcp/audit/gcp_service_account_modified.yml",
+    "rules/cloud/gcp/audit/gcp_sql_database_modified_or_deleted.yml",
+    "rules/cloud/gcp/audit/gcp_vpn_tunnel_modified_or_deleted.yml",
+    "rules/cloud/gcp/gworkspace/admin/gcp_gworkspace_application_removed.yml",
+    "rules/cloud/gcp/gworkspace/admin/gcp_gworkspace_mfa_disabled.yml",
+    "rules/cloud/gcp/gworkspace/admin/gcp_gworkspace_role_modified_or_deleted.yml",
+    "rules/cloud/gcp/gworkspace/admin/gcp_gworkspace_role_privilege_deleted.yml",
+    "rules/cloud/m365/threat_management/microsoft365_activity_by_terminated_user.yml",
+    "rules/cloud/m365/threat_management/microsoft365_susp_oauth_app_file_download_activities.yml"
+  ]
+}
