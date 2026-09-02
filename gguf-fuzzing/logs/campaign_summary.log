@@ -1,0 +1,70 @@
+Campaign start (UTC): Fri Aug 21 07:49:04 PM UTC 2026
+TOTAL_RUN_BUDGET=200000 PER_RUN_BUDGET=50000 MAX_RESTARTS=40
+--- restart 1: starting, total_executed_so_far=0 ---
+restart 1: exit_code=70 executed_this_restart=10999 cumulative=10999
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart1_timeout-55f2e178d9e357aff401790ea4be458bdbd5aea8
+--- restart 2: starting, total_executed_so_far=10999 ---
+restart 2: exit_code=70 executed_this_restart=19878 cumulative=30877
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart2_timeout-a5cebc9fa72f4dc706b734bb41292a478d2f892e
+--- restart 3: starting, total_executed_so_far=30877 ---
+restart 3: exit_code=70 executed_this_restart=1265 cumulative=32142
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart3_timeout-d47e37e92fab661cced80133e3dcf1bd92db577a
+--- restart 4: starting, total_executed_so_far=32142 ---
+restart 4: exit_code=70 executed_this_restart=4146 cumulative=36288
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart4_timeout-65a4b635cd40154b3239853c5d4e8c66c09e2c31
+--- restart 5: starting, total_executed_so_far=36288 ---
+restart 5: exit_code=70 executed_this_restart=3191 cumulative=39479
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart5_timeout-bff5ff6377f75c16d2e8468149a9369e51f0cf54
+--- restart 6: starting, total_executed_so_far=39479 ---
+restart 6: exit_code=70 executed_this_restart=4096 cumulative=43575
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart6_timeout-00a8966861f04b18f17d60c3156bf1ad79dad35c
+--- restart 7: starting, total_executed_so_far=43575 ---
+restart 7: exit_code=70 executed_this_restart=9336 cumulative=52911
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart7_timeout-7090fd44700be933b3706774e3334312b0df453d
+--- restart 8: starting, total_executed_so_far=52911 ---
+restart 8: exit_code=70 executed_this_restart=4930 cumulative=57841
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart8_timeout-bae7013fd7c838dfa4f482ca1cca54873c13502d
+--- restart 9: starting, total_executed_so_far=57841 ---
+restart 9: exit_code=70 executed_this_restart=3304 cumulative=61145
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart9_timeout-bae7013fd7c838dfa4f482ca1cca54873c13502d
+--- restart 10: starting, total_executed_so_far=61145 ---
+restart 10: exit_code=70 executed_this_restart=512 cumulative=61657
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart10_timeout-b3291b52bad5ece08fdda535546df0c6e5290fb0
+--- restart 11: starting, total_executed_so_far=61657 ---
+restart 11: exit_code=70 executed_this_restart=256 cumulative=61913
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart11_timeout-041891b0431d71850fb22b3eb9cf81ecef111b42
+--- restart 12: starting, total_executed_so_far=61913 ---
+Campaign RESUME (UTC): Fri Aug 21 07:56:40 PM UTC 2026
+Resuming from restart=12 cumulative=61913 TOTAL_RUN_BUDGET=200000
+--- restart 12: starting, total_executed_so_far=61913 ---
+restart 12: exit_code=70 executed_this_restart=1024 cumulative=62937
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart12_timeout-00c5cf64a493101e8a68580976d3de76615b1ad6
+--- restart 13: starting, total_executed_so_far=62937 ---
+restart 13: exit_code=70 executed_this_restart=2961 cumulative=65898
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart13_timeout-a35c8ce196b84c12ad660f4007843c8adec4d0c8
+--- restart 14: starting, total_executed_so_far=65898 ---
+restart 14: exit_code=70 executed_this_restart=2048 cumulative=67946
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart14_timeout-e308b08eb42f3efd44e64050cc778dec3f0718bb
+--- restart 15: starting, total_executed_so_far=67946 ---
+restart 15: exit_code=70 executed_this_restart=4096 cumulative=72042
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart15_timeout-657128fced51ac2698b995dbbb29de6c7aedf742
+--- restart 16: starting, total_executed_so_far=72042 ---
+restart 16: exit_code=70 executed_this_restart=133 cumulative=72175
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart16_timeout-99c437e6c21e4246cf94647e2ff65be2f343f7aa
+--- restart 17: starting, total_executed_so_far=72175 ---
+restart 17: exit_code=70 executed_this_restart=4096 cumulative=76271
+  moved artifact: /home/kali/director/projects/gguf-fuzzing/artifacts/timeouts_and_ooms/restart17_timeout-9f654452261cbd935a2d6a27c04b3a2de7eb2f70
+--- restart 18: starting, total_executed_so_far=76271 ---
+--- restart 18: interrupted by operator after 2048 executions (no crash/timeout on this restart) ---
+Campaign manually stopped by operator (UTC): Fri Aug 21 07:59:20 PM UTC 2026
+Reason: 17 consecutive restarts had each been stopped by the same reproducible
+CPU-time-exhaustion finding (see FINDINGS.md and artifacts/timeouts_and_ooms/).
+Restart 18 was in progress with no new finding when stopped; its partial
+2048 executions are NOT included in the reported cumulative total below,
+to keep the reported number conservative and tied only to restarts that
+ran to a definite conclusion (clean budget exhaustion or a captured crash).
+Total restarts run to a definite conclusion: 17
+Total executions across those 17 restarts (sum of each restart's highest
+libFuzzer progress counter, a real lower bound read from campaign_restart_N.log): 76271
+Total independent reproductions of the CPU-time-exhaustion finding: 17 (one per restart)
+Final corpus_evolved/ size: 132 files
