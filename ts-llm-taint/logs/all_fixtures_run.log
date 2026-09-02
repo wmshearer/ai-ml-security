@@ -1,0 +1,69 @@
+/home/kali/director/projects/ts-llm-taint/fixtures/limit-experiment/direct-call.ts:17  [http-request-to-prompt-construction]
+  source (line 22): HTTP request property `req.body`
+  sink   (line 17): SystemMessage constructor argument
+  tainted argument: value
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/http-request-to-dangerously-set-inner-html.ts:12  [http-request-to-unsanitized-render]
+  source (line 11): HTTP request property `req.body`
+  sink   (line 12): dangerouslySetInnerHTML __html value
+  tainted argument: rawHtml
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/http-request-to-eval.ts:10  [http-request-to-code-execution]
+  source (line 9): HTTP request property `req.query`
+  sink   (line 10): eval() argument
+  tainted argument: expression as unknown as string
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/http-request-to-file-read.ts:11  [http-request-to-file-path]
+  source (line 10): HTTP request property `req.query`
+  sink   (line 11): fs.readFile path argument
+  tainted argument: requestedPath as unknown as string
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/http-request-to-shell-execution.ts:12  [http-request-to-shell-execution]
+  source (line 11): HTTP request property `req.body`
+  sink   (line 12): execSync command argument
+  tainted argument: `ping -c 1 ${targetHost}`
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/http-request-to-sql-query.ts:16  [http-request-to-sql-query]
+  source (line 14): HTTP request property `req.query`
+  sink   (line 16): db.query() argument
+  tainted argument: sql
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/http-request-to-system-message.ts:12  [http-request-to-prompt-construction]
+  source (line 11): HTTP request property `req.body`
+  sink   (line 12): SystemMessage constructor argument
+  tainted argument: userInstruction
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/human-message-into-fromMessages.ts:24  [http-request-to-prompt-construction]
+  source (line 21): HTTP request property `req.body`
+  sink   (line 24): HumanMessage constructor argument
+  tainted argument: userInput
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/human-message-into-fromMessages.ts:24  [user-message-to-prompt-construction]
+  source (line 24): HumanMessage constructor argument `userInput`
+  sink   (line 24): HumanMessage constructor argument
+  tainted argument: userInput
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/retrieved-document-to-generate-text.ts:23  [retrieved-document-to-prompt-construction]
+  source (line 22): retriever call `retriever.similaritySearch(question)`
+  sink   (line 23): generateText options (system/prompt/messages)
+  tainted argument: `Context: ${context}\n\nQuestion: ${question}`
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/retrieved-document-to-system-message-in-tool.ts:34  [retrieved-document-to-prompt-construction]
+  source (line 34): retriever call `retriever.similaritySearch(query)`
+  sink   (line 34): SystemMessage constructor argument
+  tainted argument: retriever.similaritySearch(query)
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/retrieved-document-to-tool-description.ts:27  [retrieved-document-to-prompt-construction]
+  source (line 25): retriever call `retriever.similaritySearch("catalog summary")`
+  sink   (line 27): tool() description field (UNVERIFIED sink mapping for LangChain.js, see docs)
+  tainted argument: `Looks up product info. Catalog context: ${catalogSummary}`
+
+/home/kali/director/projects/ts-llm-taint/fixtures/planted/user-message-to-chat-prompt-template.ts:19  [user-message-to-prompt-construction]
+  source (line 17): user-role message content `incoming.content`
+  sink   (line 19): ChatPromptTemplate.fromMessages argument
+  tainted argument: [
+    ["system", "You are a helpful assistant."],
+    ["user", rendered],
+  ]
+
+Total findings: 13

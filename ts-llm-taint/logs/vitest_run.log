@@ -1,0 +1,13 @@
+
+> ts-llm-taint@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.11 /home/kali/director/projects/ts-llm-taint
+
+
+ Test Files  4 passed (4)
+      Tests  70 passed (70)
+   Start at  15:35:00
+   Duration  7.04s (transform 105ms, setup 0ms, import 1.03s, tests 7.55s, environment 0ms)
+
