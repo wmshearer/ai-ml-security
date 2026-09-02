@@ -1,0 +1,12 @@
+=== CORE TEST: client scoped to tenant_db_a - can it see/read tenant_db_b's collection? ===
+--- list_collections() scoped to tenant_db_a ---
+['secrets']
+
+--- attempt: query tenant_db_a client against collection secrets (same name exists in both DBs - does it return db_a or db_b data, or can it be confused?) ---
+data: ["{'id': 1, 'secret': 'DBA_SECRET_VALUE_44f1'}", "{'id': 2, 'secret': 'DBA_SECRET_VALUE_44f1_v2'}"], extra_info: {}
+
+--- attempt: explicitly pass db_name=tenant_db_b as an override on a client created for tenant_db_a ---
+SUCCEEDED (potential cross-db leak): data: ["{'id': 1, 'secret': 'DBA_SECRET_VALUE_44f1'}", "{'id': 2, 'secret': 'DBA_SECRET_VALUE_44f1_v2'}"], extra_info: {}
+
+--- attempt: use_database() to switch, confirm proper switch works fine (control) ---
+after use_database(tenant_db_b): data: ["{'id': 1, 'secret': 'DBB_SECRET_VALUE_99a2'}"], extra_info: {}

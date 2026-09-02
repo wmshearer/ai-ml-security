@@ -1,0 +1,28 @@
+=== can the foothold, using ONLY its own tenant/database scope, list OTHER tenants? ===
+GET .../tenant_a/databases/db_a/collections -> 200
+[{"id":"59170ebe-1f43-4b39-882e-97fd97d7e6f9","name":"secrets_a","configuration_json":{"hnsw":{"space":"l2","ef_construction":100,"ef_search":100,"max_neighbors":16,"resize_factor":1.2,"sync_threshold":1000},"spann":null,"embedding_function":null},"schema":{"defaults":{"string":{"fts_index":{"enabled":false,"config":{}},"string_inverted_index":{"enabled":true,"config":{}}},"float_list":{"vector_index":{"enabled":false,"config":{"space":"l2","hnsw":{"ef_construction":100,"max_neighbors":16,"ef_search":100,"num_threads":20,"batch_size":100,"sync_threshold":1000,"resize_factor":1.2}}}},"sparse_vector":{"sparse_vector_index":{"enabled":false,"config":{"embedding_function":{"type":"unknown"},"bm25":false}}},"int":{"int_inverted_index":{"enabled":true,"config":{}}},"float":{"float_inverted_index":{"enabled":true,"config":{}}},"bool":{"bool_inverted_index":{"enabled":true,"config":{}}}},"keys":{"#embedding":{"float_list":{"vector_index":{"enabled":true,"config":{"space":"l2","source_key":"#document","hnsw":{"ef_construction":100,"max_neighbors":16,"ef_search":100,"num_threads":20,"batch_size":100,"sync_threshold":1000,"resize_factor":1.2}}}}},"#document":{"string":{"fts_index":{"enabled":true,"config":{}},"string_inverted_index":{"enabled":false,"config":{}}}}}},"metadata":null,"dimension":4,"tenant":"tenant_a","database":"db_a","log_position":0,"version":0}]
+
+=== does chroma expose a global admin/list-all-tenants endpoint reachable with no auth? ===
+GET /api/v2/tenants -> 405: 
+GET /api/v2/auth/identity -> 200: {"user_id":"","tenant":"default_tenant","databases":["default_database"]}
+
+Interpretation: because Chroma requires no authentication at all, the
+foothold does not need to be handed tenant_a's name or collection UUID by
+any side channel. Listing itself is correctly scoped (per vectordb/FINDINGS.md:
+GET .../tenant_a/databases/db_a/collections only returns tenant_a's own
+collections, never leaking tenant_b's), but since there is no credential
+gating WHICH tenant/database path a caller may address, an attacker can
+simply try plausible tenant/database names directly and list that tenant's
+collections outright - no UUID leak, side channel, or guessing needed. This
+is a materially easier path than the vectordb component's original framing
+(which required the UUID to already be known). Combined with the vectordb
+finding that /get and /query then ignore tenant scoping entirely, this
+means concretely: an attacker who reaches Chroma at all, with no
+credentials, can enumerate every tenant/database name that exists by
+trying strings (there is nothing stopping a `/api/v2/tenants/<guess>` probe
+loop) and read every collection under each one.
+'/api/v2/tenants' (GET, list-all) returns 405 (method not allowed) - Chroma
+does not expose a single "list every tenant" endpoint, so a working attack
+does still require some way of knowing or guessing candidate tenant names;
+it does not require the collection UUID once a tenant/database name is
+correctly guessed.

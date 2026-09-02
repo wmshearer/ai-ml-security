@@ -1,0 +1,15 @@
+=== b) auth test: host, no api key ===
+HTTP/1.1 200 OK
+content-length: 112
+content-type: application/json
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+date: Thu, 27 Aug 2026 01:29:17 GMT
+
+{"title":"qdrant - vector search engine","version":"1.15.1","commit":"af7ab5b192f01c9d9cd7fff119eab2ae73755cc0"}
+HTTP/1.1 200 OK
+content-length: 59
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:29:17 GMT
+
+{"result":{"collections":[]},"status":"ok","time":3.425e-6}

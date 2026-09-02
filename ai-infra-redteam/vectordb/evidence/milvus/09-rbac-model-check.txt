@@ -1,0 +1,3 @@
+=== d) RBAC/tenancy summary check: default authorization posture ===
+list_users (no credentials supplied at all): ['root']
+list_roles (no credentials supplied at all): ['admin', 'public']

@@ -1,0 +1,13 @@
+lateral-chroma:8000 -> DNS FAILED, not on this network ([Errno -2] Name or service not known)
+lateral-ollama:11434 -> DNS FAILED, not on this network ([Errno -2] Name or service not known)
+
+Interpretation: this is the control demonstrating the defensive conclusion.
+A container on a DIFFERENT user-defined bridge network cannot resolve or
+reach either chroma or ollama at all - DNS resolution itself fails because
+Docker's embedded DNS only resolves container names within the same
+network. This directly confirms (reusing container/FINDINGS.md's finding,
+independently reproduced here against this stack's real services rather
+than a generic test listener) that putting the foothold-equivalent
+container on a separate network from chroma and ollama, instead of one
+shared bridge network, would have blocked every step of this chain from
+02- onward before it started.

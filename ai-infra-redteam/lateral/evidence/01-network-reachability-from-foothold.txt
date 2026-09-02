@@ -1,0 +1,8 @@
+lateral-chroma (172.19.0.3):8000 -> OPEN
+lateral-ollama (172.19.0.2):11434 -> OPEN
+
+Note: neither lateral-chroma:8000 nor lateral-ollama:11434 was
+published to this app container via any docker run flag on lateral-app.
+lateral-app only received CHROMA_URL/OLLAMA_URL env vars pointing at
+the container DNS names; reachability itself comes purely from being
+on the shared lateral-net bridge network.

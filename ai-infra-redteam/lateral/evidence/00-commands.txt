@@ -1,0 +1,15 @@
+=== 00-commands.txt: reference commands used in this component ===
+Stack startup:
+  scripts/00-build-app-image.sh
+  scripts/01-start-stack.sh
+  scripts/02-plant-tenant-data.sh
+
+Evidence capture (run from the host, using `docker exec lateral-app ...`
+to execute from inside the foothold container, exactly as an attacker with
+code execution in that container would):
+  docker exec lateral-app <command>
+
+Image digests pinned:
+  chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6
+  ollama/ollama:0.5.7@sha256:7e672211886f8bd4448a98ed577e26c816b9e8b052112860564afaa2c105800e
+  redteam/lateral-rag-app:latest (built locally from app/Dockerfile, python:3.12-slim base)

@@ -1,0 +1,14 @@
+=== add distinct secret document to collection A (default_tenant/db_a/secrets_a) ===
+HTTP/1.1 201 Created
+content-type: application/json
+content-length: 2
+date: Thu, 27 Aug 2026 01:28:16 GMT
+
+{}
+=== create collection secrets_b in tenant_b/db_b ===
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 1375
+date: Thu, 27 Aug 2026 01:28:16 GMT
+
+{"id":"61350239-747e-408f-bc05-612c82323b7b","name":"secrets_b","configuration_json":{"hnsw":{"space":"l2","ef_construction":100,"ef_search":100,"max_neighbors":16,"resize_factor":1.2,"sync_threshold":1000},"spann":null,"embedding_function":null},"schema":{"defaults":{"string":{"fts_index":{"enabled":false,"config":{}},"string_inverted_index":{"enabled":true,"config":{}}},"float_list":{"vector_index":{"enabled":false,"config":{"space":"l2","hnsw":{"ef_construction":100,"max_neighbors":16,"ef_search":100,"num_threads":20,"batch_size":100,"sync_threshold":1000,"resize_factor":1.2}}}},"sparse_vector":{"sparse_vector_index":{"enabled":false,"config":{"embedding_function":{"type":"unknown"},"bm25":false}}},"int":{"int_inverted_index":{"enabled":true,"config":{}}},"float":{"float_inverted_index":{"enabled":true,"config":{}}},"bool":{"bool_inverted_index":{"enabled":true,"config":{}}}},"keys":{"#document":{"string":{"fts_index":{"enabled":true,"config":{}},"string_inverted_index":{"enabled":false,"config":{}}}},"#embedding":{"float_list":{"vector_index":{"enabled":true,"config":{"space":"l2","source_key":"#document","hnsw":{"ef_construction":100,"max_neighbors":16,"ef_search":100,"num_threads":20,"batch_size":100,"sync_threshold":1000,"resize_factor":1.2}}}}}}},"metadata":null,"dimension":null,"tenant":"tenant_b","database":"db_b","log_position":0,"version":0}

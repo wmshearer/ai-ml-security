@@ -1,0 +1,7 @@
+=== chroma heartbeat, zero credentials ===
+HTTP status: 200
+{"nanosecond heartbeat":1787795369698939961}
+
+=== ollama /api/tags, zero credentials ===
+HTTP status: 200
+{"models":[{"name":"tinyllama:latest","model":"tinyllama:latest","modified_at":"2026-08-27T01:47:24.857683951Z","size":637700138,"digest":"2644915ede352ea7bdfaff0bfac0be74c719d5d5202acb63a6fb095b52f394a4","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1B","quantization_level":"Q4_0"}}]}

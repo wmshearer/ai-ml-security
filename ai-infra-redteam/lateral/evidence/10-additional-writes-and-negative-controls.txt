@@ -1,0 +1,34 @@
+=== testing whether ollama /api/delete requires the model to exist (a control, not a finding) ===
+HTTP 404: {"error":"model 'does-not-exist-xyz' not found"}
+
+=== does chroma /api/v2/tenants (create) require any credential/body validation that would block an attacker? ===
+create arbitrary new tenant, no auth -> HTTP 200: {}
+
+=== can the foothold DELETE another tenant collection (destructive, not just read)? testing against its OWN collection only, to avoid destroying planted evidence ===
+create throwaway -> 200: {"id":"9e3088a0-04d6-4e4c-8124-bd5fccdd5fe8","name":"throwaway_delete_test","configuration_json":{"hnsw":{"space":"l2","ef_construction":100,"ef_search":100,"max_neighbors":16,"resize_factor":1.2,"syn
+delete throwaway -> 404: {"error":"NotFoundError","message":"Collection [9e3088a0-04d6-4e4c-8124-bd5fccdd5fe8] does not exist"}
+delete by name -> 200: {}
+list after delete -> 200
+remaining collections: ['app_notes']
+
+Interpretation: delete-by-collection-id under the tenant/database path
+returns 404 (that specific route is not how Chroma v2 deletes a
+collection); delete-by-name under the same tenant/database path succeeds
+with no credential (HTTP 200) and the collection is confirmed gone from
+the list afterward. This means write/destroy capability against Chroma
+is also unauthenticated, not just read - an attacker on this network could
+delete any collection whose tenant/database/name they can address, not
+only read it. This was tested only against a throwaway collection created
+for this test, never against the planted tenant_a/tenant_b secrets
+collections, to avoid destroying evidence. Confirmed those are still
+intact in 11-planted-data-still-intact-after-testing.txt.
+
+Ollama's /api/delete correctly 404s for a genuinely nonexistent model -
+this is expected API behavior, not a finding, included here as a negative
+control showing the earlier successful delete in 08- was a real state
+change and not just an endpoint that always returns 200.
+
+Creating a brand new, arbitrary tenant name with no credential also
+succeeds (HTTP 200) - consistent with vectordb/FINDINGS.md's characterization
+of Chroma's tenant/database segments as an addressing convenience rather
+than an authorization boundary.

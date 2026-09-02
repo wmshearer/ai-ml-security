@@ -1,0 +1,31 @@
+# Weaviate, default configuration.
+# No AUTHENTICATION_APIKEY_ENABLED / AUTHENTICATION_OIDC_ENABLED set.
+# Weaviate's own default is anonymous access = true when nothing is set.
+# Image pinned by digest for reproducibility.
+services:
+  weaviate:
+    image: semitechnologies/weaviate@sha256:5c62e5cbce4c48fc770abcee71099d9de32aad3b44d12299611f8135ee412362
+    container_name: vectordb-weaviate
+    command:
+      - "--host"
+      - "0.0.0.0"
+      - "--port"
+      - "8080"
+      - "--scheme"
+      - "http"
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+    networks:
+      - vectordb-net
+
+  client:
+    image: curlimages/curl:8.11.0
+    container_name: vectordb-weaviate-client
+    command: ["sleep", "3600"]
+    networks:
+      - vectordb-net
+
+networks:
+  vectordb-net:
+    driver: bridge

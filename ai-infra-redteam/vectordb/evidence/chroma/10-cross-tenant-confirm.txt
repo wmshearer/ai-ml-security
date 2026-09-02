@@ -1,0 +1,22 @@
+=== CORE TEST 5: repeat test 3 to confirm not a fluke, plus try vector query endpoint cross-tenant ===
+--- repeat GET via wrong tenant path ---
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 149
+date: Thu, 27 Aug 2026 01:28:39 GMT
+
+{"ids":["doc-b-1"],"embeddings":null,"documents":["TENANT_B_SECRET_VALUE_ce31d4"],"uris":null,"metadatas":[null],"include":["documents","metadatas"]}
+--- vector QUERY (similarity search) on collection B via wrong tenant path (default_tenant/db_a) ---
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 187
+date: Thu, 27 Aug 2026 01:28:39 GMT
+
+{"ids":[["doc-b-1"]],"embeddings":null,"documents":[["TENANT_B_SECRET_VALUE_ce31d4"]],"uris":null,"metadatas":[[null]],"distances":[[0.0]],"include":["documents","metadatas","distances"]}
+--- also try via a THIRD, nonexistent tenant/db entirely (garbage path) ---
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 149
+date: Thu, 27 Aug 2026 01:28:39 GMT
+
+{"ids":["doc-b-1"],"embeddings":null,"documents":["TENANT_B_SECRET_VALUE_ce31d4"],"uris":null,"metadatas":[null],"include":["documents","metadatas"]}

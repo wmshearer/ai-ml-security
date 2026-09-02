@@ -1,0 +1,8 @@
+=== decisive test: server-side enforcement check via internal collection ID resolution ===
+tenant_db_a.secrets collection_id: 468659560957609174
+tenant_db_b.secrets collection_id: 468659560958980318
+(different internal IDs even though both are named "secrets" - confirms Milvus namespaces collections by (db, name) pair server-side, not by name alone)
+
+--- has_collection check: does tenant_db_a client see db_b as having a collection named something unique to test cross-resolution? ---
+client_a.has_collection(only_in_db_b): False
+client_b.has_collection(only_in_db_b): True

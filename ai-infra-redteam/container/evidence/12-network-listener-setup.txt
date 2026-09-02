@@ -1,0 +1,9 @@
+13e5c8b2d395   redteam-net-a   bridge    local
+f66f42b53b0d   redteam-net-b   bridge    local
+
+$ docker run -d --rm --name netA-listener --network redteam-net-a redteam/capcheck:latest sh -c 'while true; do (echo secret-service-on-9999) | nc -l -p 9999; done'
+40edbe79a914da8aa6dbfca9e29b17b58098ecaf00a0ef7860c9c879a7f0a017
+$ docker port netA-listener  (expect EMPTY - nothing published to host)
+(exit code: 0, empty output confirmed = no published ports)
+
+listener IP on net-a: 172.19.0.2

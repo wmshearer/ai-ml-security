@@ -1,0 +1,14 @@
+=== Test A: same-network client reaches the UNPUBLISHED port (redteam-net-a) ===
+$ docker run --rm --network redteam-net-a redteam/capcheck:latest sh -c 'echo | nc -w 2 172.19.0.2 9999'
+secret-service-on-9999
+(exit code: 0)
+
+=== Test B: DIFFERENT-network client (redteam-net-b) attempts to reach same target IP/port ===
+$ docker run --rm --network redteam-net-b redteam/capcheck:latest sh -c 'echo | nc -w 2 -v 172.19.0.2 9999; echo exit:$?'
+172.19.0.2: inverse host lookup failed: Unknown host
+(UNKNOWN) [172.19.0.2] 9999 (?) : Connection timed out
+exit:1
+
+=== Test C: from the HOST, confirm the unpublished port is NOT reachable ===
+$ curl -s --max-time 2 http://127.0.0.1:9999 ; echo host-curl-exit:$?
+host-curl-exit:7

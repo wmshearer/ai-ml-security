@@ -1,0 +1,25 @@
+=== multitenancy-by-payload pattern test (Qdrant's documented approach: one collection, tenant_id field) ===
+--- create shared collection for tenant pattern ---
+HTTP/1.1 200 OK
+content-length: 47
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:29:56 GMT
+
+{"result":true,"status":"ok","time":0.13119859}
+--- add point for tenant_id=alpha ---
+HTTP/1.1 200 OK
+content-length: 83
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:29:56 GMT
+
+{"result":{"operation_id":0,"status":"completed"},"status":"ok","time":0.001873738}
+--- add point for tenant_id=beta ---
+HTTP/1.1 200 OK
+content-length: 83
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:29:56 GMT
+
+{"result":{"operation_id":1,"status":"completed"},"status":"ok","time":0.002460414}

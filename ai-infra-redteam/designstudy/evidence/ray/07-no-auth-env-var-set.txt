@@ -1,0 +1,2 @@
+$ docker exec ray-designstudy env | grep -i RAY_AUTH
+(no RAY_AUTH_* env vars set - confirms default/no-auth)

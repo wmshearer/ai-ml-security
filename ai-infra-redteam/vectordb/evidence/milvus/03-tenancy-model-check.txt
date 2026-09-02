@@ -1,0 +1,3 @@
+=== c/d) tenancy model: Milvus has 'database' as a first-class multi-tenant concept ===
+list_databases (before creating any): ['default']
+list_databases (after creating tenant_db_a, tenant_db_b): ['default', 'tenant_db_a', 'tenant_db_b']

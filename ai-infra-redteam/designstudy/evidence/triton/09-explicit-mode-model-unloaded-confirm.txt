@@ -1,0 +1,3 @@
+$ curl -s -w '\nHTTP_CODE:%{http_code}\n' http://localhost:12000/v2/models/identity_demo
+{"error":"Request for unknown model: 'identity_demo' has no available versions"}
+HTTP_CODE:404

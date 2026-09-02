@@ -1,0 +1,32 @@
+2026-08-26 18:50:30,610	INFO usage_lib.py:474 -- Usage stats collection is enabled by default without user confirmation because this terminal is detected to be non-interactive. To disable this, add `--disable-usage-stats` to the command that starts the cluster, or run the following command: `ray disable-usage-stats` before starting the cluster. See https://docs.ray.io/en/master/cluster/usage-stats.html for more details.
+2026-08-26 18:50:30,611	INFO scripts.py:1042 -- [37mLocal node IP[39m: [1m172.20.0.3[22m
+Traceback (most recent call last):
+  File "/home/ray/anaconda3/bin/ray", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/ray/anaconda3/lib/python3.11/site-packages/ray/scripts/scripts.py", line 3010, in main
+    return cli()
+           ^^^^^
+  File "/home/ray/anaconda3/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ray/anaconda3/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/home/ray/anaconda3/lib/python3.11/site-packages/click/core.py", line 1873, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ray/anaconda3/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ray/anaconda3/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ray/anaconda3/lib/python3.11/site-packages/ray/autoscaler/_private/cli_logger.py", line 812, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ray/anaconda3/lib/python3.11/site-packages/ray/scripts/scripts.py", line 1069, in start
+    ensure_token_if_auth_enabled(system_config, create_token_if_missing=False)
+  File "/home/ray/anaconda3/lib/python3.11/site-packages/ray/_private/authentication/authentication_token_setup.py", line 101, in ensure_token_if_auth_enabled
+    raise AuthenticationError(
+ray.exceptions.AuthenticationError: Token authentication is enabled but no authentication token was found. Ensure that the token for the cluster is available in a local file (e.g., ~/.ray/auth_token or via RAY_AUTH_TOKEN_PATH) or as the `RAY_AUTH_TOKEN` environment variable. To generate a token for local development, use `ray get-auth-token --generate` For remote clusters, ensure that the token is propagated to all nodes of the cluster when token authentication is enabled. For more information, see: https://docs.ray.io/en/latest/ray-security/token-auth.html

@@ -1,0 +1,983 @@
+   #Index Ray token authentication Ray Glossary
+
+   Skip to main content
+
+   (BUTTON) Back to top ____________________ Ctrl+K
+
+   Try Ray with $100 credit — Start now (BUTTON) ×
+
+   (BUTTON)
+
+   Site Navigation
+     * Get Started
+     * Use Cases
+     * Example Gallery
+     * Library
+          + Ray CoreScale general Python applications
+          + Ray DataScale data ingest and preprocessing
+          + Ray TrainScale machine learning training
+          + Ray TuneScale hyperparameter tuning
+          + Ray ServeScale model serving
+          + Ray RLlibScale reinforcement learning
+     * APIs
+     * Resources
+          + Discussion ForumGet your Ray questions answered
+          + TrainingHands-on learning
+          + BlogUpdates, best practices, user-stories
+          + EventsWebinars, meetups, office hours
+          + Success StoriesReal-world workload examples
+          + EcosystemLibraries integrated with Ray
+          + CommunityConnect with us
+
+   (BUTTON)
+     * (BUTTON) System Settings
+     * (BUTTON) Light
+     * (BUTTON) Dark
+
+   (BUTTON) Choose version
+   Try Managed Ray
+   (BUTTON)
+
+   Site Navigation
+     * Get Started
+     * Use Cases
+     * Example Gallery
+     * Library
+          + Ray CoreScale general Python applications
+          + Ray DataScale data ingest and preprocessing
+          + Ray TrainScale machine learning training
+          + Ray TuneScale hyperparameter tuning
+          + Ray ServeScale model serving
+          + Ray RLlibScale reinforcement learning
+     * APIs
+     * Resources
+          + Discussion ForumGet your Ray questions answered
+          + TrainingHands-on learning
+          + BlogUpdates, best practices, user-stories
+          + EventsWebinars, meetups, office hours
+          + Success StoriesReal-world workload examples
+          + EcosystemLibraries integrated with Ray
+          + CommunityConnect with us
+
+   (BUTTON)
+     * (BUTTON) System Settings
+     * (BUTTON) Light
+     * (BUTTON) Dark
+
+   (BUTTON) Choose version
+   Try Managed Ray
+
+     * Overview
+     * Getting Started
+     * Installation
+     * Use Cases
+          + Ray for ML Infrastructure
+     * Examples
+          + Multi-modal AI pipeline
+               o Batch inference
+               o Distributed training
+               o Online serving
+          + LLM training and inference
+          + Audio batch inference
+          + Distributed XGBoost pipeline
+               o Distributed training of an XGBoost model
+               o Model validation using offline batch inference
+               o Scalable online XGBoost inference with Ray Serve
+          + Time-series forecasting
+               o Distributed training of a DLinear time-series model
+               o DLinear model validation using offline batch inference
+               o Online serving for DLinear model using Ray Serve
+          + Scalable video processing
+               o Fine-tuning a face mask detection model with Faster R-CNN
+               o Object detection batch inference on test dataset and
+                 metrics calculation
+               o Video processing with object detection using batch
+                 inference
+               o Host an object detection model as a service
+          + Distributed RAG pipeline
+               o Build a Regular RAG Document Ingestion Pipeline (No Ray
+                 required)
+               o Scalable RAG Data Ingestion and Pagination with Ray Data
+               o Deploy LLM with Ray Serve LLM
+               o Build Basic RAG App
+               o Improve RAG with Prompt Engineering
+               o Evaluate RAG with Online Inference
+               o Evaluate RAG using Batch Inference with Ray Data LLM
+          + Deploy MCP servers
+               o Deploying a custom MCP in Streamable HTTP mode with Ray
+                 Serve
+               o Deploy an MCP Gateway with existing Ray Serve apps
+               o Deploying an MCP STDIO Server as a scalable HTTP service
+                 with Ray Serve
+               o Deploying multiple MCP services with Ray Serve
+               o Build a Docker image for an MCP server
+          + Build a tool-using agent
+          + Build a multi-agent system with the A2A protocol
+     * Ecosystem
+     * Ray Core
+          + Key Concepts
+          + User Guides
+               o Tasks
+                    # Nested Remote Functions
+               o Actors
+                    # Named Actors
+                    # Terminating Actors
+                    # AsyncIO / Concurrency for Actors
+                    # Limiting Concurrency Per-Method with Concurrency
+                      Groups
+                    # Utility Classes
+                    # Out-of-band Communication
+                    # Actor Task Execution Order
+               o Objects
+                    # Serialization
+                    # Object Spilling
+               o Environment Dependencies
+               o Scheduling
+                    # Use labels to control scheduling
+                    # Resources
+                    # Accelerator Support
+                    # Placement Groups
+                    # Memory Management
+                    # Out-Of-Memory Prevention
+               o Fault tolerance
+                    # Task Fault Tolerance
+                    # Actor Fault Tolerance
+                    # Object Fault Tolerance
+                    # Node Fault Tolerance
+                    # GCS Fault Tolerance
+               o Design Patterns & Anti-patterns
+                    # Pattern: Using nested tasks to achieve nested
+                      parallelism
+                    # Pattern: Using generators to reduce heap memory
+                      usage
+                    # Pattern: Using ray.wait to limit the number of
+                      pending tasks
+                    # Pattern: Using resources to limit the number of
+                      concurrently running tasks
+                    # Pattern: Using asyncio to run actor methods
+                      concurrently
+                    # Pattern: Using an actor to synchronize other tasks
+                      and actors
+                    # Pattern: Using a supervisor actor to manage a tree
+                      of actors
+                    # Pattern: Using pipelining to increase throughput
+                    # Anti-pattern: Returning ray.put() ObjectRefs from a
+                      task harms performance and fault tolerance
+                    # Anti-pattern: Calling ray.get on task arguments
+                      harms performance
+                    # Anti-pattern: Calling ray.get in a loop harms
+                      parallelism
+                    # Anti-pattern: Calling ray.get unnecessarily harms
+                      performance
+                    # Anti-pattern: Processing results in submission order
+                      using ray.get increases runtime
+                    # Anti-pattern: Fetching too many objects at once with
+                      ray.get causes failure
+                    # Anti-pattern: Over-parallelizing with too
+                      fine-grained tasks harms speedup
+                    # Anti-pattern: Redefining the same remote function or
+                      class harms performance
+                    # Anti-pattern: Passing the same large argument by
+                      value repeatedly harms performance
+                    # Anti-pattern: Closure capturing large objects harms
+                      performance
+                    # Anti-pattern: Using global variables to share state
+                      between tasks and actors
+                    # Anti-pattern: Serialize ray.ObjectRef out of band
+                    # Anti-pattern: Forking new processes in application
+                      code
+               o Ray Direct Transport (RDT)
+                    # Implementing a custom tensor transport (Advanced)
+               o Ray Compiled Graph (beta)
+                    # Quickstart
+                    # Profiling
+                    # Experimental: Overlapping communication and
+                      computation
+                    # Troubleshooting
+                    # Compiled Graph API
+               o Resource Isolation With Cgroup v2
+               o Ray Sandboxes
+               o Advanced topics
+                    # Tips for first-time users
+                    # Type hints in Ray
+                    # Starting Ray
+                    # Ray Generators
+                    # Using Namespaces
+                    # Cross-language programming
+                    # Working with Jupyter Notebooks & JupyterLab
+                    # Lazy Computation Graphs with the Ray DAG API
+                    # Miscellaneous Topics
+                    # Authenticating Remote URIs in runtime_env
+                    # Lifetimes of a User-Spawn Process
+                    # Head Node Memory Management
+          + Examples
+               o Batch Prediction with Ray Core
+               o A Gentle Introduction to Ray Core by Example
+               o Using Ray for Highly Parallelizable Tasks
+               o A Simple MapReduce Example with Ray Core
+               o Monte Carlo Estimation of π
+               o Simple Parallel Model Selection
+               o Parameter Server
+               o Learning to Play Pong
+               o Speed up your web crawler by parallelizing it with Ray
+          + Internals
+               o Task Lifecycle
+               o Streaming Generator
+               o Autoscaler v2
+               o RPC Fault Tolerance
+               o Token Authentication
+               o Metric Exporter Infrastructure
+               o Ray Event Exporter Infrastructure
+               o Port Service Discovery
+               o Object Spilling
+     * Ray Data
+          + Ray Data Quickstart
+          + Key Concepts
+          + User Guides
+               o Loading Data
+               o Inspecting Data
+               o Transforming Data
+               o Aggregating Data
+               o Iterating over Data
+               o Joining Data
+               o Shuffling Data
+               o Weighted Dataset Mixing
+               o Saving Data
+               o Working with Images
+               o Working with Text
+               o Working with Tensors / NumPy
+               o Working with PyTorch
+               o Working with LLMs
+               o How to avoid out-of-memory errors (OOMs)
+               o Monitoring Your Workload
+               o Execution Configurations
+               o Run multiple Datasets in one cluster
+               o End-to-end: Offline Batch Inference
+               o Advanced: Performance Tips and Tuning
+               o Advanced: Scaling out expensive collate functions
+               o Advanced: Read and Write Custom File Types
+          + Examples
+          + Contributing to Ray Data
+               o Contributing Guide
+               o How to write tests
+          + Comparing Ray Data to other systems
+          + Ray Data Benchmarks
+          + Ray Data Internals
+     * Ray Train
+          + Overview
+          + PyTorch Guide
+          + PyTorch Lightning Guide
+          + Hugging Face Transformers Guide
+          + XGBoost Guide
+          + JAX Guide
+          + More Frameworks
+               o Hugging Face Accelerate Guide
+               o DeepSpeed Guide
+               o TensorFlow and Keras Guide
+               o LightGBM Guide
+               o Horovod Guide
+          + User Guides
+               o Data Loading and Preprocessing
+               o Configuring Scale and Accelerators
+               o Configuring Persistent Storage
+               o Monitoring and Logging Metrics
+               o Saving and Loading Checkpoints
+               o Validating checkpoints asynchronously
+               o Experiment Tracking
+               o Inspecting Training Results
+               o Handling Failures and Node Preemption
+               o Elastic training
+               o Ray Train Metrics
+               o Local Mode
+               o Reproducibility
+               o Hyperparameter Optimization
+          + Tutorials
+               o Introduction to Ray Train workloads
+               o Computer vision pattern
+               o Tabular workload pattern
+               o Time series workload pattern
+               o Generative computer vision pattern
+               o Diffusion policy pattern
+               o Recommendation system pattern
+          + Examples
+          + Benchmarks
+     * Ray Tune
+          + Getting Started
+          + Key Concepts
+          + User Guides
+               o Running Basic Experiments
+               o Logging and Outputs in Tune
+               o Setting Trial Resources
+               o Using Search Spaces
+               o How to Define Stopping Criteria for a Ray Tune Experiment
+               o How to Save and Load Trial Checkpoints
+               o How to Configure Persistent Storage in Ray Tune
+               o How to Enable Fault Tolerance in Ray Tune
+               o Using Callbacks and Metrics
+               o Getting Data in and out of Tune
+               o Analyzing Tune Experiment Results
+               o A Guide to Population Based Training with Tune
+                    # Visualizing and Understanding PBT
+               o Deploying Tune in the Cloud
+               o Tune Architecture
+               o Scalability Benchmarks
+          + Ray Tune Examples
+               o PyTorch Example
+               o PyTorch Lightning Example
+               o XGBoost Example
+               o LightGBM Example
+               o Hugging Face Transformers Example
+               o Ray RLlib Example
+               o Keras Example
+               o PyTorch with ASHA
+               o Weights & Biases Example
+               o MLflow Example
+               o Aim Example
+               o Comet Example
+               o Ax Example
+               o HyperOpt Example
+               o Bayesopt Example
+               o BOHB Example
+               o Nevergrad Example
+               o Optuna Example
+          + Ray Tune FAQ
+     * Ray Serve
+          + Getting Started
+          + Key Concepts
+          + Develop and Deploy an ML Application
+          + Deploy Compositions of Models
+          + Deploy Multiple Applications
+          + Model Multiplexing
+          + Model Registry Integration
+          + Configure Ray Serve deployments
+          + Set Up FastAPI and HTTP
+          + Serving LLMs
+               o Quickstart
+               o Examples
+                    # Deploy a small-sized LLM
+                    # Deploy a medium-sized LLM
+                    # Deploy a large-sized LLM
+                    # Deploy a vision LLM
+                    # Deploy a reasoning LLM
+                    # Deploy a hybrid reasoning LLM
+                    # Deploy gpt-oss
+               o User Guides
+                    # Configuration reference
+                    # Deployment initialization
+                    # Multi-LoRA deployment
+                    # Cross-node parallelism
+                    # Data parallel attention
+                    # Fractional GPU serving
+                    # Prefill/decode disaggregation
+                    # KV cache offloading
+                    # Prefix-aware routing
+                    # Direct streaming
+                    # vLLM compatibility
+                    # Custom vLLM models
+                    # SGLang integration
+                    # Observability and monitoring
+               o Architecture
+                    # Architecture overview
+                    # Core components
+                    # Serving patterns
+                    # Request routing
+               o Benchmarks
+               o Troubleshooting
+          + Production Guide
+               o Serve Config Files
+               o Deploy on Kubernetes
+               o Custom Docker Images
+               o Add End-to-End Fault Tolerance
+               o Handle Dependencies
+               o Best practices in production
+          + Monitor Your Application
+          + Resource Allocation
+          + Ray Serve Autoscaling
+          + Asynchronous Inference
+          + Advanced Guides
+               o Pass Arguments to Applications
+               o Advanced Ray Serve Autoscaling
+               o Asyncio and concurrency best practices in Ray Serve
+               o Performance Tuning
+               o Dynamic Request Batching
+               o Updating Applications In-Place
+               o Development Workflow
+               o Set Up a gRPC Service
+               o Replica ranks
+               o Replica scheduling
+               o Gang scheduling
+               o Experimental Java API
+               o Deploy on VM
+               o Run Multiple Applications in Different Containers
+               o Use Custom Algorithm for Request Routing
+               o Use deployment-scoped actors
+               o Troubleshoot multi-node GPU serving on KubeRay
+          + Architecture
+          + Examples
+     * Ray RLlib
+          + Getting Started
+          + Key concepts
+          + Environments
+               o Multi-Agent Environments
+               o Hierarchical Environments
+               o External Environments and Applications
+          + AlgorithmConfig API
+          + Algorithms
+          + User Guides
+               o Advanced Python APIs
+               o Callbacks
+               o Checkpointing
+               o MetricsLogger API
+               o Episodes
+               o ConnectorV2 and ConnectorV2 pipelines
+                    # Env-to-module pipelines
+                    # Learner connector pipelines
+               o Replay Buffers
+               o Working with offline data
+               o RL Modules
+               o Learner (Alpha)
+               o Fault Tolerance And Elastic Training
+               o Install RLlib for Development
+               o RLlib scaling guide
+          + Examples
+          + New API stack migration guide
+     * More Libraries
+          + Distributed Scikit-learn / Joblib
+          + Distributed multiprocessing.Pool
+          + Ray Collective Communication Lib
+               o Custom Collective Backends
+          + Using Dask on Ray
+               o RayDaskCallback
+                    # ray_active
+               o _ray_presubmit
+               o _ray_postsubmit
+               o _ray_pretask
+               o _ray_posttask
+               o _ray_postsubmit_all
+               o _ray_finish
+          + Using Spark on Ray (RayDP)
+          + Using Mars on Ray
+          + Using Pandas on Ray (Modin)
+          + Distributed Data Processing in Data-Juicer
+     * APIs
+          + Ray Data
+               o Loading Data API
+               o Saving Data API
+               o Dataset API
+               o DataIterator API
+               o ExecutionOptions API
+               o Checkpoint API
+               o Aggregation API
+               o GroupedData API
+               o Expressions API
+               o Data types
+               o Global configuration
+               o Preprocessor
+               o Large Language Model (LLM) API
+               o API Guide for Users from Other Data Libraries
+          + Ray Train
+          + Ray Tune
+               o Tune Execution (tune.Tuner)
+               o Tune Experiment Results (tune.ResultGrid)
+               o Training in Tune (tune.Trainable, tune.report)
+               o Tune Search Space API
+               o Tune Search Algorithms (tune.search)
+               o Tune Trial Schedulers (tune.schedulers)
+               o Tune Stopping Mechanisms (tune.stopper)
+               o Tune Console Output (Reporters)
+               o Syncing in Tune
+               o Tune Loggers (tune.logger)
+               o Tune Callbacks (tune.Callback)
+               o Environment variables used by Ray Tune
+               o External library integrations for Ray Tune
+               o Tune Internals
+               o Tune CLI (Experimental)
+          + Ray Serve
+          + Ray RLlib
+               o Algorithm Configuration API
+                    # AlgorithmConfig
+                    # build_algo
+                    # build_learner_group
+                    # build_learner
+                    # is_multi_agent
+                    # is_offline
+                    # learner_class
+                    # model_config
+                    # rl_module_spec
+                    # total_train_batch_size
+                    # get_default_learner_class
+                    # get_default_rl_module_spec
+                    # get_evaluation_config_object
+                    # get_multi_rl_module_spec
+                    # get_multi_agent_setup
+                    # get_rollout_fragment_length
+                    # copy
+                    # validate
+                    # freeze
+               o Algorithms
+                    # Algorithm
+                    # setup
+                    # get_default_config
+                    # env_runner
+                    # eval_env_runner
+                    # train
+                    # training_step
+                    # save_to_path
+                    # restore_from_path
+                    # from_checkpoint
+                    # get_state
+                    # set_state
+                    # evaluate
+                    # get_module
+                    # add_policy
+                    # remove_policy
+               o Callback APIs
+                    # RLlibCallback
+                    # on_algorithm_init
+                    # on_sample_end
+                    # on_train_result
+                    # on_evaluate_start
+                    # on_evaluate_end
+                    # on_env_runners_recreated
+                    # on_checkpoint_loaded
+                    # on_environment_created
+                    # on_episode_created
+                    # on_episode_start
+                    # on_episode_step
+                    # on_episode_end
+               o Environments
+                    # EnvRunner API
+                    # SingleAgentEnvRunner API
+                    # SingleAgentEpisode API
+                    # MultiAgentEnv API
+                    # MultiAgentEnvRunner API
+                    # MultiAgentEpisode API
+                    # External Envs
+                    # Env Utils
+               o RLModule APIs
+                    # RLModuleSpec
+                    # build
+                    # MultiRLModuleSpec
+                    # build
+                    # DefaultModelConfig
+                    # RLModule
+                    # observation_space
+                    # action_space
+                    # inference_only
+                    # model_config
+                    # setup
+                    # as_multi_rl_module
+                    # forward_exploration
+                    # forward_inference
+                    # forward_train
+                    # _forward
+                    # _forward_exploration
+                    # _forward_inference
+                    # _forward_train
+                    # save_to_path
+                    # restore_from_path
+                    # from_checkpoint
+                    # get_state
+                    # set_state
+                    # MultiRLModule
+                    # setup
+                    # as_multi_rl_module
+                    # add_module
+                    # remove_module
+                    # save_to_path
+                    # restore_from_path
+                    # from_checkpoint
+                    # get_state
+                    # set_state
+               o Distribution API
+                    # Distribution
+                    # from_logits
+                    # sample
+                    # rsample
+                    # logp
+                    # kl
+               o LearnerGroup API
+                    # learners
+                    # build_learner_group
+                    # LearnerGroup
+               o Offline RL API
+                    # offline_data
+                    # learners
+                    # env_runners
+                    # OfflineSingleAgentEnvRunner
+                    # OfflineData
+                    # __init__
+                    # sample
+                    # default_map_batches_kwargs
+                    # default_iter_batches_kwargs
+                    # OfflinePreLearner
+                    # SCHEMA
+                    # __call__
+                    # _map_to_episodes
+               o ConnectorV2 API
+               o Replay Buffer API
+                    # StorageUnit
+                    # ReplayBuffer
+                    # PrioritizedReplayBuffer
+                    # ReservoirReplayBuffer
+                    # sample
+                    # add
+                    # get_state
+                    # set_state
+                    # MultiAgentReplayBuffer
+                    # MultiAgentPrioritizedReplayBuffer
+                    # update_priorities_in_replay_buffer
+                    # sample_min_n_steps_from_buffer
+               o RLlib Utilities
+                    # MetricsLogger
+                    # peek
+                    # log_value
+                    # log_dict
+                    # aggregate
+                    # log_time
+                    # Scheduler
+                    # validate
+                    # get_current_value
+                    # update
+                    # try_import_torch
+                    # clip_gradients
+                    # compute_global_norm
+                    # convert_to_torch_tensor
+                    # explained_variance
+                    # flatten_inputs_to_1d_tensor
+                    # global_norm
+                    # one_hot
+                    # reduce_mean_ignore_inf
+                    # sequence_mask
+                    # set_torch_seed
+                    # softmax_cross_entropy_with_logits
+                    # update_target_network
+                    # aligned_array
+                    # concat_aligned
+                    # convert_to_numpy
+                    # fc
+                    # flatten_inputs_to_1d_tensor
+                    # make_action_immutable
+                    # huber_loss
+                    # l2_loss
+                    # lstm
+                    # one_hot
+                    # relu
+                    # sigmoid
+                    # softmax
+                    # try_import_msgpack
+                    # Checkpointable
+          + Ray Core
+               o Core API
+               o Scheduling API
+               o Runtime Env API
+               o Utility
+               o Exceptions
+               o Ray Core CLI
+               o Sandbox API
+               o State CLI
+               o State API
+               o Ray Direct Transport (RDT) API
+     * Ray Clusters
+          + Key Concepts
+          + Deploying on Kubernetes
+               o Getting Started with KubeRay
+                    # KubeRay Operator Installation
+                    # RayCluster Quickstart
+                    # RayJob Quickstart
+                    # RayService Quickstart
+                    # RayCronJob Quickstart
+               o User Guides
+                    # Deploy Ray Serve Apps
+                    # RayService worker Pods aren’t ready
+                    # RayService high availability
+                    # Enable High Throughput on Ray Serve with KubeRay
+                    # RayService Zero-Downtime Incremental Upgrades
+                    # KubeRay Observability
+                    # KubeRay upgrade guide
+                    # Managed Kubernetes services
+                    # Best Practices for Storage and Dependencies
+                    # RayCluster Configuration
+                    # KubeRay Autoscaling
+                    # KubeRay In-Place Pod Resizing (IPPR)
+                    # KubeRay label-based scheduling
+                    # GCS fault tolerance in KubeRay
+                    # Tuning Redis for a Persistent Fault Tolerant GCS
+                    # GCS fault tolerance with embedded RocksDB (alpha)
+                    # Configuring KubeRay to use Google Cloud Storage
+                      Buckets in GKE
+                    # Persist KubeRay custom resource logs
+                    # Persist KubeRay Operator Logs
+                    # Using GPUs
+                    # Use TPUs with KubeRay
+                    # Specify container commands for Ray head/worker Pods
+                    # Helm Chart RBAC
+                    # TLS Authentication
+                    # (Advanced) Understanding the Ray Autoscaler in the
+                      Context of Kubernetes
+                    # Use kubectl plugin (beta)
+                    # Configure Ray clusters to use token authentication
+                    # Configure Ray clusters to use Kubernetes RBAC
+                      authentication
+                    # Reducing image pull latency on Kubernetes
+                    # Using uv for Python package management in KubeRay
+                    # Use KubeRay dashboard (experimental)
+                    # Resource Isolation with Writable Cgroups on Google
+                      Kubernetes Engine (GKE)
+                    # Ray History Server with KubeRay
+                    # Enable Ray platform events on Kubernetes
+               o Examples
+                    # Train a PyTorch model on Fashion MNIST with CPUs on
+                      Kubernetes
+                    # Serve a StableDiffusion text-to-image model on
+                      Kubernetes
+                    # Serve a Stable Diffusion model on GKE with TPUs
+                    # Serve a MobileNet image classifier on Kubernetes
+                    # Serve a text summarizer on Kubernetes
+                    # RayJob Batch Inference Example
+                    # Priority Scheduling with RayJob and Kueue
+                    # Gang Scheduling with RayJob and Kueue
+                    # Distributed checkpointing with KubeRay and GCSFuse
+                    # Serve a Large Language Model using Ray Serve LLM on
+                      Kubernetes
+                    # Serve Deepseek R1 using Ray Serve LLM
+                    # Reinforcement Learning with Human Feedback (RLHF)
+                      for LLMs with verl on KubeRay
+                    # Deploying Ray Clusters via ArgoCD
+                    # Sandboxed Code Execution with Ray and Agent Sandbox
+                    # Deploy Ray sandboxes with KubeRay
+               o KubeRay Ecosystem
+                    # Ingress
+                    # KubeRay metrics references
+                    # Using Prometheus and Grafana
+                    # Profiling with py-spy
+                    # Gang scheduling, queue priority, and GPU sharing for
+                      RayClusters using KAI Scheduler
+                    # KubeRay integration with Volcano
+                    # KubeRay integration with Apache YuniKorn
+                    # Gang scheduling, Priority scheduling, and
+                      Autoscaling for KubeRay CRDs with Kueue
+                    # mTLS and L7 observability with Istio
+                    # KubeRay integration with scheduler plugins
+               o KubeRay Benchmarks
+                    # KubeRay memory and scalability benchmark
+               o KubeRay Troubleshooting
+                    # Troubleshooting guide
+                    # RayService troubleshooting
+               o API Reference
+          + Deploying on VMs
+               o Getting Started
+               o User Guides
+                    # Launching Ray Clusters on AWS, GCP, Azure, vSphere,
+                      On-Prem
+                    # Best practices for deploying large clusters
+                    # Configuring Autoscaling
+                    # Log Persistence
+                    # Community Supported Cluster Managers
+               o Examples
+                    # Ray Train XGBoostTrainer on VMs
+               o API References
+                    # Cluster Launcher Commands
+                    # Cluster YAML Configuration Options
+          + Collecting and monitoring metrics
+          + Configuring and Managing Ray Dashboard
+          + Applications Guide
+               o Ray Jobs Overview
+                    # Quickstart using the Ray Jobs CLI
+                    # Python SDK Overview
+                    # Python SDK API Reference
+                    # Ray Jobs CLI API Reference
+                    # Ray Jobs REST API
+                    # Ray Client
+               o Programmatic Cluster Scaling
+          + FAQ
+          + Ray Cluster Management API
+               o Cluster Management CLI
+               o Python SDK API Reference
+               o Ray Jobs CLI API Reference
+               o Programmatic Cluster Scaling
+          + Usage Stats Collection
+     * Monitoring and Debugging
+          + Ray Dashboard
+          + Ray Distributed Debugger
+          + Key Concepts
+          + User Guides
+               o Debugging Applications
+                    # Common Issues
+                    # Debugging Memory Issues
+                    # Debugging Hangs
+                    # Debugging Failures
+                    # Optimizing Performance
+                    # Ray Distributed Debugger
+                    # Using the Ray Debugger
+               o Monitoring with the CLI or SDK
+               o Configuring Logging
+               o Profiling
+               o Adding Application-Level Metrics
+               o Tracing
+               o Ray Event Export
+          + Reference
+               o State API
+               o State CLI
+               o System Metrics
+     * Developer Guides
+          + API stability
+          + API policy
+          + Getting involved and contributing
+               o Building Ray from source
+               o CI testing workflow on PRs
+               o Editing and managing Python dependencies
+               o Contributing to the Ray documentation
+               o Ray documentation style guide
+               o How to write code snippets
+               o Testing autoscaling locally
+               o Tips for testing Ray programs
+               o Debugging for Ray developers
+               o Profiling for Ray developers
+               o Using agents for development
+          + Configuring Ray
+          + Architecture whitepapers
+     * Glossary
+     * Security
+          + Ray token authentication
+     * Project Governance
+          + People
+
+     *
+     * Security
+
+Security#
+
+   Note
+
+   For the latest Ray security alerts, see the Security Advisories page on
+   GitHub.
+
+   Ray is an easy-to-use framework to run arbitrary code across one or
+   more nodes in a Ray Cluster. Ray provides fault-tolerance, optimized
+   scheduling, task orchestration, and auto-scaling to run a given
+   workload.
+
+   To achieve performant and distributed workloads, Ray components require
+   intra-cluster communication. This communication includes central tenets
+   like distributed memory and node-heartbeats, as well as auxiliary
+   functions like metrics and logs. Ray leverages gRPC for a majority of
+   this communication.
+
+   Ray offers additional services to improve the developer experience.
+   These services include Ray Dashboard (to allow for cluster
+   introspection and debugging), Ray Jobs (hosted alongside the Dashboard,
+   which services Ray Job submissions), and Ray Client (to allow for
+   local, interactive development with a remote cluster). These services
+   provide complete access to the Ray Cluster and the underlying compute
+   resources.
+
+   Ray allows any clients to run arbitrary code. Be extremely careful
+   about what is allowed to access your Ray Cluster
+
+   If you expose these services (Ray Dashboard, Ray Jobs, Ray Client),
+   anybody who can access the associated ports can execute arbitrary code
+   on your Ray Cluster. This can happen:
+     * Explicitly: By submitting a Ray Job, or using the Ray Client
+     * Indirectly: By calling the Dashboard REST APIs of these services
+     * Implicitly: Ray extensively uses cloudpickle for serialization of
+       arbitrary Python objects. See the pickle documentation for more
+       details on Pickle’s security model.
+
+   The Ray Dashboard, Ray Jobs and Ray Client are developer tools that you
+   should only use with the necessary access controls in place to restrict
+   access to trusted parties only.
+
+Personas#
+
+   When considering the security responsibilities of running Ray, think
+   about the different personas interacting with Ray.
+     * Ray Developers write code that relies on Ray. They either run a
+       single-node Ray Cluster locally or multi-node clusters remotely on
+       provided compute infrastructure.
+     * Platform providers provide the compute environment on which
+       Developers run Ray.
+     * Users interact with the output of Ray-powered applications.
+
+Best practices#
+
+   Security and isolation must be enforced outside of the Ray Cluster. Ray
+   expects to run in a safe network environment and to act upon trusted
+   code. Developers and platform providers must maintain the following
+   invariants to ensure the safe operation of Ray clusters.
+
+Deploy Ray clusters in a controlled network environment#
+
+     * Network traffic between core Ray components and additional Ray
+       components should always be in a controlled, isolated network.
+       Access to additional services should be gated with strict network
+       controls and/or external authentication/authorization proxies.
+     * gRPC communication can be encrypted with TLS, but it’s not a
+       replacement for network isolation.
+     * Platform providers are responsible for ensuring that Ray runs in
+       sufficiently controlled network environments and that developers
+       can access features like Ray Dashboard in a secure manner.
+
+Only execute trusted code within Ray#
+
+     * Ray faithfully executes code that is passed to it – Ray doesn’t
+       differentiate between a tuning experiment, a rootkit install, or an
+       S3 bucket inspection.
+     * Ray developers are responsible for building their applications with
+       this understanding in mind.
+
+Enforce isolation outside of Ray with multiple Ray clusters#
+
+     * If workloads require isolation from each other, use separate,
+       isolated Ray clusters. Ray can schedule multiple distinct Jobs in a
+       single Cluster, but doesn’t attempt to enforce isolation between
+       them. Similarly, Ray doesn’t implement access controls for
+       developers interacting with a given cluster.
+     * Ray developers are responsible for determining which applications
+       need to be separated and platform providers are responsible for
+       providing this isolation.
+
+Enable token authentication#
+
+     * Starting in Ray 2.52.0, Ray supports built-in token authentication
+       that provides an additional measure to prevent unauthorized access
+       to the cluster (including untrusted code execution). See Ray token
+       authentication for details.
+     * Token authentication is not an alternative to deploying Ray
+       clusters in a controlled network environment. Rather, it is a
+       defense-in-depth measure that adds to network-level security.
+
+   previous
+
+   Ray Glossary
+
+   next
+
+   Ray token authentication
+   On this page
+
+     * Personas
+     * Best practices
+          + Deploy Ray clusters in a controlled network environment
+          + Only execute trusted code within Ray
+          + Enforce isolation outside of Ray with multiple Ray clusters
+          + Enable token authentication
+
+   Edit on GitHub
+
+   Thanks for the feedback!
+   Was this helpful?
+   Yes
+   No
+   Feedback
+   ____________________________________________________________
+   ____________________________________________________________
+   ____________________________________________________________
+   ____________________________________________________________
+   Submit
+
+   © Copyright 2026, The Ray Team.
+
+   Created using Sphinx 8.2.3.
+
+   Built with the PyData Sphinx Theme 0.18.0.

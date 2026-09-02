@@ -1,0 +1,23 @@
+# Qdrant, default configuration.
+# No QDRANT__SERVICE__API_KEY set (that is opt-in; unset = no auth).
+# Image pinned by digest for reproducibility.
+services:
+  qdrant:
+    image: qdrant/qdrant@sha256:d122138f76868edba68d36cb0833139c1d1761f00f09e48e61f8314196e6a4c6
+    container_name: vectordb-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    networks:
+      - vectordb-net
+
+  client:
+    image: curlimages/curl:8.11.0
+    container_name: vectordb-qdrant-client
+    command: ["sleep", "3600"]
+    networks:
+      - vectordb-net
+
+networks:
+  vectordb-net:
+    driver: bridge

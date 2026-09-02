@@ -1,0 +1,3 @@
+$ curl -s http://localhost:12265/api/jobs/raysubmit_d8rzDF2Dc5ytNxvp
+{"type": "SUBMISSION", "job_id": null, "submission_id": "raysubmit_d8rzDF2Dc5ytNxvp", "driver_info": null, "status": "SUCCEEDED", "entrypoint": "echo DESIGNSTUDY_UNAUTH_JOB_SUBMIT_TEST && whoami && hostname", "message": "Job finished successfully.", "error_type": null, "start_time": 1787795408486, "end_time": 1787795409572, "metadata": null, "runtime_env": null, "driver_agent_http_address": "http://172.20.0.2:52365", "driver_node_id": "28b4ec2c461c0b1d1cf6b17c9e0bec50d3c0f3d76e0a3d89800405f4", "driver_exit_code": 0}
+HTTP_CODE:200

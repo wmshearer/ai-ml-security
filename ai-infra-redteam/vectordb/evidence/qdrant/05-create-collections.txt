@@ -1,0 +1,15 @@
+=== c) create collection_a and collection_b, each with distinct data ===
+HTTP/1.1 200 OK
+content-length: 48
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:29:28 GMT
+
+{"result":true,"status":"ok","time":0.088253153}
+HTTP/1.1 200 OK
+content-length: 48
+content-type: application/json
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+date: Thu, 27 Aug 2026 01:29:28 GMT
+
+{"result":true,"status":"ok","time":0.090927437}

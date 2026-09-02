@@ -1,0 +1,9 @@
+=== d) tenancy model: does Qdrant have tenants, or only flat collections? ===
+HTTP/1.1 200 OK
+content-length: 59
+content-type: application/json
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+date: Thu, 27 Aug 2026 01:29:24 GMT
+
+{"result":{"collections":[]},"status":"ok","time":4.692e-6}
+(Qdrant's docs describe 'multitenancy' as a PATTERN: one collection, tenant_id as a payload field with a payload index, filtered at query time by the client app. There is no first-class tenant/namespace object in the API - this checks whether that pattern is enforced server-side or is purely client-discipline.)

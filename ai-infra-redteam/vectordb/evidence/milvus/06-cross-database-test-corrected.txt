@@ -1,0 +1,12 @@
+=== corrected test: is there ANY parameter/mechanism to query across db boundary in one call? ===
+<string>:6: PyMilvusDeprecationWarning: `connections.connect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+<string>:7: PyMilvusDeprecationWarning: `connections.connect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+<string>:10: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+<string>:11: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+<string>:12: PyMilvusDeprecationWarning: `Collection.query` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+--- Collection object bound to conn_a (db=tenant_db_a), query secrets ---
+data: ["{'id': 1, 'secret': 'DBA_SECRET_VALUE_44f1'}", "{'id': 2, 'secret': 'DBA_SECRET_VALUE_44f1_v2'}"], extra_info: {}
+
+--- Does the Collection/connection API expose ANY per-call db override? ---
+Collection.query signature: (self, expr: str, output_fields: List[str] | None = None, partition_names: List[str] | None = None, timeout: float | None = None, **kwargs)
+connections.connect signature: (alias: str = 'default', user: str = '', password: str = '', db_name: str = 'default', token: str = '', _async: bool = False, _unbind_with_db: bool = False, **kwargs) -> None

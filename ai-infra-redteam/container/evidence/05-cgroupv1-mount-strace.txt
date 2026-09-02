@@ -1,0 +1,6 @@
+mount("cgroup", "/mnt/t3", "cgroup", MS_SILENT, "rdma") = -1 EPERM (Operation not permitted)
+strace: Process 13 attached
+[pid    13] +++ exited with 111 +++
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=13, si_uid=0, si_status=111, si_utime=0, si_stime=0} ---
+mount: permission denied (are you root?)
++++ exited with 1 +++

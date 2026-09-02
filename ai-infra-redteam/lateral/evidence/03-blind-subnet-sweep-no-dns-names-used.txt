@@ -1,0 +1,11 @@
+port 8000: open on ['172.19.0.1', '172.19.0.3']
+port 11434: open on ['172.19.0.1', '172.19.0.2']
+port 9000: open on ['172.19.0.4']
+
+Interpretation: a blind sweep of the bridge network's /24, using raw IPs
+only (no container names, no DNS, no env vars from lateral-app read), finds
+both chroma (8000) and ollama (11434) open, plus this app's own listener
+(9000). 172.19.0.1 is the bridge gateway (the host itself reachable via the
+bridge interface, expected and not part of the chain). This confirms the
+reachability demonstrated in 01- is a property of the network itself, not
+an artifact of this app happening to be told the peer hostnames.

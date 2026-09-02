@@ -1,0 +1,51 @@
+Exact commands run against Qdrant for this evidence set, in order.
+Container started via scripts/run_qdrant.sh (docker run qdrant/qdrant@sha256:d122138f76868edba68d36cb0833139c1d1761f00f09e48e61f8314196e6a4c6),
+host ports 16333 (HTTP) -> 6333, 16334 (gRPC) -> 6334.
+
+# 01: bind address
+docker inspect vectordb-qdrant --format '{{json .NetworkSettings.Ports}}'
+docker exec vectordb-qdrant cat /proc/net/tcp
+
+# 02: auth test, host, no api key
+curl -s -i http://localhost:16333/
+curl -s -i http://localhost:16333/collections
+
+# 03: auth test from peer container
+docker exec vectordb-qdrant-client curl -s -i http://vectordb-qdrant:6333/collections
+
+# 04: tenancy model check
+curl -s -i http://localhost:16333/collections
+
+# 05: create collection_a, collection_b
+curl -s -i -X PUT "http://localhost:16333/collections/collection_a" -H "Content-Type: application/json" -d '{"vectors":{"size":4,"distance":"Cosine"}}'
+curl -s -i -X PUT "http://localhost:16333/collections/collection_b" -H "Content-Type: application/json" -d '{"vectors":{"size":4,"distance":"Cosine"}}'
+
+# 06: add distinct points
+curl -s -i -X PUT "http://localhost:16333/collections/collection_a/points?wait=true" -H "Content-Type: application/json" \
+  -d '{"points":[{"id":1,"vector":[0.1,0.2,0.3,0.4],"payload":{"secret":"COLLECTION_A_SECRET_9f3e"}}]}'
+curl -s -i -X PUT "http://localhost:16333/collections/collection_b/points?wait=true" -H "Content-Type: application/json" \
+  -d '{"points":[{"id":1,"vector":[0.9,0.8,0.7,0.6],"payload":{"secret":"COLLECTION_B_SECRET_2ab7"}}]}'
+
+# 07: cross-collection test
+curl -s -i "http://localhost:16333/collections/collection_b/points/1"
+curl -s -i "http://localhost:16333/collections/collection_a/points/1"
+curl -s -i -X POST "http://localhost:16333/collections/collection_a/points/query" -H "Content-Type: application/json" \
+  -d '{"query":[0.9,0.8,0.7,0.6],"limit":10,"with_payload":true}'
+
+# 08: multitenancy-by-payload pattern setup
+curl -s -i -X PUT "http://localhost:16333/collections/shared_multitenant" -H "Content-Type: application/json" -d '{"vectors":{"size":4,"distance":"Cosine"}}'
+curl -s -i -X PUT "http://localhost:16333/collections/shared_multitenant/points?wait=true" -H "Content-Type: application/json" \
+  -d '{"points":[{"id":1,"vector":[0.1,0.2,0.3,0.4],"payload":{"tenant_id":"alpha","secret":"ALPHA_TENANT_SECRET_11a"}}]}'
+curl -s -i -X PUT "http://localhost:16333/collections/shared_multitenant/points?wait=true" -H "Content-Type: application/json" \
+  -d '{"points":[{"id":2,"vector":[0.9,0.8,0.7,0.6],"payload":{"tenant_id":"beta","secret":"BETA_TENANT_SECRET_22b"}}]}'
+
+# 09: unfiltered query, both tenants' data returned in one call
+curl -s -i -X POST "http://localhost:16333/collections/shared_multitenant/points/query" -H "Content-Type: application/json" \
+  -d '{"query":[0.5,0.5,0.5,0.5],"limit":10,"with_payload":true}'
+
+# 10: control - WITH filter, correctly restricted
+curl -s -i -X POST "http://localhost:16333/collections/shared_multitenant/points/query" -H "Content-Type: application/json" \
+  -d '{"query":[0.5,0.5,0.5,0.5],"limit":10,"with_payload":true,"filter":{"must":[{"key":"tenant_id","match":{"value":"alpha"}}]}}'
+
+Exit status: all curl commands returned exit status 0; HTTP status codes
+captured in each response and in the .txt files above.

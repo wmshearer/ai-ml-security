@@ -1,0 +1,2 @@
+mount: permission denied (are you root?)
+mount exit:1

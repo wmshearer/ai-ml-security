@@ -1,0 +1,31 @@
+=== a) default bind, from inside the container ===
+  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode                                                     
+   0: 0B00007F:A515 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 7223318 1 000000004578db64 100 0 0 10 0                   
+   1: 00000000:1F40 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 7222507 1 000000000abee864 100 0 0 10 0                   
+---ss inside container---
+sh: 1: ss: not found
+sh: 1: netstat: not found
+---docker inspect port binding---
+{"8000/tcp":[{"HostIp":"0.0.0.0","HostPort":"18000"},{"HostIp":"::","HostPort":"18000"}]}
+---image default CMD/entrypoint---
+{
+    "ExposedPorts": {
+        "8000/tcp": {}
+    },
+    "Env": [
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "ASAN_OPTIONS=",
+        "ASAN_SYMBOLIZER_PATH=",
+        "RUST_BACKTRACE=0"
+    ],
+    "Entrypoint": [
+        "dumb-init",
+        "--",
+        "chroma"
+    ],
+    "Cmd": [
+        "run",
+        "/config.yaml"
+    ],
+    "ArgsEscaped": true
+}

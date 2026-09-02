@@ -1,0 +1,3 @@
+$ curl -s -w '\nHTTP_CODE:%{http_code}\n' http://localhost:12000/v2/models/identity_demo
+{"name":"identity_demo","versions":["1"],"platform":"python","inputs":[{"name":"INPUT0","datatype":"BYTES","shape":[1]}],"outputs":[{"name":"OUTPUT0","datatype":"BYTES","shape":[1]}]}
+HTTP_CODE:200

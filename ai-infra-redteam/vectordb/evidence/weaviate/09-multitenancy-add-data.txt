@@ -1,0 +1,8 @@
+=== add distinct object to tenantA and tenantB ===
+Content-Length: 236
+
+{"class":"MultiTenantClass","creationTimeUnix":1787794288404,"id":"4f799e7a-b8ad-4785-b176-b8ec9fb730e8","lastUpdateTimeUnix":1787794288404,"properties":{"secret":"TENANTA_MT_SECRET_5c3f"},"tenant":"tenantA","vector":[0.1,0.2,0.3,0.4]}
+
+Content-Length: 236
+
+{"class":"MultiTenantClass","creationTimeUnix":1787794288414,"id":"948cf734-a4cb-4137-bafd-f70912690f15","lastUpdateTimeUnix":1787794288414,"properties":{"secret":"TENANTB_MT_SECRET_8d1e"},"tenant":"tenantB","vector":[0.9,0.8,0.7,0.6]}

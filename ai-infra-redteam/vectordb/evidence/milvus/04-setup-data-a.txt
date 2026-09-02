@@ -1,0 +1,3 @@
+=== create collection + distinct data in tenant_db_a ===
+inserted into tenant_db_a.secrets
+control read-back from tenant_db_a: data: [], extra_info: {}

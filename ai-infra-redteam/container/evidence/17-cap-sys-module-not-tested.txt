@@ -1,0 +1,16 @@
+=== CAP_SYS_MODULE: explicitly NOT tested on this box ===
+Rationale: --cap-add=SYS_MODULE would let a container load an arbitrary kernel module into the
+HOST kernel (module code runs as host kernel, ring 0, no container boundary applies). This host
+is the operator's primary workstation. Loading an arbitrary/test module for demonstration purposes
+carries real risk of destabilizing or crashing the live system and was excluded from this test plan
+per explicit instruction.
+
+Documented from sources instead (not independently verified by test on this box):
+- Docker docs, 'Runtime privilege and Linux capabilities' -- SYS_MODULE is described as one of the
+  capabilities NOT included in the default set and one of the most dangerous to add, precisely
+  because it allows insertion/removal of kernel modules, which affects the host kernel directly.
+  https://docs.docker.com/engine/containers/run/#runtime-privilege-and-linux-capabilities
+- This is consistent with the general Linux capabilities model (capabilities(7)): CAP_SYS_MODULE
+  operates against the host's single, shared kernel module namespace; there is no per-container
+  isolation of loaded kernel modules.
+Status: UNTESTED on this box. Reported as a documented risk, not as an empirically confirmed one.

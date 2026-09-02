@@ -1,0 +1,18 @@
+=== Capability set of --gpus all container (no --privileged) ===
+CapInh:	0000000000000000
+CapPrm:	00000000a80425fb
+CapEff:	00000000a80425fb
+CapBnd:	00000000a80425fb
+CapAmb:	0000000000000000
+
+Compare CapEff hex above against evidence/06-capability-comparison.txt DEFAULT and --privileged rows.
+
+=== Device nodes visible inside --gpus all container (NOT --privileged) ===
+crw-rw-rw- 1 root root 510,   0 Aug 24 11:42 nvidia-uvm
+crw-rw-rw- 1 root root 510,   1 Aug 24 11:42 nvidia-uvm-tools
+crw-rw-rw- 1 root root 195,   0 Aug 24 11:41 nvidia0
+crw-rw-rw- 1 root root 195, 255 Aug 24 11:41 nvidiactl
+---other host devices---
+/dev/nvme0n1: ABSENT
+/dev/mem: ABSENT
+/dev/kmsg: ABSENT

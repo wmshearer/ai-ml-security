@@ -1,0 +1,9 @@
+=== control: WITH tenant filter, does Qdrant correctly restrict results? ===
+HTTP/1.1 200 OK
+content-length: 163
+content-type: application/json
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+date: Thu, 27 Aug 2026 01:30:10 GMT
+
+{"result":{"points":[{"id":1,"version":0,"score":0.91287094,"payload":{"tenant_id":"alpha","secret":"ALPHA_TENANT_SECRET_11a"}}]},"status":"ok","time":0.000638163}
+(Confirms the filter mechanism itself works correctly when the client remembers to use it - the finding is the absence of a default/mandatory boundary, not that filtering is broken.)

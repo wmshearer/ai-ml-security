@@ -1,0 +1,3 @@
+$ curl -s http://localhost:12265/api/jobs/raysubmit_d8rzDF2Dc5ytNxvp/logs
+{"logs": "2026-08-26 18:50:08,492\tINFO job_manager.py:583 -- Runtime env is setting up.\nRunning entrypoint for job raysubmit_d8rzDF2Dc5ytNxvp: echo DESIGNSTUDY_UNAUTH_JOB_SUBMIT_TEST && whoami && hostname\nDESIGNSTUDY_UNAUTH_JOB_SUBMIT_TEST\nray\nbe047da1105a\n"}
+HTTP_CODE:200

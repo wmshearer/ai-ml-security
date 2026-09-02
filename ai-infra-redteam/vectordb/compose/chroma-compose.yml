@@ -1,0 +1,23 @@
+# ChromaDB, default configuration.
+# No auth env vars set (CHROMA_SERVER_AUTHN_PROVIDER etc. are left unset,
+# which is the out-of-the-box state per Chroma's own docs).
+# Image pinned by digest for reproducibility.
+services:
+  chroma:
+    image: chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6
+    container_name: vectordb-chroma
+    ports:
+      - "8000:8000"
+    networks:
+      - vectordb-net
+
+  client:
+    image: curlimages/curl:8.11.0
+    container_name: vectordb-chroma-client
+    command: ["sleep", "3600"]
+    networks:
+      - vectordb-net
+
+networks:
+  vectordb-net:
+    driver: bridge

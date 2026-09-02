@@ -1,0 +1,29 @@
+=== CORE TEST 1: list collections scoped to default_tenant/db_a (should only see secrets_a if isolated) ===
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 1380
+date: Thu, 27 Aug 2026 01:28:29 GMT
+
+[{"id":"10464d3c-ab05-4e1c-b21a-38a285e84ec3","name":"secrets_a","configuration_json":{"hnsw":{"space":"l2","ef_construction":100,"ef_search":100,"max_neighbors":16,"resize_factor":1.2,"sync_threshold":1000},"spann":null,"embedding_function":null},"schema":{"defaults":{"string":{"fts_index":{"enabled":false,"config":{}},"string_inverted_index":{"enabled":true,"config":{}}},"float_list":{"vector_index":{"enabled":false,"config":{"space":"l2","hnsw":{"ef_construction":100,"max_neighbors":16,"ef_search":100,"num_threads":20,"batch_size":100,"sync_threshold":1000,"resize_factor":1.2}}}},"sparse_vector":{"sparse_vector_index":{"enabled":false,"config":{"embedding_function":{"type":"unknown"},"bm25":false}}},"int":{"int_inverted_index":{"enabled":true,"config":{}}},"float":{"float_inverted_index":{"enabled":true,"config":{}}},"bool":{"bool_inverted_index":{"enabled":true,"config":{}}}},"keys":{"#embedding":{"float_list":{"vector_index":{"enabled":true,"config":{"space":"l2","source_key":"#document","hnsw":{"ef_construction":100,"max_neighbors":16,"ef_search":100,"num_threads":20,"batch_size":100,"sync_threshold":1000,"resize_factor":1.2}}}}},"#document":{"string":{"fts_index":{"enabled":true,"config":{}},"string_inverted_index":{"enabled":false,"config":{}}}}}},"metadata":null,"dimension":4,"tenant":"default_tenant","database":"db_a","log_position":0,"version":0}]
+=== CORE TEST 2: try to GET collection B's UUID via tenant A's path (default_tenant/db_a) ===
+HTTP/1.1 404 Not Found
+content-type: application/json
+chroma-trace-id: 00000000000000000000000000000000
+content-length: 102
+date: Thu, 27 Aug 2026 01:28:29 GMT
+
+{"error":"NotFoundError","message":"Collection [61350239-747e-408f-bc05-612c82323b7b] does not exist"}
+=== CORE TEST 3: try to QUERY collection B's data via tenant A's path/db ===
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 149
+date: Thu, 27 Aug 2026 01:28:29 GMT
+
+{"ids":["doc-b-1"],"embeddings":null,"documents":["TENANT_B_SECRET_VALUE_ce31d4"],"uris":null,"metadatas":[null],"include":["documents","metadatas"]}
+=== CORE TEST 4: directly hit collection B's own correct tenant/db path (control - should succeed) ===
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 149
+date: Thu, 27 Aug 2026 01:28:29 GMT
+
+{"ids":["doc-b-1"],"embeddings":null,"documents":["TENANT_B_SECRET_VALUE_ce31d4"],"uris":null,"metadatas":[null],"include":["documents","metadatas"]}

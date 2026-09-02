@@ -1,0 +1,14 @@
+$ dpkg -l | grep -i nvidia-container
+ii  libnvidia-container-tools              1.20.0-1                                 amd64        NVIDIA container runtime library (command-line tools)
+ii  libnvidia-container1:amd64             1.20.0-1                                 amd64        NVIDIA container runtime library
+ii  nvidia-container-toolkit               1.20.0-1                                 amd64        NVIDIA Container toolkit
+ii  nvidia-container-toolkit-base          1.20.0-1                                 amd64        NVIDIA Container Toolkit Base
+
+$ nvidia-container-cli --version
+cli-version: 1.20.0
+lib-version: 1.20.0
+build date: 2026-08-12T15:52+00:00
+build revision: 3e428194f8616a81e16834d27365e4a663668533
+build compiler: x86_64-linux-gnu-gcc-7 7.5.0
+build platform: x86_64
+build flags: -D_GNU_SOURCE -D_FORTIFY_SOURCE=2 -DNDEBUG -std=gnu11 -O2 -g -fdata-sections -ffunction-sections -fplan9-extensions -fstack-protector -fno-strict-aliasing -fvisibility=hidden -Wall -Wextra -Wcast-align -Wpointer-arith -Wmissing-prototypes -Wnonnull -Wwrite-strings -Wlogical-op -Wformat=2 -Wmissing-format-attribute -Winit-self -Wshadow -Wstrict-prototypes -Wunreachable-code -Wconversion -Wsign-conversion -Wno-unknown-warning-option -Wno-format-extra-args -Wno-gnu-alignof-expression -Wl,-zrelro -Wl,-znow -Wl,-zdefs -Wl,--gc-sections

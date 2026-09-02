@@ -1,0 +1,3 @@
+$ curl -s -X POST -w '\nHTTP_CODE:%{http_code}\n' http://localhost:12000/v2/repository/models/nonexistent_model/load
+{"error":"explicit model load / unload is not allowed if polling is enabled"}
+HTTP_CODE:503

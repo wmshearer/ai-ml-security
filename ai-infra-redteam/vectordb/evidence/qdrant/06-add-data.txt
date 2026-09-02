@@ -1,0 +1,15 @@
+=== add distinct points to each collection ===
+HTTP/1.1 200 OK
+content-length: 83
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:29:40 GMT
+
+{"result":{"operation_id":0,"status":"completed"},"status":"ok","time":0.001670238}
+HTTP/1.1 200 OK
+content-length: 82
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:29:40 GMT
+
+{"result":{"operation_id":0,"status":"completed"},"status":"ok","time":0.00221927}

@@ -1,0 +1,25 @@
+=== CORE TEST: can a request 'scoped' to collection_a read/query collection_b's data by name? ===
+--- direct GET of point 1 from collection_b (control, should succeed - proves data present) ---
+HTTP/1.1 200 OK
+content-length: 152
+content-type: application/json
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+date: Thu, 27 Aug 2026 01:29:47 GMT
+
+{"result":{"id":1,"payload":{"secret":"COLLECTION_B_SECRET_2ab7"},"vector":[0.5934424,0.5275044,0.46156633,0.3956283]},"status":"ok","time":0.000407062}
+--- attempt: GET point 1 by asking collection_a's endpoint but requesting collection_b's point id (no cross-collection param exists; testing whether collection namespace boundary can be confused) ---
+HTTP/1.1 200 OK
+content-length: 154
+content-type: application/json
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+date: Thu, 27 Aug 2026 01:29:47 GMT
+
+{"result":{"id":1,"payload":{"secret":"COLLECTION_A_SECRET_9f3e"},"vector":[0.18257418,0.36514837,0.5477226,0.73029673]},"status":"ok","time":0.000186738}
+--- attempt: query collection_a with collection_b's vector, check if results include collection_b payload (would indicate index bleed) ---
+HTTP/1.1 200 OK
+content-length: 142
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+date: Thu, 27 Aug 2026 01:29:47 GMT
+
+{"result":{"points":[{"id":1,"version":0,"score":0.842701,"payload":{"secret":"COLLECTION_A_SECRET_9f3e"}}]},"status":"ok","time":0.000563201}

@@ -1,0 +1,7 @@
+=== auth test from peer container on vectordb-net, no credentials ===
+HTTP/1.1 200 OK
+content-type: application/json
+content-length: 44
+date: Thu, 27 Aug 2026 01:27:59 GMT
+
+{"nanosecond heartbeat":1787794079072449143}

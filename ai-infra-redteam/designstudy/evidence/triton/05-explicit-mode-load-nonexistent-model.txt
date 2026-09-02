@@ -1,0 +1,3 @@
+$ curl -s -X POST -w '\nHTTP_CODE:%{http_code}\n' http://localhost:12000/v2/repository/models/nonexistent_model/load
+{"error":"failed to load 'nonexistent_model', failed to poll from model repository"}
+HTTP_CODE:500

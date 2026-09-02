@@ -1,0 +1,19 @@
+=== CORE TEST: GraphQL Get scoped to tenantA - does it see tenantB's data? ===
+Vary: Origin
+Date: Thu, 27 Aug 2026 01:31:36 GMT
+Content-Length: 76
+
+{"data":{"Get":{"MultiTenantClass":[{"secret":"TENANTA_MT_SECRET_5c3f"}]}}}
+
+--- GraphQL Get WITHOUT specifying a tenant at all (is a tenant param mandatory?) ---
+Vary: Origin
+Date: Thu, 27 Aug 2026 01:31:36 GMT
+Content-Length: 290
+
+{"data":{"Get":{"MultiTenantClass":null}},"errors":[{"locations":[{"column":9,"line":1}],"message":"explorer: list class: search: object search at index multitenantclass: class MultiTenantClass has multi-tenancy enabled, but request was without tenant","path":["Get","MultiTenantClass"]}]}
+
+--- REST: fetch tenantB's object UUID but claim tenant=tenantA in the query param ---
+HTTP_STATUS: 404
+
+--- REST control: fetch tenantB's object with its OWN correct tenant param ---
+{"class":"MultiTenantClass","creationTimeUnix":1787794288414,"id":"948cf734-a4cb-4137-bafd-f70912690f15","lastUpdateTimeUnix":1787794288414,"properties":{"secret":"TENANTB_MT_SECRET_8d1e"},"tenant":"tenantB","vectorWeights":null}
