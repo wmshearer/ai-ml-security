@@ -43,7 +43,7 @@ POLICIES = [
 ]
 
 BASE_URL = "https://docs.aws.amazon.com/aws-managed-policy/latest/reference/{}.md"
-USER_AGENT = "Mozilla/5.0 (aws-ai-iam-audit research script; contact: [REDACTED-EMAIL])"
+USER_AGENT = "Mozilla/5.0 (aws-ai-iam-audit research script; contact: github.com/wmshearer)"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 POLICIES_DIR = REPO_ROOT / "policies"
